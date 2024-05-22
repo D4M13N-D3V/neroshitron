@@ -8,7 +8,7 @@ jobs:
     runs-on: [ubuntu-latest]
     permissions: write-all
     env:
-      docker_image_name: ghcr.io/comissions-app/ui
+      docker_image_name: ghcr.io/d4m13n-d3v/neroshitron
     steps:
 
     - uses: gittools/actions/gitversion/setup@v0.9.15
