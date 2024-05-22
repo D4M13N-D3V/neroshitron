@@ -1,6 +1,5 @@
 export default async function handler(req, res): Promise<any>  {
     let jsonString = generateRandomStringsAndJsonify(10, 5);
-    console.log(jsonString);
     res.status(200).json(jsonString);
 
 }
