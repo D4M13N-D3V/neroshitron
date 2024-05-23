@@ -12,12 +12,7 @@ import NextDocument, {
   
   } from 'next/document'
   
-  import { StyleSheet } from 'react-native'
   
-  import { config } from '@tamagui/config/v3'
-  import { createTamagui } from 'tamagui'
-  
-  const tamaguiConfig = createTamagui(config)
   
   // you usually export this from a tamagui.config.ts file:
   
@@ -29,7 +24,6 @@ import NextDocument, {
       const page = await renderPage()
       // @ts-ignore RN doesn't have this type
   
-      const rnwStyle = StyleSheet.getSheet()
       return {
   
         ...page,
@@ -38,16 +32,7 @@ import NextDocument, {
   
           <>
   
-            <style
-              id={rnwStyle.id}
-              dangerouslySetInnerHTML={{ __html: rnwStyle.textContent }}
-            />
   
-            <style
-              dangerouslySetInnerHTML={{
-                __html: tamaguiConfig.getCSS(),
-              }}
-            />
   
           </>
   

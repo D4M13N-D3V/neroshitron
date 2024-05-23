@@ -1,13 +1,9 @@
 {
   "dependencies": {
-    "@tamagui/config": "^1.98.2",
-    "@tamagui/next-plugin": "^1.98.2",
-    "@tamagui/next-theme": "^1.98.2",
     "next": "^14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-native-web": "^0.19.11",
-    "tamagui": "^1.98.2"
+    "react-native-web": "^0.19.11"
   },
   "scripts": {
     "dev": "next dev",
@@ -16,6 +12,7 @@
     "lint": "next lint"
   },
   "devDependencies": {
+    "@types/node": "20.12.12",
     "@types/react": "18.3.2",
     "typescript": "5.4.5"
   }
