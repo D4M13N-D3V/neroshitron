@@ -2,7 +2,6 @@
 
 ## Development
 ### Documentation For Initial Project Setup
-- https://tamagui.dev/docs/guides/next-js
 - https://nextjs.org/docs
 
 ### Running With Docker
