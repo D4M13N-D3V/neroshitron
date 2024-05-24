@@ -1,7 +1,5 @@
 # Neroshitron
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/eeda8f0f-b1e8-4311-8047-971306641323)![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/bbd7ecb0-66dd-42a6-bc92-fa3af6969da5)
-
-
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/e4a9e11b-0e52-42e0-ad9a-821a81e92e90)
 
 
 ## Development
