@@ -5,7 +5,6 @@
 ## Development
 ### Documentation For Initial Project Setup
 - https://nextjs.org/docs
-- https://appwrite.io/docs
 - https://supabase.com/docs/guides/self-hosting/docker
   
 ### Running With Docker
