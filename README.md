@@ -7,7 +7,7 @@
 ## Development
 ### Documentation For Initial Project Setup
 - https://nextjs.org/docs
-
+- https://appwrite.io/docs
 ### Running With Docker
 1) Open your terminal and navigate to the root of the git repository.
 2) Make sure that docker and docker compose are installed.
