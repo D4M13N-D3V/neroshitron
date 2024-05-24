@@ -1,13 +1,12 @@
 # Neroshitron
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/87db1132-2191-425f-adfb-bde5601aea96)
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/583e1ddd-8304-4da1-a2f8-3492920b3cf7)
-
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/e4a9e11b-0e52-42e0-ad9a-821a81e92e90)
 
 
 ## Development
 ### Documentation For Initial Project Setup
 - https://nextjs.org/docs
-- https://appwrite.io/docs
+- https://supabase.com/docs/guides/self-hosting/docker
+  
 ### Running With Docker
 1) Open your terminal and navigate to the root of the git repository.
 2) Make sure that docker and docker compose are installed.
@@ -18,8 +17,8 @@ http://localhost:8080/
 Configuration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
 
 
-#### AppWrite 
-http://localhost:80/
+#### Supabase 
+http://localhost:8000/
 You will need to register and sign up, the first account on the appwrite instance will be the admin account.çConfiguration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
 
 #### UI 
