@@ -17,7 +17,7 @@ http://localhost:8080/
 Configuration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
 
 
-#### AppWrite 
+#### Supabase 
 http://localhost:8000/
 You will need to register and sign up, the first account on the appwrite instance will be the admin account.çConfiguration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
 
