@@ -8,20 +8,29 @@ x-logging: &x-logging
 include:
   - "supabase/docker-compose.yml"
 services:
-  neroshitron:
-    build:
-      context: .
-    restart: unless-stopped
-    ports:
-      - 3000:3000
-      
+  # neroshitron:
+  #   build:
+  #     context: .
+  #   restart: unless-stopped
+  #   ports:
+  #     - 3000:3000
+
   owncast:
     image: owncast/owncast:latest
     restart: unless-stopped
     ports:
       - 8080:8080
     volumes:
-      - ./data:/app/data
+      - ./data:/owncast/data
+
+  maildev:
+    image: maildev/maildev:latest
+    restart: unless-stopped
+    ports:
+      - 1080:1080
+      - 1025:1025
+    volumes:
+      - ./data:/maildev/data
       
 volumes:
   db-config:
