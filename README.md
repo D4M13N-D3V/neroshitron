@@ -1,7 +1,8 @@
 # Neroshitron
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/87db1132-2191-425f-adfb-bde5601aea96)
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/583e1ddd-8304-4da1-a2f8-3492920b3cf7)
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/c10e43fc-543c-462b-ba71-15e38e4ad698)
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/87db1132-2191-425f-adfb-bde5601aea96 | height=150px)
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/583e1ddd-8304-4da1-a2f8-3492920b3cf7 | height=150px)
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/c10e43fc-543c-462b-ba71-15e38e4ad698 | height=150px)
+
 
 
 ## Development
