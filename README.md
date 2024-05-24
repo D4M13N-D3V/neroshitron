@@ -1,5 +1,6 @@
 # Neroshitron
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/87db1132-2191-425f-adfb-bde5601aea96)
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/eeda8f0f-b1e8-4311-8047-971306641323)
+
 ![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/da8b1d50-f727-41cd-950e-b50114e9ec96)
 
 
