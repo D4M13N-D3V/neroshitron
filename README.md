@@ -6,6 +6,8 @@
 ### Documentation For Initial Project Setup
 - https://nextjs.org/docs
 - https://appwrite.io/docs
+- https://supabase.com/docs/guides/self-hosting/docker
+  
 ### Running With Docker
 1) Open your terminal and navigate to the root of the git repository.
 2) Make sure that docker and docker compose are installed.
