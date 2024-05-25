@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      textShadow: {
+        'purple-grey-glow': '0 0 8px #9f7aea, 0 0 15px #9f7aea, 0 0 20px #9f7aea, 0 0 25px #9f7aea',
+            },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -16,5 +19,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated'),
+    require('tailwindcss-textshadow')
+  ],
 };

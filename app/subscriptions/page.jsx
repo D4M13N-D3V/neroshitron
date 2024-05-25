@@ -13,6 +13,8 @@ export default async function Subscriptions() {
   }
 
   return (
+    <div className="flex-1 w-full flex flex-col gap-20 items-center animate-in">
     <h1>This is protected.</h1>
+    </div>
   );
 }

@@ -48,12 +48,12 @@ export default async function AuthButton() {
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            <img src={gravatarUrl} alt="Profile" className="w-10 h-10 object-cover rounded-full cursor-pointer" />
             <form action={signOut}>
               <button className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover">
                 Logout
               </button>
             </form>
+            <img src={gravatarUrl} alt="Profile" className="w-10 h-10 object-cover rounded-full cursor-pointer" />
           </div>
         </div>
       </nav>)
