@@ -57,10 +57,10 @@ function PageComponent() {
         <div className="flex-1 w-full h-full flex flex-col gap-20">
             <>
             
-          <div className="absolute w-full h-full overflow-hidden z-2 animate-flip-up animate-ease-out">
+          <div className="absolute w-full h-full overflow-hidden z-0 animate-flip-up animate-ease-out">
               <img src="gallery_girl.png" className="float-right object-cover h-screen w-3/6" alt="Background" />
           </div> 
-          <div  className="absolute items-center w-3/5 h-full ml-10 z-2 overflow-hidden nimate-fade animate-ease-out">
+          <div  className="absolute items-center w-3/5 h-full ml-10 z-0 overflow-hidden nimate-fade animate-ease-out">
             <div className="grid grid-cols-3 gap-y-36 gap-x-10 h-full overflow-y-auto no-scrollbar pt-36">
               {galleries.map((gallery, index) => (
                 <GalleryThumbnail key={index} id={gallery.id} onSelect={selectGallery}></GalleryThumbnail>
@@ -73,10 +73,10 @@ function PageComponent() {
           <>
 
 
-        <div className={`fixed inset-0 transition-opacity${isOpen ? 'animate-in' : 'fade-out'}`} aria-hidden="true">
-        <div className="absolute inset-0 bg-neroshi-blue-900 opacity-70" onClick={()=>setIsOpen(false)} >
+        <div className={`fixed inset-0 transition-opacity z-30 ${isOpen ? 'animate-in' : 'fade-out'}`} aria-hidden="true">
+        <div className="absolute inset-0 bg-neroshi-blue-900 opacity-70 z-30" onClick={()=>setIsOpen(false)} >
         </div>
-        <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-20 w-full p-20">
+        <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">
           <Gallery id={selectedGallery as string} closeMenu={() => closeGallery()}></Gallery>
         </div>
 

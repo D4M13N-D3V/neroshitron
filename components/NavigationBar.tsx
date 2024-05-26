@@ -28,9 +28,9 @@ export default async function AuthButton() {
       const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;  
       return(
         <div className="flex justify-center items-center pt-2 ">
-        <nav className="w-1/3 bg-neroshi-blue-300 bg-opacity-10  flex justify-center h-16 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
+        <nav className="w-1/3 bg-neroshi-blue-300 bg-opacity-10  flex justify-center z-10 h-16 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
           <div className="w-full max-w-2xl flex justify-between items-center p-3 text-sm">
-              <div className="flex items-center gap-2 ">
+              <div className="flex items-center gap-2 z-10">
                 <Link
                   href="/gallery"
                   className="py-2 px-3 flex rounded-3xl no-underline bg-neroshi-blue-900 hover:bg-neroshi-blue-800"
