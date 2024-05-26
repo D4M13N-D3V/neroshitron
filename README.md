@@ -2,7 +2,7 @@
 ![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/e4a9e11b-0e52-42e0-ad9a-821a81e92e90)
  
 
-# Documentation For Initial Project Setup
+# Documentation For Technical Stack
 - https://nextjs.org/docs
 - https://supabase.com/docs/guides/self-hosting/docker
 - https://www.docker.com/products/docker-desktop/
