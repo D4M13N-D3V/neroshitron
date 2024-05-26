@@ -124,13 +124,15 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
           }
       };
   
+      setSelectedImage(images[currentIndex]);
       window.addEventListener('keydown', handleKeyDown);
   
       // Clean up the event listener when the component is unmounted
       return () => {
           window.removeEventListener('keydown', handleKeyDown);
       };
-    }, [selectedImage, currentIndex]);
+
+    }, [currentIndex]);
 
     const handleClick = (image: string) => {
       setSelectedImage(image);
