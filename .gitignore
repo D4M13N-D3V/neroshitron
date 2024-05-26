@@ -21,3 +21,4 @@ yarn-error.log*
 /owncast
 /coverage
 /supabase/volumes/db/data
+/supabase/volumes/storage
