@@ -46,7 +46,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, subscription }: Galler
                             onClick={openGallery}
                             style={{ width: '20rem', height: '20rem', objectFit: 'cover' }}
                         />
-                        <div className="absolute top-2 left-0 w-full h-10% bg-gray-900 bg-opacity-10 backdrop-blur-md p-2 rounded-md shadow-lg flex flex-col justify-end">
+                        <div className="absolute top-2 left-0 w-full h-10% bg-gray-900 bg-opacity-10 backdrop-blur-sm p-2 rounded-md shadow-lg flex flex-col justify-end">
                             <div className="text-white flex justify-between">
                                 <div>
                                     <div className="flex">

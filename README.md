@@ -59,6 +59,9 @@ The `GalleryThumbnail` component is a React component used to display a thumbnai
 
 - `id` (string): The ID of the gallery to fetch the thumbnail for.
 - `onSelect` (function): A function to be called when the thumbnail is clicked. The gallery ID is passed as an argument.
+- `title` (string) : The name of the gallery.
+- `subscription` (subscription) : The name of the subscription required for the gallery.
+
 ### State
 
 - `galleryId` (string): A state to store the gallery ID.
