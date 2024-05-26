@@ -85,6 +85,15 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
         window.open(url, '_blank');
     }
   
+    const close = () => {
+        if(selectedImage != null){
+            setSelectedImage(null);
+        }
+        else{
+            closeMenu();
+        }
+    }
+
     const breakpointColumnsObj = {
       default: 3
     };
@@ -92,7 +101,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
         <>
         <button
             className="fixed bg-purple-800 left-10 bottom-5 animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
-            onClick={()=> closeMenu()}
+            onClick={()=> close()}
         >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -112,36 +121,16 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
         </button>
 
 
-        <div className='z-10 pt-10'  style={{ display: selectedImage ? 'flex' : 'block', alignItems: 'flex-start'  }}>
-            {isSingle  ? (
-                        <div className='w-full h-full flex items-center'>
-                        <>
-                {selectedImage && 
-                    <img
-                        src={selectedImage}
-                        style={{ objectFit: 'contain' }}
-                        className="cursor-pointer animate-in w-full h-auto"
-                        onClick={() => setSelectedImage(null)}
-                    />
-                }
-                {renderButtons()}
-            </>
-             </div>   
-            ) : (
-                <>
-                <div className='w-full h-full flex items-center'>
-                <>
+        <div className='z-10 pt-10'  style={{ display: selectedImage ? 'flex' : 'block', alignItems: 'flex-start'  }}><>
             {renderButtons()}
-        {selectedImage && 
-            <img
-                src={selectedImage}
-                style={{ objectFit: 'contain' }}
-                className="cursor-pointer animate-in w-full h-auto"
-                onClick={() => setSelectedImage(null)}
-            />
-        }
-    </>
-     </div>   
+            {selectedImage ? ( 
+                <img
+                    src={selectedImage}
+                    style={{ objectFit: 'contain' }}
+                    className="cursor-pointer animate-in w-full h-auto"
+                    onClick={() => setSelectedImage(null)}
+                />
+            ) : (
                 <Masonry
                     breakpointCols={selectedImage==null ? 4 : 2}
                     className="my-masonry-grid"
@@ -149,15 +138,15 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
                 >
                 {images.filter(img => img !== selectedImage).map((image, index) => (
                     <img
-                    key={generateRandomString(3)}
                     src={image}
                     onClick={() => handleClick(image)}
                     className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
                     />
                 ))}
                 </Masonry>
+            )
+            }
                 </>
-            )}
         </div>
         </>
     );
