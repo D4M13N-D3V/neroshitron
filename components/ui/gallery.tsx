@@ -20,6 +20,15 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
       const thumbnailUrl = await thumbnailResponse.json() as string[];
       setImages(thumbnailUrl);
     }
+    const generateRandomString = function (length:number) {
+      let result           = '';
+      let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let charactersLength = characters.length;
+      for ( let i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+  }
     const handleDownload = (image: string) => {
         const link = document.createElement('a');
         link.href = image;
@@ -33,7 +42,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     useEffect(() => {
       getData();
       if (images.length === 1) {
-        setIsSingle(true);
+            setIsSingle(true);
           setSelectedImage(images[0]);
       }
     }, [selectedImage]);
@@ -41,6 +50,16 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     const handleClick = (image: string) => {
       setSelectedImage(image);
     };
+
+    const open = () => {
+        if(selectedImage === null) return;
+        console.log(selectedImage)
+        let base64Image = selectedImage.split(';base64,').pop();
+        if(!base64Image) return;
+        let blob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], {type: 'image/jpeg'}); // adjust the type as needed
+        let url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+    }
   
     const breakpointColumnsObj = {
       default: 3
@@ -48,7 +67,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     return (
         <>
         <button
-            className="fixed bg-purple-800 left-10 bottom-5 animate-shake mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
+            className="fixed bg-purple-800 left-10 bottom-5 animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
             onClick={()=> closeMenu()}
         >
         <svg
@@ -73,12 +92,27 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
             {isSingle  ? (
              <div className='w-full h-full flex items-center'>
              {selectedImage && 
+             <>
+             
+             <button
+                        className="fixed bg-neroshi-blue-800 left-40 bottom-5 text-center w-56 animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
+                        onClick={() => handleDownload(selectedImage)}
+                    >
+                    Download Current Image
+                    </button><button
+                    className="fixed bg-neroshi-blue-800 left-40 bottom-16 w-56 text-center animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
+                    onClick={() => open()}
+>
+    Open Image in New Tab
+</button>
+                    
                  <img
                      src={selectedImage}
                      style={{ objectFit: 'contain' }}
                      className="cursor-pointer animate-in w-full h-auto"
                      onClick={() => setSelectedImage(null)}
                  />
+                    </>
              }
              </div>   
             ) : (
@@ -89,20 +123,21 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
                     <img
                         src={selectedImage}
                         style={{ objectFit: 'contain' }}
-                        className="cursor-pointer animate-in w-4/6 pr-20 h-auto"
+                        key={generateRandomString(3)}
+                        className="cursor-pointer animate-in w-4/6 pr-20 h-auto animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse"
                         onClick={() => setSelectedImage(null)}
                     />
                     <button
-                        className="fixed bg-neroshi-blue-800 left-40 bottom-5 animate-pulse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
+                        className="fixed bg-neroshi-blue-800 left-40 bottom-5 text-center w-56 animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
                         onClick={() => handleDownload(selectedImage)}
                     >
-                        <svg className='mr-3' xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-    <polyline points="7 10 12 15 17 10"></polyline>
-    <line x1="12" y1="15" x2="12" y2="3"></line>
-</svg>
                     Download Current Image
-                    </button>
+                    </button><button
+                    className="fixed bg-neroshi-blue-800 left-40 bottom-16 w-56 text-center animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
+                    onClick={() => open()}
+>
+    Open Image in New Tab
+</button>
                     </>
                 }
                 <Masonry
@@ -112,10 +147,10 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
                 >
                 {images.filter(img => img !== selectedImage).map((image, index) => (
                     <img
-                    key={index}
+                    key={generateRandomString(3)}
                     src={image}
                     onClick={() => handleClick(image)}
-                    className={`animate-in hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
+                    className={`animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
                     />
                 ))}
                 </Masonry>
