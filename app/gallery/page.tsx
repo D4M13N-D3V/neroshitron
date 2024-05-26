@@ -1,7 +1,6 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
 import { redirect } from "next/navigation";
-import { Vortex } from "@/components/ui/vortex";
 import GalleryThumbnail from "@/components/ui/gallery_thumbnail";
 
 
@@ -19,6 +18,7 @@ function PageComponent() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedGallery, setSelectedGallery] = useState<string | null>(null);
+  const [galleryColumns, setColumns] = useState<number>(0);
   const generateRandomString = function (length:number) {
     let result           = '';
     let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -29,14 +29,16 @@ function PageComponent() {
     return result;
 }
 
-  const selectGallery = (gallery:string) => {
+  const selectGallery = (gallery:string, columns:number) => {
     setRandomIds([generateRandomString(3), generateRandomString(3), generateRandomString(3), generateRandomString(3)]);
     setSelectedGallery(gallery);
+    setColumns(columns);
     setIsOpen(true);
   };
 
   const closeGallery = () => {
     setSelectedGallery(null);
+    setColumns(0);
     setIsOpen(false);
   }
 
@@ -63,7 +65,8 @@ function PageComponent() {
           <div  className="absolute items-center w-3/5 h-full ml-10 z-0 overflow-hidden nimate-fade animate-ease-out">
             <div className="grid grid-cols-3 gap-y-36 gap-x-10 h-full overflow-y-auto no-scrollbar pt-36">
               {galleries.map((gallery, index) => (
-                <GalleryThumbnail key={index} id={gallery.id} onSelect={selectGallery}></GalleryThumbnail>
+                
+                <GalleryThumbnail key={index} id={gallery.id} columns={gallery.columns} onSelect={selectGallery}></GalleryThumbnail>
               ))}
             </div>
           </div> 
@@ -77,7 +80,7 @@ function PageComponent() {
         <div className="absolute inset-0 bg-neroshi-blue-900 opacity-70 z-30" onClick={()=>setIsOpen(false)} >
         </div>
         <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">
-          <Gallery id={selectedGallery as string} closeMenu={() => closeGallery()}></Gallery>
+          <Gallery id={selectedGallery as string} columns={galleryColumns} closeMenu={() => closeGallery()}></Gallery>
         </div>
 
         </div>

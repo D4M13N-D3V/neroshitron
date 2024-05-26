@@ -2,16 +2,17 @@ import { useState, useEffect } from 'react';
 
 interface GalleryThumbnailProps {
     id: string;
-    onSelect: (id:string) => void;
+    columns: number;
+    onSelect: (id:string, columns:number) => void;
 }
 
-const GalleryThumbnail = ({ id, onSelect }: GalleryThumbnailProps) => {
+const GalleryThumbnail = ({ id, columns, onSelect }: GalleryThumbnailProps) => {
     const [galleryId, setGalleryId] = useState<string>(id);
     const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
-
+    const [galleryCollumns, setColumns] = useState<number>(columns);
     const openGallery = () => {
-        onSelect(galleryId);
+        onSelect(galleryId, galleryCollumns);
     };
 
     const getData = async () => {

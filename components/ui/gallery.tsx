@@ -5,10 +5,11 @@ import Masonry from 'react-masonry-css';
 
 interface GalleryProps {
     id: string;
+    columns: number;
     closeMenu: () => void;
 }
 
-const Gallery = ({ id, closeMenu }: GalleryProps) => {
+const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
     const [isSingle, setIsSingle] = useState<boolean>(false);
     const [loaded, setLoaded] = useState({})
@@ -190,7 +191,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
                         />
                     ) : (
                         <Masonry
-                            breakpointCols={selectedImage == null ? 4 : 2}
+                            breakpointCols={columns}
                             className="my-masonry-grid"
                             style={{ width: selectedImage ? "50%" : "100%" }}
                         >
