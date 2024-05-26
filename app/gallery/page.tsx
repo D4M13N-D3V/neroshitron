@@ -62,12 +62,16 @@ function PageComponent() {
           <div className="absolute w-full h-full overflow-hidden z-0 animate-flip-up animate-ease-out">
               <img src="gallery_girl.png" className="float-right object-cover h-screen w-3/6" alt="Background" />
           </div> 
-          <div  className="absolute items-center w-3/5 h-full ml-10 z-0 overflow-hidden nimate-fade animate-ease-out">
-            <div className="grid grid-cols-3 gap-y-36 gap-x-10 h-full overflow-y-auto no-scrollbar pt-36">
+          <div  className="absolute items-center w-3/5 h-full ml-10 z-0 overflow-hidden animate-in animate-ease-out">
+            <div className="grid grid-cols-3 gap-y-36 gap-x-10 h-full overflow-y-auto no-scrollbar  pt-20">
               {galleries.map((gallery, index) => (
                 
                 <GalleryThumbnail key={index} id={gallery.id} columns={gallery.columns} onSelect={selectGallery}></GalleryThumbnail>
               ))}
+              <div className="pt-10">
+              </div>
+              <div className="pt-10">
+              </div>
             </div>
           </div> 
           </>
