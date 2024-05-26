@@ -187,7 +187,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                             src={images[currentIndex]}
                             style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)" }}
                             className="cursor-pointer animate-in w-full h-auto"
-                            onClick={() => setSelectedImage(null)}
+                            onClick={() => close()}
                         />
                     ) : (
                         <Masonry
