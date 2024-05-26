@@ -2,6 +2,7 @@ import { use, useState } from 'react';
 import { useEffect } from 'react';
 import { render } from 'react-dom';
 import Masonry from 'react-masonry-css';
+import PanZoom from 'react-easy-panzoom';
 
 interface GalleryProps {
     id: string;
@@ -173,23 +174,24 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                 Back
             </button>
 
-            <div
-                className="z-30 pb-10"
-                style={{
-                    display: selectedImage ? "flex" : "block",
-                    alignItems: "flex-start",
-                }}
-            >
-                <>
                     {renderButtons()}
-                    {selectedImage ? (
+                    {selectedImage ? (<PanZoom>
+
                         <img
                             src={images[currentIndex]}
-                            style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)" }}
+                            style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)", pointerEvents:"none" }}
                             className="cursor-pointer animate-in w-full h-auto"
                             onClick={() => close()}
                         />
+                        </PanZoom>
                     ) : (
+                        <div
+                            className="z-30 pb-10"
+                            style={{
+                                display: selectedImage ? "flex" : "block",
+                                alignItems: "flex-start",
+                            }}
+                        >
                         <Masonry
                             breakpointCols={columns}
                             className="my-masonry-grid"
@@ -205,9 +207,10 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                                     />
                                 ))}
                         </Masonry>
+                            <>
+                    </>
+                </div>
                     )}
-                </>
-            </div>
         </div>
     );
 }
