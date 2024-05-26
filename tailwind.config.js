@@ -6,10 +6,33 @@ module.exports = {
   ],
   theme: {
     extend: {
+      textStrokeColor: {
+        'black': '#000',
+      },
+      textStrokeWidth: {
+        '1': '1px',
+      },
+      aspectRatio: {}, // enable aspect-ratio plugin
       textShadow: {
-        'purple-grey-glow': '0 0 8px #9f7aea, 0 0 15px #9f7aea, 0 0 20px #9f7aea, 0 0 25px #9f7aea',
-            },
+        'pink-glow': '0 0 4px #524FFD, 0 0 4px #524FFD, 0 0 4px #524FFD, 0 0 4px #524FFD',
+        'purple-grey-glow': '0 0 4px #9f7aea, 0 0 15px #9f7aea, 0 0 20px #9f7aea, 0 0 25px #9f7aea',
+        'green-grey-glow': '0 0 4px #32CD32, 0 0 15px #32CD32, 0 0 20px #32CD32, 0 0 25px #32CD32',
+      },
       colors: {
+        
+        "neroshi-blue": {
+          50: "#EBEBFF",
+          100: "#D2D2FE",
+          200: "#A6A4FE",
+          300: "#7E7CFD",
+          400: "#524FFD",
+          500: "#2522FC",
+          600: "#0703E2",
+          700: "#0502AB",
+          800: "#03026F",
+          900: "#020137",
+          950: "#01001E"
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         btn: {
@@ -21,6 +44,7 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-animated'),
-    require('tailwindcss-textshadow')
+    require('tailwindcss-textshadow'),
+    require('@tailwindcss/aspect-ratio')
   ],
 };
