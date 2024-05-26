@@ -18,7 +18,7 @@ function PageComponent() {
   const [galleries, setGalleries] = useState<any[]>([]); // replace any with your gallery type
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [selectedGallery, setSelectedGallery] = useState<number | null>(null);
+  const [selectedGallery, setSelectedGallery] = useState<string | null>(null);
   const generateRandomString = function (length:number) {
     let result           = '';
     let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -29,7 +29,7 @@ function PageComponent() {
     return result;
 }
 
-  const selectGallery = (gallery:number) => {
+  const selectGallery = (gallery:string) => {
     setRandomIds([generateRandomString(3), generateRandomString(3), generateRandomString(3), generateRandomString(3)]);
     setSelectedGallery(gallery);
     setIsOpen(true);
@@ -71,7 +71,7 @@ function PageComponent() {
           <div key={randomIds[3]} className="absolute items-center w-3/5 h-full ml-10 z-2 overflow-hidden nimate-fade animate-ease-out">
             <div className="grid grid-cols-3 gap-x-10 h-full overflow-y-auto no-scrollbar pt-36">
               {galleries.map((gallery, index) => (
-                <GalleryThumbnail key={index} id={gallery.id} onSelect={() => selectGallery(gallery.id)}></GalleryThumbnail>
+                <GalleryThumbnail key={index} id={gallery.id} onSelect={selectGallery}></GalleryThumbnail>
               ))}
             </div>
           </div> 
@@ -86,7 +86,7 @@ function PageComponent() {
         <div className="absolute inset-0 bg-neroshi-blue-900 opacity-70" onClick={()=>setIsOpen(false)} >
         </div>
         <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-20 w-full p-20">
-          <Gallery id={selectedGallery as number} closeMenu={() => setIsOpen(false)}></Gallery>
+          <Gallery id={selectedGallery as string} closeMenu={() => setIsOpen(false)}></Gallery>
         </div>
 
         </div>

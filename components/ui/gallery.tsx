@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Masonry from 'react-masonry-css';
 
 interface GalleryProps {
-    id: number;
+    id: string;
     closeMenu: () => void;
 }
 
@@ -13,7 +13,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     const [loaded, setLoaded] = useState({})
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [images, setImages] = useState<string[]>([]);
-    const [galleryId, setGalleryId] = useState(id as number);
+    const [galleryId, setGalleryId] = useState(id as string);
     console.log(id)
     const getData = async () => {
       const thumbnailResponse = await fetch('/api/galleries/'+String(galleryId)+'/images');
@@ -42,7 +42,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     useEffect(() => {
       getData();
       if (images.length === 1) {
-        setIsSingle(true);
+            setIsSingle(true);
           setSelectedImage(images[0]);
       }
     }, [selectedImage]);

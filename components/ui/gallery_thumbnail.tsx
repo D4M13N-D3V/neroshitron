@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 
 interface GalleryThumbnailProps {
-    id: number;
-    onSelect: (id:number) => void;
+    id: string;
+    onSelect: (id:string) => void;
 }
 
 const GalleryThumbnail = ({ id, onSelect }: GalleryThumbnailProps) => {
-    const [galleryId, setGalleryId] = useState(id as number);
-    const [thumbnailUrl, setThumbnailUrl] = useState('' as string);
-    const [isLoading, setIsLoading] = useState(true);
-    const toggleModal = () => {
+    const [galleryId, setGalleryId] = useState<string>(id);
+    const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    const openGallery = () => {
         onSelect(galleryId);
     };
 
@@ -32,7 +33,7 @@ const GalleryThumbnail = ({ id, onSelect }: GalleryThumbnailProps) => {
                     className={`aspect-content rounded-3xl`}
                     src={thumbnailUrl}
                     alt=""
-                    onClick={toggleModal}
+                    onClick={openGallery}
                     style={{ width: '20rem', height: '20rem', objectFit: 'cover' }}
                 />}
             </div>
