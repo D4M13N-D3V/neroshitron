@@ -1,5 +1,6 @@
 import { use, useState } from 'react';
 import { useEffect } from 'react';
+import { render } from 'react-dom';
 import Masonry from 'react-masonry-css';
 
 interface GalleryProps {
@@ -29,6 +30,29 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
       }
       return result;
   }
+
+  const renderButtons = () => {
+    return (
+        <>  
+            <div className="z-10 fixed left-6 bottom-4 w-96 h-32 bg-purple-900 bg-opacity-10  flex justify-center h-16 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
+            </div>
+            <button
+                className={`fixed left-40 bottom-5 text-center w-56 animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-neroshi-blue-800'}`}
+                onClick={() => selectedImage && handleDownload(selectedImage)}
+                disabled={!selectedImage}
+            >
+                Download Current Image
+            </button>
+            <button
+                className={`fixed left-40 bottom-16 w-56 text-center animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-neroshi-blue-800'}`}
+                onClick={() => selectedImage && open()}
+                disabled={!selectedImage}
+            >
+                Open Image in New Tab
+            </button>
+        </>
+    );
+};
     const handleDownload = (image: string) => {
         const link = document.createElement('a');
         link.href = image;
@@ -67,7 +91,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     return (
         <>
         <button
-            className="fixed bg-purple-800 left-10 bottom-5 animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
+            className="fixed bg-purple-800 left-10 bottom-5 animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
             onClick={()=> closeMenu()}
         >
         <svg
@@ -90,56 +114,34 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
 
         <div className='z-10 pt-10'  style={{ display: selectedImage ? 'flex' : 'block', alignItems: 'flex-start'  }}>
             {isSingle  ? (
-             <div className='w-full h-full flex items-center'>
-             {selectedImage && 
-             <>
-             
-             <button
-                        className="fixed bg-neroshi-blue-800 left-40 bottom-5 text-center w-56 animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
-                        onClick={() => handleDownload(selectedImage)}
-                    >
-                    Download Current Image
-                    </button><button
-                    className="fixed bg-neroshi-blue-800 left-40 bottom-16 w-56 text-center animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
-                    onClick={() => open()}
->
-    Open Image in New Tab
-</button>
-                    
-                 <img
-                     src={selectedImage}
-                     style={{ objectFit: 'contain' }}
-                     className="cursor-pointer animate-in w-full h-auto"
-                     onClick={() => setSelectedImage(null)}
-                 />
-                    </>
-             }
-             </div>   
-            ) : (
-                <>
+                        <div className='w-full h-full flex items-center'>
+                        <>
                 {selectedImage && 
-                <>
-
                     <img
                         src={selectedImage}
                         style={{ objectFit: 'contain' }}
-                        key={generateRandomString(3)}
-                        className="cursor-pointer animate-in w-4/6 pr-20 h-auto animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse"
+                        className="cursor-pointer animate-in w-full h-auto"
                         onClick={() => setSelectedImage(null)}
                     />
-                    <button
-                        className="fixed bg-neroshi-blue-800 left-40 bottom-5 text-center w-56 animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
-                        onClick={() => handleDownload(selectedImage)}
-                    >
-                    Download Current Image
-                    </button><button
-                    className="fixed bg-neroshi-blue-800 left-40 bottom-16 w-56 text-center animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
-                    onClick={() => open()}
->
-    Open Image in New Tab
-</button>
-                    </>
                 }
+                {renderButtons()}
+            </>
+             </div>   
+            ) : (
+                <>
+                <div className='w-full h-full flex items-center'>
+                <>
+            {renderButtons()}
+        {selectedImage && 
+            <img
+                src={selectedImage}
+                style={{ objectFit: 'contain' }}
+                className="cursor-pointer animate-in w-full h-auto"
+                onClick={() => setSelectedImage(null)}
+            />
+        }
+    </>
+     </div>   
                 <Masonry
                     breakpointCols={selectedImage==null ? 4 : 2}
                     className="my-masonry-grid"
@@ -150,7 +152,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
                     key={generateRandomString(3)}
                     src={image}
                     onClick={() => handleClick(image)}
-                    className={`animate-ping animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
+                    className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
                     />
                 ))}
                 </Masonry>
