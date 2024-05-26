@@ -42,7 +42,7 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     useEffect(() => {
       getData();
       if (images.length === 1) {
-            setIsSingle(true);
+        setIsSingle(true);
           setSelectedImage(images[0]);
       }
     }, [selectedImage]);
