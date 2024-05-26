@@ -66,7 +66,7 @@ function PageComponent() {
             <div className="grid grid-cols-3 gap-y-36 gap-x-10 h-full overflow-y-auto no-scrollbar  pt-20">
               {galleries.map((gallery, index) => (
                 
-                <GalleryThumbnail key={index} id={gallery.id} columns={gallery.columns} onSelect={selectGallery}></GalleryThumbnail>
+                <GalleryThumbnail key={index} id={gallery.id} title={gallery.name} columns={gallery.columns} subscription={gallery.tier as string} onSelect={selectGallery}></GalleryThumbnail>
               ))}
               <div className="pt-10">
               </div>
