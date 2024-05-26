@@ -16,150 +16,138 @@ const Gallery = ({ id, closeMenu }: GalleryProps) => {
     const [images, setImages] = useState<string[]>([]);
     const [galleryId, setGalleryId] = useState(id as string);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const goToNext = () => {
-        setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
-    }
 
-    const goToPrevious = () => {
-        setCurrentIndex(prevIndex => (prevIndex - 1 + images.length) % images.length);
-    }
-    console.log(id)
     const getData = async () => {
-      const thumbnailResponse = await fetch('/api/galleries/'+String(galleryId)+'/images');
-      const thumbnailUrl = await thumbnailResponse.json() as string[];
-      setImages(thumbnailUrl);
+        const thumbnailResponse = await fetch('/api/galleries/' + String(galleryId) + '/images');
+        const thumbnailUrl = await thumbnailResponse.json() as string[];
+        setImages(thumbnailUrl);
     }
-    const generateRandomString = function (length:number) {
-      let result           = '';
-      let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let charactersLength = characters.length;
-      for ( let i = 0; i < length; i++ ) {
-          result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return result;
-  }
 
-  const next = () => {
-    if (currentIndex < images.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setCurrentIndex(0);
+    const next = () => {
+        if (currentIndex < images.length - 1) {
+            setCurrentIndex(currentIndex + 1);
+        } else {
+            setCurrentIndex(0);
+        }
     }
-  }
 
-  const previous = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else {
-      setCurrentIndex(images.length - 1);
+    const previous = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1);
+        } else {
+            setCurrentIndex(images.length - 1);
+        }
     }
-  }
 
-  const renderButtons = () => {
-    return (
-        <>  
-        
-    <div className="z-20 fixed left-6 bottom-4 w-100 h-20  bg-purple-900 bg-opacity-40 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
-       <div className='grid grid-cols-4 gap-4 pl-32 pr-4 pt-4 m-1 '>
-       
-       <button
-            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
-            onClick={() => previous()}
-            disabled={!selectedImage}
-        >
-            Previous
-        </button>
-        <button
-            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
-            onClick={() => next()}
-            disabled={!selectedImage}
-        >
-            Next
-        </button>
-       <button
-            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
-            onClick={() => selectedImage && handleDownload(selectedImage)}
-            disabled={!selectedImage}
-        >
-            Download
-        </button>
-        <button
-            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
-            onClick={() => selectedImage && open()}
-            disabled={!selectedImage}
-        >
-            Open
-        </button>
-        </div>
-    </div>
-        </>
-    );
-};
+    const renderButtons = () => {
+        return (
+            <>
+
+                <div className="z-20 fixed left-6 bottom-4 w-100 h-20  bg-purple-900 bg-opacity-40 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
+                    <div className='grid grid-cols-4 gap-4 pl-32 pr-4 pt-4 m-1 '>
+
+                        <button
+                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
+                            onClick={() => previous()}
+                            disabled={!selectedImage}
+                        >
+                            Previous
+                        </button>
+                        <button
+                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
+                            onClick={() => next()}
+                            disabled={!selectedImage}
+                        >
+                            Next
+                        </button>
+                        <button
+                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
+                            onClick={() => selectedImage && handleDownload(selectedImage)}
+                            disabled={!selectedImage}
+                        >
+                            Download
+                        </button>
+                        <button
+                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
+                            onClick={() => selectedImage && open()}
+                            disabled={!selectedImage}
+                        >
+                            Open
+                        </button>
+                    </div>
+                </div>
+            </>
+        );
+    };
     const handleDownload = (image: string) => {
         const link = document.createElement('a');
         link.href = image;
         link.download = 'image.jpg';  // or any other filename
         link.style.display = 'none';
-    
+
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
     };
     useEffect(() => {
-      getData();
-      const handleKeyDown = (event: KeyboardEvent) => {
-          switch (event.key) {
-            case 'ArrowLeft':
-            case 'a':
-            case 'A':
-                previous();
-                break;
-            case 'ArrowRight':
-            case 'd':
-            case 'D':
-                next();
-                break;
-            default:
-                break;
-          }
-      };
-  
-      setSelectedImage(images[currentIndex]);
-      window.addEventListener('keydown', handleKeyDown);
-  
-      // Clean up the event listener when the component is unmounted
-      return () => {
-          window.removeEventListener('keydown', handleKeyDown);
-      };
+        getData();
+        const handleKeyDown = (event: KeyboardEvent) => {
+            switch (event.key) {
+                case 'ArrowLeft':
+                case 'a':
+                case 'A':
+                    previous();
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                case 'D':
+                    next();
+                    break;
+                case 'Escape':
+                    close();
+                    break;
+                default:
+                    break;
+            }
+        };
 
-    }, [currentIndex]);
+        setSelectedImage(images[currentIndex]);
+        window.addEventListener('keydown', handleKeyDown);
+
+        // Clean up the event listener when the component is unmounted
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+
+    }, [selectedImage,currentIndex]);
 
     const handleClick = (image: string) => {
-      setSelectedImage(image);
-      setCurrentIndex(images.indexOf(image));
+        setSelectedImage(image);
+        setCurrentIndex(images.indexOf(image));
     };
 
     const open = () => {
-        if(selectedImage === null) return;
+        if (selectedImage === null) return;
         console.log(selectedImage)
         let base64Image = selectedImage.split(';base64,').pop();
-        if(!base64Image) return;
-        let blob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], {type: 'image/jpeg'}); // adjust the type as needed
+        if (!base64Image) return;
+        let blob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], { type: 'image/jpeg' }); // adjust the type as needed
         let url = URL.createObjectURL(blob);
         window.open(url, '_blank');
     }
-  
+
     const close = () => {
-        if(selectedImage != null){
+        if (selectedImage != null) {
             setSelectedImage(null);
+            setImages([]);
         }
-        else{
+        else {
             closeMenu();
         }
     }
 
     const breakpointColumnsObj = {
-      default: 3
+        default: 3
     };
     return (
         <div className="z-20">
