@@ -22,8 +22,6 @@ You will need supabase CLI.
 3) Run `docker-compose --env-file ./docker.env up` which will start up OwnCast.
 4) Run `supabase start`
 
-## Supabase
-
 ### Updating the database
 Run `supabase db reset`. This will wipe data.
 https://supabase.com/docs/guides/cli/local-development?queryGroups=access-method&access-method=kong#database-migrations
