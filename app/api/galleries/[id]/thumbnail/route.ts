@@ -66,6 +66,9 @@ export async function GET(
       }
       break;
     default:
+      if(gallery.nsfw){
+        blobBuffer = await blurImage(blobBuffer);
+      }
       break;
   }
   const contentType = files[0].name.endsWith('.png') ? 'image/png' : 'image/jpeg';
