@@ -40,7 +40,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tag
 
     return (
         <div className="py-3 sm:max-w-xl sm:mx-auto flex-3 animate-in">
-            <div className="h-48 overflow-visible w-full relative hover:scale-95 shadow-lg bg-gray-400 rounded-3xl">
+            <div className="h-48 overflow-visible w-full relative hover:scale-95 rounded-3xl">
                 {!isLoading && (
                     <>
                         <img
@@ -51,7 +51,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tag
                             key={galleryId}
                             style={{ width: '20rem', height: '20rem', objectFit: 'cover' }}
                         />
-                        <div className="bottom-0 left-0 w-full h-10% bg-gray-900 bg-opacity-10 backdrop-blur-sm p-2 rounded-md shadow-lg flex flex-col justify-end">
+                        <div className="bottom-0 left-0 w-full h-10% p-2 rounded-md flex flex-col justify-end">
                             <div className="text-white flex justify-between">
                                 <div>
                                     <div className="flex">
