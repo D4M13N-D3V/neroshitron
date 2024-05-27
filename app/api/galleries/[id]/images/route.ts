@@ -71,7 +71,6 @@ export async function GET(
         }
         break;
       default:
-        blobBuffer = await blurImage(blobBuffer)
         break;
     }
     const contentType = file.name.endsWith('.png') ? 'image/png' : 'image/jpeg';

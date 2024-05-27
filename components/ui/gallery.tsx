@@ -141,10 +141,8 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
     const panZoomRef = useRef<any>(null);
   
     const resetPanZoom = (event: any) => {
-        console.log(event.target.id)
         if (panZoomRef.current &&  event.target.id != "image-container") {
           panZoomRef.current.autoCenter();
-          console.log("POGER")
         }   
       };
 

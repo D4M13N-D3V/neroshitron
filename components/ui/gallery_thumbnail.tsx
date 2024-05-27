@@ -6,15 +6,16 @@ interface GalleryThumbnailProps {
     onSelect: (id: string, columns: number) => void;
     title: string;
     subscription: string;
+    nsfw: boolean;
 }
 
-const GalleryThumbnail = ({ id, columns, onSelect, title, subscription }: GalleryThumbnailProps) => {
+const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription }: GalleryThumbnailProps) => {
     const [galleryId, setGalleryId] = useState<string>(id);
     const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [galleryCollumns, setColumns] = useState<number>(columns);
     const [imageCount, setImageCount] = useState<number>(0);
-
+    const [nsfwState, setNsfw] = useState<boolean>(nsfw);
     const openGallery = () => {
         onSelect(galleryId, galleryCollumns);
     };
@@ -36,7 +37,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, subscription }: Galler
 
     return (
         <div className="py-3 sm:max-w-xl sm:mx-auto flex-3 animate-in">
-            <div className="h-48 overflow-visible w-full relative hover:scale-105 shadow-lg bg-gray-400 rounded-3xl">
+            <div className="h-48 overflow-visible w-full relative hover:scale-95 shadow-lg bg-gray-400 rounded-3xl">
                 {!isLoading && (
                     <>
                         <img
@@ -47,13 +48,15 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, subscription }: Galler
                             key={galleryId}
                             style={{ width: '20rem', height: '20rem', objectFit: 'cover' }}
                         />
-                        <div className="absolute top-2 left-0 w-full h-10% bg-gray-900 bg-opacity-10 backdrop-blur-sm p-2 rounded-md shadow-lg flex flex-col justify-end">
+                        <div className="bottom-0 left-0 w-full h-10% bg-gray-900 bg-opacity-10 backdrop-blur-sm p-2 rounded-md shadow-lg flex flex-col justify-end">
                             <div className="text-white flex justify-between">
                                 <div>
                                     <div className="flex">
                                         <h3 className="pr-4 text-lg font-bold break-words" style={{ lineHeight: '2rem', textShadow: '0 0 2px black' }}>{title}</h3>
                                     </div>
                                 </div>
+                            </div>
+                            <div className="text-white flex justify-between">
                                 <div className="flex items-center">
                                     <div className="relative group">
                                         <div className="absolute top-0 right-2 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
@@ -69,9 +72,15 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, subscription }: Galler
                                             <div className="text-center">{imageCount} pictures in this gallery.</div>
                                         </div>
                                     </div>
+                                    {(nsfwState) && (
+                                    <div className="relative group">
+                                        <span className="bg-red-900 text-white px-2 py-1 mr-2 rounded-md text-sm h-full flex items-center">NSFW</span>
+                           
+                                    </div>   
+                                    )}
                                     {subscription === "Free" && (
-                                        <div className="relative group">
-                                            <span className="bg-gray-900 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Free</span>
+                                        <div className="relative group">                                            <span className="bg-gray-900 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Free</span>
+
                                             <div className="absolute top-0 right-12 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
                                                 <div className="text-center">This is free for everyone.</div>
                                             </div>

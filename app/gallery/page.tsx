@@ -118,7 +118,7 @@ function PageComponent() {
             </div>
 
             <div className="absolute items-center w-2/4 h-full ml-10 z-0 overflow-hidden animate-in animate-ease-out">
-              <div className="grid grid-cols-3 gap-y-36 gap-x-10 h-full overflow-y-auto no-scrollbar pt-20">
+              <div className="grid grid-cols-3 gap-y-52 gap-x-5 h-full overflow-y-auto no-scrollbar pt-20">
                 {galleries && galleries.map((gallery, index) => (
                   <GalleryThumbnail
                     key={gallery.id}
@@ -127,6 +127,7 @@ function PageComponent() {
                     columns={gallery.columns}
                     subscription={gallery.tier as string}
                     onSelect={selectGallery}
+                    nsfw={gallery.nsfw}
                   ></GalleryThumbnail>
                 ))}
                 <div className="pt-10"></div>

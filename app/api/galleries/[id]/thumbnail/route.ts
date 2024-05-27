@@ -62,7 +62,10 @@ const galleryId= params.id  // 312
         }
         break;
       default:
-        
+        if(gallery.nsfw){
+          blobBuffer = await blurImage(blobBuffer);
+  
+        }
         break;
     }
     const dataUrl = `data:${contentType};base64,${blobBuffer.toString('base64')}`;
