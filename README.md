@@ -1,6 +1,7 @@
 # Neroshitron
 ![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/e4a9e11b-0e52-42e0-ad9a-821a81e92e90)
- 
+ ![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/78e009be-caa0-4ae6-9c06-90dde2ab4389)
+
 
 # Documentation For Technical Stack
 - https://nextjs.org/docs
