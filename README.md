@@ -28,9 +28,14 @@ You need npm and nodejs installed. See documentation at start of document.
 7) Once the depedencies are pulled and installed you can run the command `npm run dev` to run the application in development mode.
 8) Open http://localhost:3000/
 
-### Updating the database
+
+
+### Updating the database/Seeding data
 Run `supabase db reset`. This will wipe data.
 https://supabase.com/docs/guides/cli/local-development?queryGroups=access-method&access-method=kong#database-migrations
+
+** Once the data is seeded you will need to go to the galleries bucket and add images to the folders that exist in it for the seeded galleries. **
+
 
 ## inbucket
 http://localhost:54324su/monitor
