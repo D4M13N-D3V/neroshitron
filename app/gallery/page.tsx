@@ -109,10 +109,10 @@ function PageComponent() {
               </section>
             </div>
 
-            <div className="absolute w-full h-full overflow-hidden z-0 animate-flip-up animate-ease-out">
+            <div className="absolute w-full h-full overflow-hidden z-0 animate-fade-left animate-once  animate-duration-[5000ms] animate-ease-out">
               <img
                 src="gallery_girl.png"
-                className="float-right object-cover h-screen w-3/6"
+                className="float-right object-cover h-screen w-3/6  opacity-50"
                 alt="Background"
               />
             </div>
