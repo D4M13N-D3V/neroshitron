@@ -45,7 +45,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
         return (
             <>
 
-                <div className="z-20 fixed left-6 bottom-4 w-100 h-20  bg-purple-900 bg-opacity-40 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
+                <div className="z-20 fixed left-1/3 bottom-4 w-100 h-20  bg-purple-900 bg-opacity-40 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
                     <div className='grid grid-cols-4 gap-4 pl-32 pr-4 pt-4 m-1 '>
 
                         <button
@@ -154,7 +154,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
     return (
         <div className="z-20">
             <button
-                className="fixed bg-purple-800 hover:bg-purple-700 left-10 bottom-5 animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
+                className="fixed bg-purple-800 hover:bg-purple-700 left-1/3 ml-4 bottom-5 animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
                 onClick={() => close()}
             >
                 <svg
