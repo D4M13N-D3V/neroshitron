@@ -124,6 +124,7 @@ function PageComponent() {
                     key={gallery.id}
                     id={gallery.id}
                     title={gallery.name}
+                    tags = {gallery.tags}
                     columns={gallery.columns}
                     subscription={gallery.tier as string}
                     onSelect={selectGallery}

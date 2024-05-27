@@ -6,16 +6,19 @@ interface GalleryThumbnailProps {
     onSelect: (id: string, columns: number) => void;
     title: string;
     subscription: string;
+    tags: string[];
     nsfw: boolean;
 }
 
-const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription }: GalleryThumbnailProps) => {
+const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tags }: GalleryThumbnailProps) => {
     const [galleryId, setGalleryId] = useState<string>(id);
     const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [galleryCollumns, setColumns] = useState<number>(columns);
     const [imageCount, setImageCount] = useState<number>(0);
     const [nsfwState, setNsfw] = useState<boolean>(nsfw);
+    const [subscriptionState, setSubscription] = useState<string>(subscription);
+    const [tagsState, setTags] = useState<string[]>(tags);
     const openGallery = () => {
         onSelect(galleryId, galleryCollumns);
     };
@@ -58,58 +61,34 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription }: G
                             </div>
                             <div className="text-white flex justify-between">
                                 <div className="flex items-center">
-                                    <div className="relative group">
-                                        <div className="absolute top-0 right-2 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
-                                            <div className="text-center">{imageCount} pictures in this gallery.</div>
-                                        </div>
                                         <span className="bg-neroshi-blue-900 text-white mr-2 px-2 py-1 rounded-md text-sm flex items-center h-full">
                                             <span className="text-center">{imageCount}</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="pl-2 size-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                                             </svg>
                                         </span>
-                                        <div className="absolute top-0 right-2 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
-                                            <div className="text-center">{imageCount} pictures in this gallery.</div>
-                                        </div>
-                                    </div>
-                                    {(nsfwState) && (
-                                    <div className="relative group">
+                                    {(nsfwState) && (                                        
                                         <span className="bg-red-900 text-white px-2 py-1 mr-2 rounded-md text-sm h-full flex items-center">NSFW</span>
-                           
-                                    </div>   
                                     )}
                                     {subscription === "Free" && (
-                                        <div className="relative group">                                            <span className="bg-gray-900 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Free</span>
-
-                                            <div className="absolute top-0 right-12 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
-                                                <div className="text-center">This is free for everyone.</div>
-                                            </div>
-                                        </div>
+                                        <span className="bg-gray-900 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Free</span>
                                     )}
                                     {subscription === "Tier 1" && (
-                                        <div className="relative group">
                                         <span className="bg-purple-600 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 1</span>
-                                            <div className="absolute top-0 right-12 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
-                                                <div className="text-center">This requires a Tier 1 subscription.</div>
-                                            </div>
-                                        </div>
                                     )}
                                     {subscription === "Tier 2" && (
-                                        <div className="relative group">
                                         <span className="bg-pink-700 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 2</span>
-                                            <div className="absolute top-0 right-12 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
-                                            <div className="text-center">This requires a Tier 2 subscription.</div>
-                                            </div>
-                                        </div>
                                     )}
                                     {subscription === "Tier 3" && (
-                                        <div className="relative group">
                                         <span className="bg-fuchsia-500 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 3</span>
-                                            <div className="absolute top-0 right-12 mt-12 w-48 px-2 py-1 bg-black text-white text-xs rounded hidden group-hover:block">
-                                            <div className="text-center">This requires a Tier 3 subscription.</div>
-                                            </div>
-                                        </div>
                                     )}
+                                </div>
+                            </div>
+                            <div className="text-white flex justify-between">
+                                <div>
+                                    <div className="flex">
+                                        <h6 className="pr-4 text-sm font-bold break-words" style={{ lineHeight: '2rem', textShadow: '0 0 2px black' }}>{tagsState.join(', ')}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
