@@ -14,7 +14,7 @@ export async function GET(
     .eq('name', galleryId)
     .single();
   // List all files in the galleryId path
-  let { data: files, error } = await supabase.storage.from('galleries').list(gallery.name);
+  let { data: files, error } = await supabase.storage.from('galleries').list(params.id.toLowerCase().replace(/\s+/g, '_'));
 
   if (files==null || error) {
     //console.error('Error listing files:', error);
