@@ -135,6 +135,8 @@ INSERT INTO "public"."galleries" ("name", "column_number", "tier", "tags") VALUE
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO "public"."tags" ("name", "gallery_name") VALUES
+	('Test Tag', 'Test Gallery');
 
 
 --
