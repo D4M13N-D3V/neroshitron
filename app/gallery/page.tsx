@@ -79,14 +79,14 @@ function PageComponent() {
 
   return (
     <div>
-      {/* <div className="fixed w-full h-full overflow-hidden z-0 animate-fade-left animate-fade-left animate-once animate-duration-[2000ms] animate-normal animate-fill-forwards">
+      <div className="fixed w-full h-full overflow-hidden z-0 animate-fade-left animate-fade-left animate-once animate-duration-[2000ms] animate-normal animate-fill-forwards">
         <img
           src="gallery_girl.png"
           className="float-right object-cover h-screen w-6/6  md:w-5/6 lg:w-3/6  opacity-50 overflow-hidden"
           alt="Background"
         />
-      </div> */}
-      <section className="neroshi-blue-900 flex items-center w-full p-8 pt-20 opacity-90">
+      </div>
+      <section className="neroshi-blue-900 flex items-center w-full p-8 pt-20 opacity-90 animate-in">
         <div className="container mx-auto py-8">
           <input
             className=" w-full md:w-1/2 text-neroshi-blue-950 h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg mx-auto"
@@ -110,7 +110,7 @@ function PageComponent() {
           </nav>
         </div>
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-60 gap-x-5 h-full mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-60 gap-x-5 h-full mx-auto animate-in">
         {galleries && galleries.map((gallery, index) => (
           <div className="mx-auto">
               <GalleryThumbnail

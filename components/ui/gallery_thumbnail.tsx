@@ -41,7 +41,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tag
     return (
         <div className="py-3 sm:max-w-xl sm:mx-auto flex-3 animate-in">
             <div className="h-48 overflow-visible w-full relative hover:scale-95 rounded-3xl">
-                {!isLoading && (
+                {!isLoading ? (
                     <>
                         <img
                             className={`aspect-content rounded-3xl`}
@@ -93,6 +93,8 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tag
                             </div>
                         </div>
                     </>
+                ):(
+                    <div className="animate-pulse bg-neroshi-blue-900 rounded-3xl" style={{ width: '20rem', height: '20rem' }}></div>
                 )}
             </div>
         </div>
