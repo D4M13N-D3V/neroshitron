@@ -5,15 +5,33 @@
 
 # Documentation For Technical Stack
 - https://nextjs.org/docs
-- https://supabase.com/docs/guides/self-hosting/docker
-- https://www.docker.com/products/docker-desktop/
+- https://supabase.com/docs/
+- https://owncast.online/docs/
+- https://github.com/maildev/maildev
 - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 - https://docs.docker.com/engine/install/
   
 # Running Backend
+You will need docker installed.
+- https://docs.docker.com/engine/install/
+
+You will need supabase CLI.
+- https://docs.docker.com/engine/install/
+
 1) Open your terminal and navigate to the root of the git repository.
 2) Make sure that docker and docker compose are installed.
-3) Run `docker-compose --env-file ./docker.env up` which will start up OwnCast, AppWrite, and the UI.
+3) Run `docker-compose --env-file ./docker.env up` which will start up OwnCast and a development mail server.
+4) Run `supabase start`
+
+## Supabase
+
+### Updating the database
+Run `supabase db reset`. This will wipe data.
+https://supabase.com/docs/guides/cli/local-development?queryGroups=access-method&access-method=kong#database-migrations
+
+### Setting up the buckets.
+You will need to create a bucket named `galleries`.
+https://supabase.com/docs/guides/storage/buckets/creating-buckets?queryGroups=language&language=dashboard
 
 ## MailDev
 http://localhost:1080
@@ -23,10 +41,6 @@ This is where all mail being sent shows up from the application for developers.
 http://localhost:8080/
 Configuration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
 
-## Supabase 
-http://localhost:8000/
-You will need to register and sign up, the first account on the appwrite instance will be the admin account.çConfiguration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
-
 # Running UI
 You need npm and nodejs installed. See documentation at start of document.
 1) Open your terminal and navigate to the root folder of the git repository. 
@@ -34,8 +48,13 @@ You need npm and nodejs installed. See documentation at start of document.
 3) Once the depedencies are pulled and installed you can run the command `npm run dev` to run the application in development mode.
 4) Open http://localhost:3000/
 
-# React Components
 
+
+
+
+
+
+# React Components
 ## Gallery Component
 The `Gallery` component is a React component used to display a gallery of images. It fetches images from an API and displays them in a Masonry layout.
 ### Props
