@@ -26,7 +26,22 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 	('00000000-0000-0000-0000-000000000000', 'd337a17f-a756-46eb-a0e8-8ef80fd0510d', '{"action":"user_signedup","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"team","traits":{"provider":"email"}}', '2024-05-27 14:10:29.638476+00', ''),
 	('00000000-0000-0000-0000-000000000000', 'd3e71df0-114a-4490-aeeb-6f92c45bad74', '{"action":"login","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-05-27 14:10:29.64088+00', ''),
 	('00000000-0000-0000-0000-000000000000', '1eab1cf3-5656-42c2-9e0b-796222de0c55', '{"action":"logout","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account"}', '2024-05-27 14:15:04.733941+00', ''),
-	('00000000-0000-0000-0000-000000000000', '410c5c63-cba5-442a-a6bb-157acc0bd370', '{"action":"login","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-05-27 14:34:43.53365+00', '');
+	('00000000-0000-0000-0000-000000000000', '410c5c63-cba5-442a-a6bb-157acc0bd370', '{"action":"login","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-05-27 14:34:43.53365+00', ''),
+	('00000000-0000-0000-0000-000000000000', '262365e2-093b-493c-abff-d760344338e3', '{"action":"logout","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account"}', '2024-05-27 15:32:39.855999+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'b3b7c848-8d46-468f-8a9f-be56f842e8f8', '{"action":"login","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-05-27 15:32:48.609554+00', ''),
+	('00000000-0000-0000-0000-000000000000', '96af268f-e323-43ec-ac10-d33b94c47321', '{"action":"user_invited","actor_id":"00000000-0000-0000-0000-000000000000","actor_username":"service_role","actor_via_sso":false,"log_type":"team","traits":{"user_email":"damienostler1@gmail.com","user_id":"e11e6fda-d1fc-4b0a-bd61-80233fcb5cdd"}}', '2024-05-27 15:44:27.171353+00', ''),
+	('00000000-0000-0000-0000-000000000000', '98b879f8-3ec0-4b14-9114-e9702693edd7', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 16:33:16.635885+00', ''),
+	('00000000-0000-0000-0000-000000000000', '05788b7b-5d97-4449-b036-0d94c021f149', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 16:33:16.636596+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'ec47cc2d-ee91-4bda-93cc-80966a366550', '{"action":"logout","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account"}', '2024-05-27 17:16:40.455383+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'dee2b80d-2cb6-49b0-9391-d52318eba3c6', '{"action":"login","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-05-27 17:18:49.038768+00', ''),
+	('00000000-0000-0000-0000-000000000000', '50134af5-eeca-4e0a-93c9-30c93395843d', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 18:17:16.199899+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'e1b7a78c-c40e-4348-bd41-eadc94a93ebb', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 18:17:16.200645+00', ''),
+	('00000000-0000-0000-0000-000000000000', '0fffa887-134b-4d3b-bf70-24246ec38013', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 19:15:16.230466+00', ''),
+	('00000000-0000-0000-0000-000000000000', '83236dbe-037b-4a7a-a326-7ff3c9759bd7', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 19:15:16.231644+00', ''),
+	('00000000-0000-0000-0000-000000000000', '6f4bb32b-4690-4640-98ac-feb06384ef62', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 20:13:20.140291+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'e6e8d515-e14c-48ff-8c4d-27cea84d33f3', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 20:13:20.140793+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'e878d51d-2524-4796-9288-88bcf8d1982b', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 21:11:27.314657+00', ''),
+	('00000000-0000-0000-0000-000000000000', '0d3f4871-8215-4ae7-920b-c261ba7eaf11', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 21:11:27.315598+00', '');
 
 
 --
@@ -40,7 +55,8 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 --
 
 INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") VALUES
-	('00000000-0000-0000-0000-000000000000', '893c7701-d5df-4415-80bd-1ec089764400', 'authenticated', 'authenticated', 'damienostler1@outlook.com', '$2a$10$ISYdoWsKL7gxfRz7c5IKDOTsmcjNpGgg9OOApYLMOvtOoNTo4HGM6', '2024-05-27 14:10:29.639017+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-05-27 14:34:43.534227+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', NULL, '2024-05-27 14:10:29.634157+00', '2024-05-27 14:34:43.535377+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
+	('00000000-0000-0000-0000-000000000000', 'e11e6fda-d1fc-4b0a-bd61-80233fcb5cdd', 'authenticated', 'authenticated', 'damienostler1@gmail.com', '', NULL, '2024-05-27 15:44:27.171961+00', 'dd81fbfd6a7ad5d261d7f98fb37620afb3f954f350dacd2cac9f4b56', '2024-05-27 15:44:27.171961+00', '', NULL, '', '', NULL, NULL, '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2024-05-27 15:44:27.167772+00', '2024-05-27 15:44:27.174941+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false),
+	('00000000-0000-0000-0000-000000000000', '893c7701-d5df-4415-80bd-1ec089764400', 'authenticated', 'authenticated', 'damienostler1@outlook.com', '$2a$10$ISYdoWsKL7gxfRz7c5IKDOTsmcjNpGgg9OOApYLMOvtOoNTo4HGM6', '2024-05-27 14:10:29.639017+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-05-27 17:18:49.039562+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', NULL, '2024-05-27 14:10:29.634157+00', '2024-05-27 21:11:27.317835+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
 
 
 --
@@ -48,7 +64,8 @@ INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encryp
 --
 
 INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "provider", "last_sign_in_at", "created_at", "updated_at", "id") VALUES
-	('893c7701-d5df-4415-80bd-1ec089764400', '893c7701-d5df-4415-80bd-1ec089764400', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', 'email', '2024-05-27 14:10:29.636992+00', '2024-05-27 14:10:29.637013+00', '2024-05-27 14:10:29.637013+00', 'b823bde7-9eae-4e1f-8253-75f12f0f06f2');
+	('893c7701-d5df-4415-80bd-1ec089764400', '893c7701-d5df-4415-80bd-1ec089764400', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', 'email', '2024-05-27 14:10:29.636992+00', '2024-05-27 14:10:29.637013+00', '2024-05-27 14:10:29.637013+00', 'b823bde7-9eae-4e1f-8253-75f12f0f06f2'),
+	('e11e6fda-d1fc-4b0a-bd61-80233fcb5cdd', 'e11e6fda-d1fc-4b0a-bd61-80233fcb5cdd', '{"sub": "e11e6fda-d1fc-4b0a-bd61-80233fcb5cdd", "email": "damienostler1@gmail.com", "email_verified": false, "phone_verified": false}', 'email', '2024-05-27 15:44:27.170495+00', '2024-05-27 15:44:27.170543+00', '2024-05-27 15:44:27.170543+00', 'f88a9c9a-1566-4c04-8340-3d233dcca864');
 
 
 --
@@ -62,7 +79,7 @@ INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "pro
 --
 
 INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag") VALUES
-	('3499fcf0-59da-493f-ae3b-617ef41b4404', '893c7701-d5df-4415-80bd-1ec089764400', '2024-05-27 14:34:43.534268+00', '2024-05-27 14:34:43.534268+00', NULL, 'aal1', NULL, NULL, 'node', '192.168.65.1', NULL);
+	('ab123eaa-eab2-4fac-a018-82ee972401fd', '893c7701-d5df-4415-80bd-1ec089764400', '2024-05-27 17:18:49.039625+00', '2024-05-27 21:11:27.319339+00', NULL, 'aal1', NULL, '2024-05-27 21:11:27.319282', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', '192.168.65.1', NULL);
 
 
 --
@@ -70,7 +87,7 @@ INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "fac
 --
 
 INSERT INTO "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "authentication_method", "id") VALUES
-	('3499fcf0-59da-493f-ae3b-617ef41b4404', '2024-05-27 14:34:43.535548+00', '2024-05-27 14:34:43.535548+00', 'password', 'dcc35216-f906-4501-812d-f2ed2704ab8e');
+	('ab123eaa-eab2-4fac-a018-82ee972401fd', '2024-05-27 17:18:49.041915+00', '2024-05-27 17:18:49.041915+00', 'password', 'be546f0f-4e91-4f94-97e1-cc15c25191be');
 
 
 --
@@ -90,7 +107,11 @@ INSERT INTO "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "
 --
 
 INSERT INTO "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "revoked", "created_at", "updated_at", "parent", "session_id") VALUES
-	('00000000-0000-0000-0000-000000000000', 2, 'HsInil2IT99mHjGqk_xeKA', '893c7701-d5df-4415-80bd-1ec089764400', false, '2024-05-27 14:34:43.534857+00', '2024-05-27 14:34:43.534857+00', NULL, '3499fcf0-59da-493f-ae3b-617ef41b4404');
+	('00000000-0000-0000-0000-000000000000', 5, 'vG2zuPl4y7OvEwgeItgotw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 17:18:49.040453+00', '2024-05-27 18:17:16.201027+00', NULL, 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
+	('00000000-0000-0000-0000-000000000000', 6, 'd1l7CJUy3osp97yqDTyibw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 18:17:16.201648+00', '2024-05-27 19:15:16.232194+00', 'vG2zuPl4y7OvEwgeItgotw', 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
+	('00000000-0000-0000-0000-000000000000', 7, 'jrCD6NCqj5WFyjkiWG6BTw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 19:15:16.232976+00', '2024-05-27 20:13:20.141029+00', 'd1l7CJUy3osp97yqDTyibw', 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
+	('00000000-0000-0000-0000-000000000000', 8, 'zFVkt2ATfYlYT0nzRKmX0A', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 20:13:20.141361+00', '2024-05-27 21:11:27.316138+00', 'jrCD6NCqj5WFyjkiWG6BTw', 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
+	('00000000-0000-0000-0000-000000000000', 9, 'OWwpxx1Pg11r5r4c2ZUhaw', '893c7701-d5df-4415-80bd-1ec089764400', false, '2024-05-27 21:11:27.316818+00', '2024-05-27 21:11:27.316818+00', 'zFVkt2ATfYlYT0nzRKmX0A', 'ab123eaa-eab2-4fac-a018-82ee972401fd');
 
 
 --
@@ -133,7 +154,8 @@ INSERT INTO "public"."galleries" ("name", "column_number", "tier", "tags", "nsfw
 	('More Test Gallery', 3, 'Tier 3', '{Hentai,VTuber}', true),
 	('Some More Testing', 3, 'Tier 2', '{Hentai,Dojin}', false),
 	('Even More Testing', 3, 'Free', '{VTuber}', false),
-	('Killa Testing Here', 3, 'Tier 1', '{VTuber,Dojin}', false);
+	('Killa Testing Here', 3, 'Tier 1', '{VTuber,Dojin}', false),
+	('Popcorn Tester', 3, 'Free', '{Hentai}', true);
 
 
 --
@@ -141,7 +163,6 @@ INSERT INTO "public"."galleries" ("name", "column_number", "tier", "tags", "nsfw
 --
 
 INSERT INTO "public"."tags" ("name") VALUES
-	('Test Tag'),
 	('Hentai'),
 	('Dojin
 '),
@@ -152,6 +173,8 @@ INSERT INTO "public"."tags" ("name") VALUES
 -- Data for Name: user_subscriptions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO "public"."user_subscriptions" ("user_id", "tier") VALUES
+	('893c7701-d5df-4415-80bd-1ec089764400', 'Tier 2');
 
 
 --
@@ -188,15 +211,22 @@ INSERT INTO "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at
 	('b8ca6de4-e321-4152-98e1-61437877adaf', 'galleries', 'even_more_testing/neroshi-1-2.jpeg', NULL, '2024-05-27 15:26:26.822241+00', '2024-05-27 15:26:26.822241+00', '2024-05-27 15:26:26.822241+00', '{"eTag": "\"a22ea7bfaed689b675b11428b98de42e\"", "size": 705547, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:26.797Z", "contentLength": 705547, "httpStatusCode": 200}', '1bc18161-d98e-4006-99d4-a73dfd624c73', NULL),
 	('40be76ab-7733-442e-a70c-886cee49b987', 'galleries', 'another_test_gallery/1.jpeg', NULL, '2024-05-27 15:26:37.225793+00', '2024-05-27 15:27:34.666222+00', '2024-05-27 15:26:37.225793+00', '{"eTag": "\"7fd95d9da9f3e6c7237a94feedcfc3af\"", "size": 97841, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:27:34.661Z", "contentLength": 97841, "httpStatusCode": 200}', 'c2d5bdfa-6760-4dd4-a53a-382b29b6b470', NULL),
 	('aee6868d-46e4-4e40-9569-27b2e408af41', 'galleries', 'another_test_gallery/neroshi-4-2.jpeg', NULL, '2024-05-27 15:26:37.254185+00', '2024-05-27 15:26:37.254185+00', '2024-05-27 15:26:37.254185+00', '{"eTag": "\"d06af35773c09ff8cc1f4a590052be28\"", "size": 456918, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:37.248Z", "contentLength": 456918, "httpStatusCode": 200}', '8b5f4a89-b8f1-4e83-adb6-e30be6c570c8', NULL),
+	('8e77d646-62bc-4948-82d4-f481e2ada02d', 'galleries', 'popcorn_tester/neroshi-4-1.jpeg', NULL, '2024-05-27 19:59:37.966214+00', '2024-05-27 19:59:37.966214+00', '2024-05-27 19:59:37.966214+00', '{"eTag": "\"eac1dd9a94c71dd30f565f95d32b0c6b\"", "size": 1227804, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T19:59:37.946Z", "contentLength": 1227804, "httpStatusCode": 200}', 'df47d457-1f34-4eef-b37d-2eb16eae4a80', NULL),
+	('64e2481d-649f-4cdd-9386-eebd987eec55', 'galleries', 'popcorn_tester/neroshi-4-2.jpeg', NULL, '2024-05-27 19:59:37.969969+00', '2024-05-27 19:59:37.969969+00', '2024-05-27 19:59:37.969969+00', '{"eTag": "\"d06af35773c09ff8cc1f4a590052be28\"", "size": 456918, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T19:59:37.965Z", "contentLength": 456918, "httpStatusCode": 200}', '8dea9739-80ef-4569-8403-00d0cd2aa373', NULL),
 	('33ec9d63-c158-4fc5-bf0d-938537ffdbf2', 'galleries', 'even_more_testing/neroshi-4-2.jpeg', NULL, '2024-05-27 15:26:26.841264+00', '2024-05-27 15:26:26.841264+00', '2024-05-27 15:26:26.841264+00', '{"eTag": "\"d06af35773c09ff8cc1f4a590052be28\"", "size": 456918, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:26.834Z", "contentLength": 456918, "httpStatusCode": 200}', 'b99f829b-7aed-44c6-9687-aa73ac77d43d', NULL),
+	('af14ebc1-5768-4333-a91c-89c71635c336', 'galleries', 'popcorn_tester/neroshi-3.jpeg', NULL, '2024-05-27 19:59:37.950641+00', '2024-05-27 19:59:37.950641+00', '2024-05-27 19:59:37.950641+00', '{"eTag": "\"7fd95d9da9f3e6c7237a94feedcfc3af\"", "size": 97841, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T19:59:37.945Z", "contentLength": 97841, "httpStatusCode": 200}', '30592c80-bfca-403b-9ae8-e57bd492b87c', NULL),
+	('d454129e-5f63-414c-a7df-a3855b51648a', 'galleries', 'popcorn_tester/neroshi-1.jpeg', NULL, '2024-05-27 19:59:37.957116+00', '2024-05-27 19:59:37.957116+00', '2024-05-27 19:59:37.957116+00', '{"eTag": "\"76b9705bb529b16fc58a4bdb0b134c9b\"", "size": 552385, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T19:59:37.944Z", "contentLength": 552385, "httpStatusCode": 200}', 'c21dc413-6947-4ff6-8258-ff8a44c03746', NULL),
 	('25fdb5df-5cb1-4d6d-b882-be9003bd5c2f', 'galleries', 'more_test_gallery/neroshi-2.jpeg', NULL, '2024-05-27 15:26:45.940585+00', '2024-05-27 15:26:45.940585+00', '2024-05-27 15:26:45.940585+00', '{"eTag": "\"f8eaf2e06e34ad1b3e101908ab02883e\"", "size": 326461, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:45.927Z", "contentLength": 326461, "httpStatusCode": 200}', 'd980f193-e963-4c25-87b9-fcb88eb7fcb7', NULL),
 	('4c9f74e9-83ce-4058-9ad5-acb07fe409bb', 'galleries', 'more_test_gallery/neroshi-1.jpeg', NULL, '2024-05-27 15:26:45.9507+00', '2024-05-27 15:26:45.9507+00', '2024-05-27 15:26:45.9507+00', '{"eTag": "\"76b9705bb529b16fc58a4bdb0b134c9b\"", "size": 552385, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:45.929Z", "contentLength": 552385, "httpStatusCode": 200}', '0a95bd52-67af-45f7-b421-b7e1ef9b98de', NULL),
 	('adaf37d9-fc5c-4263-b61c-5cd564f50772', 'galleries', 'another_test_gallery/neroshi-2.jpeg', NULL, '2024-05-27 15:26:37.236201+00', '2024-05-27 15:26:37.236201+00', '2024-05-27 15:26:37.236201+00', '{"eTag": "\"f8eaf2e06e34ad1b3e101908ab02883e\"", "size": 326461, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:37.213Z", "contentLength": 326461, "httpStatusCode": 200}', '5953e3e5-a2f0-4043-b492-933487a17736', NULL),
+	('91e39d32-0111-4173-a43a-2ae1dd475566', 'galleries', 'popcorn_tester/neroshi-2.jpeg', NULL, '2024-05-27 19:59:37.955417+00', '2024-05-27 19:59:37.955417+00', '2024-05-27 19:59:37.955417+00', '{"eTag": "\"f8eaf2e06e34ad1b3e101908ab02883e\"", "size": 326461, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T19:59:37.946Z", "contentLength": 326461, "httpStatusCode": 200}', '6a1673e6-eb2f-4c88-81bd-e5e75c5ced52', NULL),
 	('168cb5fe-1deb-431a-b588-1ef0a367020d', 'galleries', 'more_test_gallery/neroshi-3.jpeg', NULL, '2024-05-27 15:26:45.9354+00', '2024-05-27 15:26:45.9354+00', '2024-05-27 15:26:45.9354+00', '{"eTag": "\"7fd95d9da9f3e6c7237a94feedcfc3af\"", "size": 97841, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:45.927Z", "contentLength": 97841, "httpStatusCode": 200}', '439d366f-ba58-4b34-bd55-f6c28902d40f', NULL),
 	('60294a9f-06f5-4dd1-acbc-616dba00a695', 'galleries', 'some_more_testing/neroshi-1-3.png', NULL, '2024-05-27 15:26:56.323099+00', '2024-05-27 15:26:56.323099+00', '2024-05-27 15:26:56.323099+00', '{"eTag": "\"2c6f2901ed88fbdd8c790a4b77d9caa8\"", "size": 156786, "mimetype": "image/png", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:56.312Z", "contentLength": 156786, "httpStatusCode": 200}', '135039b1-2af1-4c82-aaf3-78f9009ad1c4', NULL),
 	('62d04150-984f-4292-b422-f81adbbf170b', 'galleries', 'some_more_testing/neroshi-1.jpeg', NULL, '2024-05-27 15:26:56.338289+00', '2024-05-27 15:26:56.338289+00', '2024-05-27 15:26:56.338289+00', '{"eTag": "\"76b9705bb529b16fc58a4bdb0b134c9b\"", "size": 552385, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:56.317Z", "contentLength": 552385, "httpStatusCode": 200}', '7567a4f3-908b-4395-9a0a-ccecf3d4f5fe', NULL),
 	('b769127c-d4f3-4989-a1fc-17aa07bc50a4', 'galleries', 'some_more_testing/neroshi-4-2.jpeg', NULL, '2024-05-27 15:26:56.353941+00', '2024-05-27 15:26:56.353941+00', '2024-05-27 15:26:56.353941+00', '{"eTag": "\"d06af35773c09ff8cc1f4a590052be28\"", "size": 456918, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:56.347Z", "contentLength": 456918, "httpStatusCode": 200}', '47f7be86-2509-4172-a032-7bae7d745f29', NULL),
 	('02dabd39-7124-4f00-a018-23e08ae87283', 'galleries', 'another_test_gallery/neroshi-1-2.jpeg', NULL, '2024-05-27 15:26:37.241469+00', '2024-05-27 15:26:37.241469+00', '2024-05-27 15:26:37.241469+00', '{"eTag": "\"a22ea7bfaed689b675b11428b98de42e\"", "size": 705547, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:37.205Z", "contentLength": 705547, "httpStatusCode": 200}', '375de468-e8c6-42be-a40f-d3e4a1448bfb', NULL),
+	('c82f236c-584c-4458-be1c-ca9ff5b02e9e', 'galleries', 'popcorn_tester/neroshi-1-2.jpeg', NULL, '2024-05-27 19:59:37.956753+00', '2024-05-27 19:59:37.956753+00', '2024-05-27 19:59:37.956753+00', '{"eTag": "\"a22ea7bfaed689b675b11428b98de42e\"", "size": 705547, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T19:59:37.942Z", "contentLength": 705547, "httpStatusCode": 200}', 'd2aa1dc7-fa9f-4127-b46b-7531a204a757', NULL),
+	('93938f38-393b-4159-8355-e1ef678e8175', 'galleries', 'popcorn_tester/neroshi-1-3.png', NULL, '2024-05-27 19:59:37.964774+00', '2024-05-27 19:59:37.964774+00', '2024-05-27 19:59:37.964774+00', '{"eTag": "\"2c6f2901ed88fbdd8c790a4b77d9caa8\"", "size": 156786, "mimetype": "image/png", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T19:59:37.937Z", "contentLength": 156786, "httpStatusCode": 200}', 'b90067e3-e05e-4d6b-b67d-3129b4263b39', NULL),
 	('d7a2275f-e493-4e0d-9894-1d7a38c5249a', 'galleries', 'some_more_testing/neroshi-2.jpeg', NULL, '2024-05-27 15:26:56.330535+00', '2024-05-27 15:26:56.330535+00', '2024-05-27 15:26:56.330535+00', '{"eTag": "\"f8eaf2e06e34ad1b3e101908ab02883e\"", "size": 326461, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:56.316Z", "contentLength": 326461, "httpStatusCode": 200}', '07cb87d5-2a00-4dda-bd36-78f2e8411843', NULL),
 	('1b467502-3a85-4419-bde1-11283ac4f203', 'galleries', 'some_more_testing/neroshi-4-1.jpeg', NULL, '2024-05-27 15:26:56.351987+00', '2024-05-27 15:26:56.351987+00', '2024-05-27 15:26:56.351987+00', '{"eTag": "\"eac1dd9a94c71dd30f565f95d32b0c6b\"", "size": 1227804, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:56.322Z", "contentLength": 1227804, "httpStatusCode": 200}', '83885da1-827b-48a6-bcbe-5c29b2225c09', NULL),
 	('457cb84e-cd4e-4c37-bd67-1813e37b466a', 'galleries', 'killa_testing_here/neroshi-4-2.jpeg', NULL, '2024-05-27 15:26:12.032278+00', '2024-05-27 15:26:12.032278+00', '2024-05-27 15:26:12.032278+00', '{"eTag": "\"d06af35773c09ff8cc1f4a590052be28\"", "size": 456918, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2024-05-27T15:26:12.017Z", "contentLength": 456918, "httpStatusCode": 200}', '5f035b86-997e-4d08-80a2-60766ba286da', NULL),
@@ -234,7 +264,7 @@ INSERT INTO "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 2, true);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 9, true);
 
 
 --
