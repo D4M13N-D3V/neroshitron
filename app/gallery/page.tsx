@@ -82,7 +82,7 @@ function PageComponent() {
       <div className="w-full h-full flex justify-center ">
         <div className="flex-1 w-full h-full flex flex-col gap-20">
           <>
-            <div className="absolute pl-8 w-2/4 left-1/2 h-full overflow-hidden z-20 animate-flip-up animate-ease-out">
+            <div className="absolute pl-8 w-2/4 left-1/2 h-full overflow-hidden z-20 animate-in  animate-duration-3000 animate-ease-out">
               <section className="neroshi-blue-900 h-50 p-8 pt-20 opacity-30 hover:opacity-100">
                 <div className="container mx-auto py-8">
                   <input
