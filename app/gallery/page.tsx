@@ -121,7 +121,7 @@ function PageComponent() {
               <div className="grid grid-cols-3 gap-y-36 gap-x-10 h-full overflow-y-auto no-scrollbar pt-20">
                 {galleries && galleries.map((gallery, index) => (
                   <GalleryThumbnail
-                    key={index}
+                    key={gallery.id}
                     id={gallery.id}
                     title={gallery.name}
                     columns={gallery.columns}

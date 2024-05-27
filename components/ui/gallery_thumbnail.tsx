@@ -32,7 +32,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, subscription }: Galler
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [galleryId]);
 
     return (
         <div className="py-3 sm:max-w-xl sm:mx-auto flex-3 animate-in">
@@ -44,6 +44,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, subscription }: Galler
                             src={thumbnailUrl}
                             alt=""
                             onClick={openGallery}
+                            key={galleryId}
                             style={{ width: '20rem', height: '20rem', objectFit: 'cover' }}
                         />
                         <div className="absolute top-2 left-0 w-full h-10% bg-gray-900 bg-opacity-10 backdrop-blur-sm p-2 rounded-md shadow-lg flex flex-col justify-end">
