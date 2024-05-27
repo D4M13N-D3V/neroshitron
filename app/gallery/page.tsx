@@ -94,6 +94,7 @@ function PageComponent() {
             placeholder="Search by title..."
             onChange={(e) => setSearch(e.target.value)}
           />
+          {(tags.length>0) ? (
           <nav className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4 justify-items-center">
             {tags.map((tag, index) => (
               <a
@@ -108,9 +109,14 @@ function PageComponent() {
               </a>
             ))}
           </nav>
+          ):(
+            <div className="flex justify-center">
+              <p className="text-white">Loading Tags...</p>
+            </div>
+          )}
         </div>
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-60 gap-x-5 h-full mx-auto animate-in">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-60 gap-x-5 h-full mb-96 animate-in">
         {galleries && galleries.map((gallery, index) => (
           <div className="mx-auto">
               <GalleryThumbnail

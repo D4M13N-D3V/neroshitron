@@ -167,7 +167,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
         <div >
         <div className="z-20" 
                     onClick={resetPanZoom}  style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
-            <div className='flex justify-center items-center pt-2 '>
+            <div className='flex justify-center items-center pt-2 pb-20'>
             {renderButtons()}
                 </div>
             {selectedImage ? (
@@ -193,7 +193,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                 </>
             ) : (
                 <div
-                    className="z-30 pb-10"
+                    className="z-30"
                     style={{
                         display: selectedImage ? "flex" : "block",
                         alignItems: "flex-start",
@@ -202,7 +202,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
                     <Masonry
                         breakpointCols={columns}
-                        className="my-masonry-grid pl-6"
+                        className="my-masonry-grid pl-6 "
                         style={{ width: selectedImage ? "50%" : "100%" }}
                     >
                         {images
