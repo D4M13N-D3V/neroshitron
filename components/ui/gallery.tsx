@@ -174,43 +174,45 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                 Back
             </button>
 
-                    {renderButtons()}
-                    {selectedImage ? (<PanZoom>
-
-                        <img
-                            src={images[currentIndex]}
-                            style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)", pointerEvents:"none" }}
-                            className="cursor-pointer animate-in w-full h-auto"
-                            onClick={() => close()}
-                        />
-                        </PanZoom>
-                    ) : (
-                        <div
-                            className="z-30 pb-10"
-                            style={{
-                                display: selectedImage ? "flex" : "block",
-                                alignItems: "flex-start",
-                            }}
-                        >
-                        <Masonry
-                            breakpointCols={columns}
-                            className="my-masonry-grid"
-                            style={{ width: selectedImage ? "50%" : "100%" }}
-                        >
-                            {images
-                                .filter((img) => img !== selectedImage)
-                                .map((image, index) => (
-                                    <img
-                                        src={image}
-                                        onClick={() => handleClick(image)}
-                                        className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
-                                    />
-                                ))}
-                        </Masonry>
-                            <>
+            {renderButtons()}
+            {selectedImage ? (
+                <PanZoom
+                    autoCenter={true}
+                >
+                    <img
+                        src={images[currentIndex]}
+                        style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)", pointerEvents:"none" }}
+                        className="cursor-pointer animate-in w-full h-auto"
+                        onClick={() => close()}
+                    />
+                </PanZoom>
+            ) : (
+                <div
+                    className="z-30 pb-10"
+                    style={{
+                        display: selectedImage ? "flex" : "block",
+                        alignItems: "flex-start",
+                    }}
+                >
+                    <Masonry
+                        breakpointCols={columns}
+                        className="my-masonry-grid"
+                        style={{ width: selectedImage ? "50%" : "100%" }}
+                    >
+                        {images
+                            .filter((img) => img !== selectedImage)
+                            .map((image, index) => (
+                                <img
+                                    src={image}
+                                    onClick={() => handleClick(image)}
+                                    className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
+                                />
+                            ))}
+                    </Masonry>
+                    <>
                     </>
                 </div>
-                    )}
+            )}
         </div>
     );
 }
