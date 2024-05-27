@@ -29,10 +29,6 @@ You will need supabase CLI.
 Run `supabase db reset`. This will wipe data.
 https://supabase.com/docs/guides/cli/local-development?queryGroups=access-method&access-method=kong#database-migrations
 
-### Setting up the buckets.
-You will need to create a bucket named `galleries`.
-https://supabase.com/docs/guides/storage/buckets/creating-buckets?queryGroups=language&language=dashboard
-
 ## MailDev
 http://localhost:1080
 This is where all mail being sent shows up from the application for developers.
