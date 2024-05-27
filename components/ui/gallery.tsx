@@ -1,8 +1,8 @@
-import { use, useState } from 'react';
+import { use, useState, useRef } from 'react';
 import { useEffect } from 'react';
 import { render } from 'react-dom';
 import Masonry from 'react-masonry-css';
-import PanZoom from 'react-easy-panzoom';
+import PanZoom, { PanZoomRef } from 'react-easy-panzoom';
 
 interface GalleryProps {
     id: string;
@@ -138,6 +138,16 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
         window.open(url, '_blank');
     }
 
+    const panZoomRef = useRef<any>(null);
+  
+    const resetPanZoom = (event: any) => {
+        console.log(event.target.id)
+        if (panZoomRef.current &&  event.target.id != "image-container") {
+          panZoomRef.current.autoCenter();
+          console.log("POGER")
+        }   
+      };
+
     const close = () => {
         if (selectedImage != null) {
             setSelectedImage(null);
@@ -152,7 +162,9 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
         default: 3
     };
     return (
-        <div className="z-20">
+        <div >
+        <div className="z-20" 
+                    onClick={resetPanZoom}  style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
             <button
                 className="fixed bg-purple-800 hover:bg-purple-700 left-1/3 ml-4 bottom-5 animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
                 onClick={() => close()}
@@ -176,17 +188,26 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
             {renderButtons()}
             {selectedImage ? (
+                <>
                 <PanZoom
                     key={selectedImage}
                     autoCenter={true}
+                    ref={panZoomRef}
                 >
+{/* 
+<div 
+                onClick={() => resetPanZoom()} className='w-full h-full z-10'>
+                </div> */}
+                <div id="image-container" >
                     <img
                         src={images[currentIndex]}
                         style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)", pointerEvents:"none" }}
                         className="cursor-pointer animate-in w-full h-auto"
-                        onClick={() => close()}
-                    />
+                    >
+                    </img>
+                </div>
                 </PanZoom>
+                </>
             ) : (
                 <div
                     className="z-30 pb-10"
@@ -214,6 +235,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                     </>
                 </div>
             )}
+        </div>
         </div>
     );
 }
