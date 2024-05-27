@@ -54,7 +54,7 @@ function PageComponent() {
       },
       body: JSON.stringify({ tags:selectedTags })
     });
-    console.log(galleriesResponse)
+    //console.log(galleriesResponse)
     const galleriesData = await galleriesResponse.json();
     const tagsResponse = await fetch(`/api/galleries/tags`);
     const tagsData = await tagsResponse.json();
@@ -74,95 +74,92 @@ function PageComponent() {
     } else {
       setSelectedTags([...selectedTags, tag]);
     }
-    console.log(selectedTags)
+    //console.log(selectedTags)
   };
 
   return (
-    user ? (
-      <div className="w-full h-full flex justify-center ">
-        <div className="flex-1 w-full h-full flex flex-col gap-20">
-          <>
-            <div className="absolute pl-8 w-2/4 left-1/2 h-full overflow-hidden z-20 animate-in  animate-duration-3000 animate-ease-out">
-              <section className="neroshi-blue-900 h-50 p-8 pt-20 opacity-30 hover:opacity-100">
-                <div className="container mx-auto py-8">
-                  <input
-                    className="w-full text-neroshi-blue-950 h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg"
-                    type="search"
-                    placeholder="Search..."
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  <nav className="grid grid-cols-4 gap-4">
-                    {tags.map((tag, index) => (
-                      <a
-                        key={index}
-                        className={`rounded-lg no-underline text-white py-3 px-4 font-medium text-center ${
-                          selectedTags.includes(tag.id) ? 'bg-neroshi-blue-950 hover:bg-neroshi-blue-900' : 'bg-neroshi-blue-800 hover:bg-neroshi-blue-700'
-                        }`}
-                        href="#"
-                        onClick={() => handleTagClick(tag.id)}
-                      >
-                        {tag.name}
-                      </a>
-                    ))}
-                  </nav>
-                </div>
-              </section>
-            </div>
-
-            <div className="absolute w-full h-full overflow-hidden z-0 animate-fade-left animate-fade-left animate-once animate-duration-[2000ms] animate-normal animate-fill-forwards">
-              <img
-                src="gallery_girl.png"
-                className="float-right object-cover h-screen w-3/6  opacity-50 overflow-hidden"
-                alt="Background"
+    
+    <div className="w-full h-full flex justify-center ">
+    <div className="flex-1 w-full h-full flex flex-col gap-20">
+      <>
+        <div className="absolute pl-8 w-2/4 left-1/2 h-full overflow-hidden z-20 animate-in  animate-duration-3000 animate-ease-out">
+          <section className="neroshi-blue-900 h-50 p-8 pt-20 opacity-30 hover:opacity-100">
+            <div className="container mx-auto py-8">
+              <input
+                className="w-full text-neroshi-blue-950 h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg"
+                type="search"
+                placeholder="Search..."
+                onChange={(e) => setSearch(e.target.value)}
               />
-            </div>
-
-            <div className="absolute items-center w-2/4 h-full ml-10 z-0 overflow-hidden animate-in animate-ease-out">
-              <div className="grid grid-cols-3 gap-y-52 gap-x-5 h-full overflow-y-auto no-scrollbar pt-20">
-                {galleries && galleries.map((gallery, index) => (
-                  <GalleryThumbnail
-                    key={gallery.id}
-                    id={gallery.id}
-                    title={gallery.name}
-                    tags = {gallery.tags}
-                    columns={gallery.columns}
-                    subscription={gallery.tier as string}
-                    onSelect={selectGallery}
-                    nsfw={gallery.nsfw}
-                  ></GalleryThumbnail>
+              <nav className="grid grid-cols-4 gap-4">
+                {tags.map((tag, index) => (
+                  <a
+                    key={index}
+                    className={`rounded-lg no-underline text-white py-3 px-4 font-medium text-center ${
+                      selectedTags.includes(tag.name) ? 'bg-neroshi-blue-950 hover:bg-neroshi-blue-900' : 'bg-neroshi-blue-800 hover:bg-neroshi-blue-700'
+                    }`}
+                    href="#"
+                    onClick={() => handleTagClick(tag.name)}
+                  >
+                    {tag.name}
+                  </a>
                 ))}
-                <div className="pt-10"></div>
-                <div className="pt-10"></div>
-              </div>
+              </nav>
             </div>
-          </>
+          </section>
         </div>
-        {isOpen ? (
-          <>
-            <div
-              className={`fixed inset-0 transition-opacity z-30 ${
-                isOpen ? "animate-in" : "fade-out"
-              }`}
-              aria-hidden="true"
-            >
-              <div
-                className="absolute inset-0 bg-neroshi-blue-900 opacity-70 z-30"
-                onClick={() => setIsOpen(false)}
-              ></div>
-              <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">
-                <Gallery
-                  id={selectedGallery as string}
-                  columns={galleryColumns}
-                  closeMenu={() => closeGallery()}
-                ></Gallery>
-              </div>
-            </div>
-          </>
-        ) : null}
-      </div>
-    ) : (
-      <h1>loading</h1>
-    )
+
+        <div className="absolute w-full h-full overflow-hidden z-0 animate-fade-left animate-fade-left animate-once animate-duration-[2000ms] animate-normal animate-fill-forwards">
+          <img
+            src="gallery_girl.png"
+            className="float-right object-cover h-screen w-3/6  opacity-50 overflow-hidden"
+            alt="Background"
+          />
+        </div>
+
+        <div className="absolute items-center w-2/4 h-full ml-10 z-0 overflow-hidden animate-in animate-ease-out">
+          <div className="grid grid-cols-3 gap-y-52 gap-x-5 h-full overflow-y-auto no-scrollbar pt-20">
+            {galleries && galleries.map((gallery, index) => (
+              <GalleryThumbnail
+                key={gallery.id}
+                id={gallery.name}
+                title={gallery.name}
+                tags = {gallery.tags}
+                columns={gallery.columns}
+                subscription={gallery.tier as string}
+                onSelect={selectGallery}
+                nsfw={gallery.nsfw}
+              ></GalleryThumbnail>
+            ))}
+            <div className="pt-10"></div>
+            <div className="pt-10"></div>
+          </div>
+        </div>
+      </>
+    </div>
+    {isOpen ? (
+      <>
+        <div
+          className={`fixed inset-0 transition-opacity z-30 ${
+            isOpen ? "animate-in" : "fade-out"
+          }`}
+          aria-hidden="true"
+        >
+          <div
+            className="absolute inset-0 bg-neroshi-blue-900 opacity-70 z-30"
+            onClick={() => setIsOpen(false)}
+          ></div>
+          <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">
+            <Gallery
+              id={selectedGallery as string}
+              columns={galleryColumns}
+              closeMenu={() => closeGallery()}
+            ></Gallery>
+          </div>
+        </div>
+      </>
+    ) : null}
+  </div>  
   );
 }
 

@@ -17,22 +17,22 @@ export async function GET(
     request: Request,
     { params }: { params: { id: string } }
   ) {
-  const galleryId = params.id;
-  const supabase = createClient();
+
+  const galleryId = params.id.toLowerCase().replace(/\s+/g, '_');  const supabase = createClient();
   const user = await supabase.auth.getUser();
 
   
   const { data: gallery, error: galleryError } = await supabase
     .from('galleries')
     .select('*')
-    .eq('id', galleryId)
+    .eq('name', params.id)
     .single();
     
-    // List all files in the galleryId path
+    // List all files in the params.id path
   let { data: files, error } = await supabase.storage.from('galleries').list(galleryId);
 
   if (files==null || error) {
-    console.error('Error listing files:', error);
+    //console.error('Error listing files:', error);
     return NextResponse.error();
   }
 
@@ -43,7 +43,7 @@ export async function GET(
     let { data: blobdata, error } = await supabase.storage.from('galleries').download(galleryId+"/"+file.name);
 
     if (error || blobdata==null) {
-      console.error('Error downloading file:', error);
+      //console.error('Error downloading file:', error);
       continue;
     }
     let blobBuffer = Buffer.from(await blobdata.arrayBuffer());

@@ -7,7 +7,6 @@
 - https://nextjs.org/docs
 - https://supabase.com/docs/
 - https://owncast.online/docs/
-- https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 - https://docs.docker.com/engine/install/
   
 # Running Backend
@@ -17,33 +16,29 @@ You will need docker installed.
 You will need supabase CLI.
 - https://docs.docker.com/engine/install/
 
+You need npm and nodejs installed. See documentation at start of document.
+- https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
 1) Open your terminal and navigate to the root of the git repository.
 2) Make sure that docker and docker compose are installed.
 3) Run `docker-compose --env-file ./docker.env up` which will start up OwnCast.
 4) Run `supabase start`
+5) Open your terminal and navigate to the root folder of the git repository. 
+6) Run the command `npm update`. 
+7) Once the depedencies are pulled and installed you can run the command `npm run dev` to run the application in development mode.
+8) Open http://localhost:3000/
 
 ### Updating the database
 Run `supabase db reset`. This will wipe data.
 https://supabase.com/docs/guides/cli/local-development?queryGroups=access-method&access-method=kong#database-migrations
 
 ## inbucket
-http://localhost:54324/monitor
+http://localhost:54324su/monitor
 This is where all mail being sent shows up from the application for developers.
 
 ## OwnCast 
 http://localhost:8080/
 Configuration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
-
-# Running UI
-You need npm and nodejs installed. See documentation at start of document.
-1) Open your terminal and navigate to the root folder of the git repository. 
-2) Run the command `npm update`. 
-3) Once the depedencies are pulled and installed you can run the command `npm run dev` to run the application in development mode.
-4) Open http://localhost:3000/
-
-
-
-
 
 
 
@@ -89,5 +84,5 @@ The `GalleryThumbnail` component is a React component used to display a thumbnai
 ### Usage
 This will render a thumbnail for the gallery with the ID of "1". When the thumbnail is clicked, it will log the gallery ID to the console.
 ```tsx
-<GalleryThumbnail id="1" onSelect={(id) => console.log(id)} />
+<GalleryThumbnail id="1" onSelect={(id) => //console.log(id)} />
 ```

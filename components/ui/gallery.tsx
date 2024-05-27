@@ -130,7 +130,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
     const open = () => {
         if (selectedImage === null) return;
-        console.log(selectedImage)
+        //console.log(selectedImage)
         let base64Image = selectedImage.split(';base64,').pop();
         if (!base64Image) return;
         let blob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], { type: 'image/jpeg' }); // adjust the type as needed

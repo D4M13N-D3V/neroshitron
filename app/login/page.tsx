@@ -30,8 +30,8 @@ export default async function Login({
       password,
     });
 
+    //console.log(error);
     if (error) {
-      console.log(data);
       return redirect("/login?message=Could not authenticate user");
     }
 
@@ -54,6 +54,7 @@ export default async function Login({
       },
     });
 
+    //console.log(error);
     if (error) {
       return redirect("/login?message=Could not authenticate user");
     }

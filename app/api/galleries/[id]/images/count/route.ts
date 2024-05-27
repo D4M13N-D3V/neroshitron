@@ -8,11 +8,16 @@ export async function GET(
   const galleryId = params.id;
   const supabase = createClient();
 
+  const { data: gallery, error: galleryError } = await supabase
+    .from('galleries')
+    .select('*')
+    .eq('name', galleryId)
+    .single();
   // List all files in the galleryId path
-  let { data: files, error } = await supabase.storage.from('galleries').list(galleryId);
+  let { data: files, error } = await supabase.storage.from('galleries').list(gallery.name);
 
   if (files==null || error) {
-    console.error('Error listing files:', error);
+    //console.error('Error listing files:', error);
     return NextResponse.error();
   }
 
