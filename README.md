@@ -7,7 +7,6 @@
 - https://nextjs.org/docs
 - https://supabase.com/docs/
 - https://owncast.online/docs/
-- https://github.com/maildev/maildev
 - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 - https://docs.docker.com/engine/install/
   
@@ -20,7 +19,7 @@ You will need supabase CLI.
 
 1) Open your terminal and navigate to the root of the git repository.
 2) Make sure that docker and docker compose are installed.
-3) Run `docker-compose --env-file ./docker.env up` which will start up OwnCast and a development mail server.
+3) Run `docker-compose --env-file ./docker.env up` which will start up OwnCast.
 4) Run `supabase start`
 
 ## Supabase
@@ -29,8 +28,8 @@ You will need supabase CLI.
 Run `supabase db reset`. This will wipe data.
 https://supabase.com/docs/guides/cli/local-development?queryGroups=access-method&access-method=kong#database-migrations
 
-## MailDev
-http://localhost:1080
+## inbucket
+http://localhost:54324/monitor
 This is where all mail being sent shows up from the application for developers.
 
 ## OwnCast 

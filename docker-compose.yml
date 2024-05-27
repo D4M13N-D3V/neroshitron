@@ -21,15 +21,6 @@ services:
       - 1935:1935
     volumes:
       - ./data:/owncast/data
-
-  maildev:
-    image: maildev/maildev:latest
-    restart: unless-stopped
-    ports:
-      - 1080:1080
-      - 1025:1025
-    volumes:
-      - ./data:/maildev/data
       
 volumes:
   db-config:
