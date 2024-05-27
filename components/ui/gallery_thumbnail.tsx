@@ -94,7 +94,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tag
                         </div>
                     </>
                 ):(
-                    <div className="animate-pulse bg-neroshi-blue-900 rounded-3xl" style={{ width: '20rem', height: '20rem' }}></div>
+                    <div className="animate-pulse bg-neroshi-blue-950 rounded-3xl" style={{ width: '20rem', height: '20rem' }}></div>
                 )}
             </div>
         </div>
