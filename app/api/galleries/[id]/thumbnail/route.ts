@@ -49,27 +49,30 @@ export async function GET(
     .select('*')
     .eq('user_id', userId)
     .single();
-  switch (gallery.tier) {
-    case "Tier 3":
-      if (subscription?.subscription != "Tier 3") {
-        blobBuffer = await blurImage(blobBuffer);
-      }
-      break;
-    case "Tier 2":
-      if (subscription?.subscription != "Tier 3" && subscription?.subscription != "Tier 2") {
-        blobBuffer = await blurImage(blobBuffer);
-      }
-      break;
-    case "Tier 1":
-      if (subscription?.subscription != "Tier 3" && subscription?.subscription != "Tier 2" && subscription?.subscription != "Tier 1") {
-        blobBuffer = await blurImage(blobBuffer);
-      }
-      break;
-    default:
-      if(gallery.nsfw){
-        blobBuffer = await blurImage(blobBuffer);
-      }
-      break;
+  // switch (gallery.tier) {
+  //   case "Tier 3":
+  //     if (subscription?.subscription != "Tier 3") {
+  //       blobBuffer = await blurImage(blobBuffer);
+  //     }
+  //     break;
+  //   case "Tier 2":
+  //     if (subscription?.subscription != "Tier 3" && subscription?.subscription != "Tier 2") {
+  //       blobBuffer = await blurImage(blobBuffer);
+  //     }
+  //     break;
+  //   case "Tier 1":
+  //     if (subscription?.subscription != "Tier 3" && subscription?.subscription != "Tier 2" && subscription?.subscription != "Tier 1") {
+  //       blobBuffer = await blurImage(blobBuffer);
+  //     }
+  //     break;
+  //   default:
+  //     if(gallery.nsfw){
+  //       blobBuffer = await blurImage(blobBuffer);
+  //     }
+  //     break;
+  // }
+  if(gallery.nsfw){
+    blobBuffer = await blurImage(blobBuffer);
   }
   const contentType = files[0].name.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const dataUrl = `data:${contentType};base64,${blobBuffer.toString('base64')}`;
