@@ -6,6 +6,7 @@
 - https://nextjs.org/docs
 - https://supabase.com/docs/guides/self-hosting/docker
 - https://www.docker.com/products/docker-desktop/
+- https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
   
 # Running Backend
@@ -26,6 +27,7 @@ http://localhost:8000/
 You will need to register and sign up, the first account on the appwrite instance will be the admin account.çConfiguration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
 
 # Running UI
+You need npm and nodejs installed. See documentation at start of document.
 1) Open your terminal and navigate to the root folder of the git repository. 
 2) Run the command `npm update`. 
 3) Once the depedencies are pulled and installed you can run the command `npm run dev` to run the application in development mode.
