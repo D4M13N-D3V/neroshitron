@@ -54,19 +54,21 @@ export async function GET(
     .select('*')
     .eq('user_id', userId)
     .single();
+    console.log(subscription)
+    console.log(gallery.tier)
     switch(gallery.tier){
       case "Tier 3":
-        if(subscription?.subscription!="Tier 3"){
+        if(subscription?.tier!="Tier 3"){
           blobBuffer = await blurImage(blobBuffer);
         }
         break;
       case "Tier 2":
-        if(subscription?.subscription!="Tier 3" && subscription?.subscription!="Tier 2"){
+        if(subscription?.tier!="Tier 3" && subscription?.tier!="Tier 2"){
           blobBuffer = await blurImage(blobBuffer);
         }
         break;
       case "Tier 1": 
-        if(subscription?.subscription!="Tier 3" && subscription?.subscription!="Tier 2" && subscription?.subscription!="Tier 1"){
+        if(subscription?.tier!="Tier 3" && subscription?.tier!="Tier 2" && subscription?.tier!="Tier 1"){
           blobBuffer = await blurImage(blobBuffer);
         }
         break;
