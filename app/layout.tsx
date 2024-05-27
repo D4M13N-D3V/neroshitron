@@ -1,7 +1,6 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import NavigationBar from "@/components/NavigationBar";
-import { Vortex } from "@/components/ui/vortex";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
