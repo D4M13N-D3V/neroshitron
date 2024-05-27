@@ -43,42 +43,46 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
     const renderButtons = () => {
         return (
-            <>
+            <div className="z-20 bottom-10 fixed pt-4 bg-purple-900 bg-opacity-40 animate-in rounded-2xl" style={{ backdropFilter: 'blur(10px)' }}>
+                <div className='grid grid-cols-4 pl-4 gap-4 pr-4'>
+                    <button
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 bg-neroshi-blue-900 hover:bg-neroshi-blue-800`}
+                        onClick={() => close()}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <button
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
+                        onClick={() => previous()}
+                        disabled={!selectedImage}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+                        </svg>
 
-                <div className="z-20 fixed left-1/3 bottom-4 w-100 h-20  bg-purple-900 bg-opacity-40 animate-in rounded-3xl" style={{ backdropFilter: 'blur(10px)' }}>
-                    <div className='grid grid-cols-4 gap-4 pl-32 pr-4 pt-4 m-1 '>
-
-                        <button
-                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
-                            onClick={() => previous()}
-                            disabled={!selectedImage}
-                        >
-                            Previous
-                        </button>
-                        <button
-                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
-                            onClick={() => next()}
-                            disabled={!selectedImage}
-                        >
-                            Next
-                        </button>
-                        <button
-                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
-                            onClick={() => selectedImage && handleDownload(selectedImage)}
-                            disabled={!selectedImage}
-                        >
-                            Download
-                        </button>
-                        <button
-                            className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
-                            onClick={() => selectedImage && open()}
-                            disabled={!selectedImage}
-                        >
-                            Open
-                        </button>
-                    </div>
+                    </button>
+                    <button
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
+                        onClick={() => next()}
+                        disabled={!selectedImage}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+                    <button
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
+                        onClick={() => selectedImage && handleDownload(selectedImage)}
+                        disabled={!selectedImage}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m9 13.5 3 3m0 0 3-3m-3 3v-6m1.06-4.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                        </svg>
+                    </button>
                 </div>
-            </>
+            </div>
         );
     };
     const handleDownload = (image: string) => {
@@ -163,28 +167,9 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
         <div >
         <div className="z-20" 
                     onClick={resetPanZoom}  style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
-            <button
-                className="fixed bg-purple-800 hover:bg-purple-700 left-1/3 ml-4 bottom-5 animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50"
-                onClick={() => close()}
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
-                >
-                    <polyline points="15 18 9 12 15 6" />
-                </svg>{" "}
-                Back
-            </button>
-
+            <div className='flex justify-center items-center pt-2 '>
             {renderButtons()}
+                </div>
             {selectedImage ? (
                 <>
                 <PanZoom
@@ -213,10 +198,11 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                         display: selectedImage ? "flex" : "block",
                         alignItems: "flex-start",
                     }}
-                >
+                >            <div className='flex justify-center items-center pt-2 '>
+
                     <Masonry
                         breakpointCols={columns}
-                        className="my-masonry-grid"
+                        className="my-masonry-grid pl-6"
                         style={{ width: selectedImage ? "50%" : "100%" }}
                     >
                         {images
@@ -229,6 +215,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                                 />
                             ))}
                     </Masonry>
+                    </div>
                     <>
                     </>
                 </div>
