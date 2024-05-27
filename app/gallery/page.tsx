@@ -91,7 +91,7 @@ function PageComponent() {
           <input
             className=" w-full md:w-1/2 text-neroshi-blue-950 h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg mx-auto"
             type="search"
-            placeholder="Search..."
+            placeholder="Search by title..."
             onChange={(e) => setSearch(e.target.value)}
           />
           <nav className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4 justify-items-center">
