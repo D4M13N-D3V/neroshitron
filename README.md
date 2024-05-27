@@ -7,7 +7,7 @@
 - https://supabase.com/docs/guides/self-hosting/docker
 - https://www.docker.com/products/docker-desktop/
 - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
-
+- https://docs.docker.com/engine/install/
   
 # Running Backend
 1) Open your terminal and navigate to the root of the git repository.
