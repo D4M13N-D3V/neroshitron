@@ -22,3 +22,4 @@ yarn-error.log*
 /coverage
 /supabase/volumes/db/data
 /supabase/volumes/storage
+supabase.zip
