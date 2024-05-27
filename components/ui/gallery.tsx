@@ -177,6 +177,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
             {renderButtons()}
             {selectedImage ? (
                 <PanZoom
+                    key={selectedImage}
                     autoCenter={true}
                 >
                     <img
