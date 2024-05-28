@@ -41,7 +41,9 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 	('00000000-0000-0000-0000-000000000000', '6f4bb32b-4690-4640-98ac-feb06384ef62', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 20:13:20.140291+00', ''),
 	('00000000-0000-0000-0000-000000000000', 'e6e8d515-e14c-48ff-8c4d-27cea84d33f3', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 20:13:20.140793+00', ''),
 	('00000000-0000-0000-0000-000000000000', 'e878d51d-2524-4796-9288-88bcf8d1982b', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 21:11:27.314657+00', ''),
-	('00000000-0000-0000-0000-000000000000', '0d3f4871-8215-4ae7-920b-c261ba7eaf11', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 21:11:27.315598+00', '');
+	('00000000-0000-0000-0000-000000000000', '0d3f4871-8215-4ae7-920b-c261ba7eaf11', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-27 21:11:27.315598+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'f70081c9-673b-4e8e-84c6-574d4a6fc095', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-28 00:06:54.425581+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'ff4e9892-902a-4e6f-9493-976acd87e5ad', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-05-28 00:06:54.426626+00', '');
 
 
 --
@@ -56,7 +58,7 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 
 INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") VALUES
 	('00000000-0000-0000-0000-000000000000', 'e11e6fda-d1fc-4b0a-bd61-80233fcb5cdd', 'authenticated', 'authenticated', 'damienostler1@gmail.com', '', NULL, '2024-05-27 15:44:27.171961+00', 'dd81fbfd6a7ad5d261d7f98fb37620afb3f954f350dacd2cac9f4b56', '2024-05-27 15:44:27.171961+00', '', NULL, '', '', NULL, NULL, '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2024-05-27 15:44:27.167772+00', '2024-05-27 15:44:27.174941+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false),
-	('00000000-0000-0000-0000-000000000000', '893c7701-d5df-4415-80bd-1ec089764400', 'authenticated', 'authenticated', 'damienostler1@outlook.com', '$2a$10$ISYdoWsKL7gxfRz7c5IKDOTsmcjNpGgg9OOApYLMOvtOoNTo4HGM6', '2024-05-27 14:10:29.639017+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-05-27 17:18:49.039562+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', NULL, '2024-05-27 14:10:29.634157+00', '2024-05-27 21:11:27.317835+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
+	('00000000-0000-0000-0000-000000000000', '893c7701-d5df-4415-80bd-1ec089764400', 'authenticated', 'authenticated', 'damienostler1@outlook.com', '$2a$10$ISYdoWsKL7gxfRz7c5IKDOTsmcjNpGgg9OOApYLMOvtOoNTo4HGM6', '2024-05-27 14:10:29.639017+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-05-27 17:18:49.039562+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', NULL, '2024-05-27 14:10:29.634157+00', '2024-05-28 00:06:54.428256+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
 
 
 --
@@ -79,7 +81,7 @@ INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "pro
 --
 
 INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag") VALUES
-	('ab123eaa-eab2-4fac-a018-82ee972401fd', '893c7701-d5df-4415-80bd-1ec089764400', '2024-05-27 17:18:49.039625+00', '2024-05-27 21:11:27.319339+00', NULL, 'aal1', NULL, '2024-05-27 21:11:27.319282', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', '192.168.65.1', NULL);
+	('ab123eaa-eab2-4fac-a018-82ee972401fd', '893c7701-d5df-4415-80bd-1ec089764400', '2024-05-27 17:18:49.039625+00', '2024-05-28 00:06:54.429202+00', NULL, 'aal1', NULL, '2024-05-28 00:06:54.429127', 'Next.js Middleware', '192.168.65.1', NULL);
 
 
 --
@@ -111,7 +113,8 @@ INSERT INTO "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "r
 	('00000000-0000-0000-0000-000000000000', 6, 'd1l7CJUy3osp97yqDTyibw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 18:17:16.201648+00', '2024-05-27 19:15:16.232194+00', 'vG2zuPl4y7OvEwgeItgotw', 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
 	('00000000-0000-0000-0000-000000000000', 7, 'jrCD6NCqj5WFyjkiWG6BTw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 19:15:16.232976+00', '2024-05-27 20:13:20.141029+00', 'd1l7CJUy3osp97yqDTyibw', 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
 	('00000000-0000-0000-0000-000000000000', 8, 'zFVkt2ATfYlYT0nzRKmX0A', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 20:13:20.141361+00', '2024-05-27 21:11:27.316138+00', 'jrCD6NCqj5WFyjkiWG6BTw', 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
-	('00000000-0000-0000-0000-000000000000', 9, 'OWwpxx1Pg11r5r4c2ZUhaw', '893c7701-d5df-4415-80bd-1ec089764400', false, '2024-05-27 21:11:27.316818+00', '2024-05-27 21:11:27.316818+00', 'zFVkt2ATfYlYT0nzRKmX0A', 'ab123eaa-eab2-4fac-a018-82ee972401fd');
+	('00000000-0000-0000-0000-000000000000', 9, 'OWwpxx1Pg11r5r4c2ZUhaw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-05-27 21:11:27.316818+00', '2024-05-28 00:06:54.426908+00', 'zFVkt2ATfYlYT0nzRKmX0A', 'ab123eaa-eab2-4fac-a018-82ee972401fd'),
+	('00000000-0000-0000-0000-000000000000', 10, 'a7ykvMnMcqG4qFeQK6WX5g', '893c7701-d5df-4415-80bd-1ec089764400', false, '2024-05-28 00:06:54.427389+00', '2024-05-28 00:06:54.427389+00', 'OWwpxx1Pg11r5r4c2ZUhaw', 'ab123eaa-eab2-4fac-a018-82ee972401fd');
 
 
 --
@@ -264,7 +267,7 @@ INSERT INTO "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 9, true);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 10, true);
 
 
 --
