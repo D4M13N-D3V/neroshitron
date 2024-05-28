@@ -89,11 +89,15 @@ function PageComponent() {
       <section className="flex items-center w-full p-8 pt-20 opacity-90 animate-in">
       {(tags.length>0) ? (
         <div className="container mx-auto py-8">
+
           <input
             className=" w-full md:w-1/2 text-neroshi-blue-950 h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg mx-auto"
             type="search"
             placeholder="Search by title..."
             onChange={(e) => setSearch(e.target.value)}
+            style={{
+              animation: 'expandFromLeft 2s ease-out forwards'
+            }}
           />
           {(tags.length>0) ? (
           <nav className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4 justify-items-center">
@@ -134,13 +138,13 @@ function PageComponent() {
                 nsfw={gallery.nsfw}
               ></GalleryThumbnail>
             </div>
-        ))}
+          ))}
       </div>
       {isOpen ? (
         <>
           <div
             className={`fixed inset-0 transition-opacity z-30 ${
-              isOpen ? "animate-in" : "fade-out"
+              isOpen ? 'animate-in' : 'fade-out'
             }`}
             aria-hidden="true"
           >
