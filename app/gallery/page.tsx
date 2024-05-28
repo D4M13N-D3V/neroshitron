@@ -123,7 +123,7 @@ function PageComponent() {
               </label>
             </div>
             {(tags.length > 0) ? (
-              <nav className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4 justify-items-center">
+              <nav className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4 justify-items-center">
                 {tags.map((tag, index) => (
                   <a
                     key={index}
