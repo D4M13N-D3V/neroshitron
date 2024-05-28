@@ -22,10 +22,7 @@ export default async function AuthButton() {
   
  
   // ...
-
-  console.log(heads)
-  const url = heads.get('next-url') 
-  if(url == null) throw new Error('No URL found')
+  const url = window.location.href;
   const urlObj = new URL(url);
   const currentPage = urlObj.pathname;
   if(user){
