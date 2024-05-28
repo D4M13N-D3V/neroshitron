@@ -7,16 +7,18 @@ interface GalleryThumbnailProps {
     title: string;
     subscription: string;
     tags: string[];
+    showNsfw: boolean;
     nsfw: boolean;
 }
 
-const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tags }: GalleryThumbnailProps) => {
+const GalleryThumbnail = ({ id, columns, onSelect, title,showNsfw, nsfw, subscription, tags }: GalleryThumbnailProps) => {
     const [galleryId, setGalleryId] = useState<string>(id);
     const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [galleryCollumns, setColumns] = useState<number>(columns);
     const [imageCount, setImageCount] = useState<number>(0);
     const [nsfwState, setNsfw] = useState<boolean>(nsfw);
+    const [showNsfwState, setShowNsfw] = useState<boolean>(showNsfw);
     const [subscriptionState, setSubscription] = useState<string>(subscription);
     const [tagsState, setTags] = useState<string[]>(tags);
     const openGallery = () => {
@@ -25,7 +27,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,nsfw, subscription, tag
 
     const getData = async () => {
         setIsLoading(true);
-        const thumbnailResponse = await fetch('/api/galleries/' + title + '/thumbnail');
+        const thumbnailResponse = await fetch('/api/galleries/' + title + '/thumbnail?nsfw=' + showNsfwState);
         const thumbnailUrl = await thumbnailResponse.text();
         const imagesCountResponse = await fetch('/api/galleries/' + title + '/images/count');
         const imageCount = await imagesCountResponse.json() as number;

@@ -12,6 +12,7 @@ function PageComponent() {
 
   const supabase = createClient();
 
+  const [showNSFW, setShowNSFW] = useState<boolean>(true);
   const [randomIds, setRandomIds] = useState<string[]>([]); // replace any with your gallery type
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [galleries, setGalleries] = useState<any[]>([]); // replace any with your gallery type
@@ -47,7 +48,7 @@ function PageComponent() {
 
   const getData = async () => {
     let { data: { user } } = await supabase.auth.getUser();
-    const galleriesResponse = await fetch(`/api/galleries?search=`+search, {
+    const galleriesResponse = await fetch(`/api/galleries?search=`+search+'&nsfw='+showNSFW, {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json'
@@ -66,7 +67,7 @@ function PageComponent() {
   useEffect(() => {
     getData();
     
-  }, [selectedTags,search]);
+  }, [selectedTags,search,showNSFW]);
 
   const handleTagClick = (tag: number) => {
     if (selectedTags.includes(tag)) {
@@ -89,16 +90,28 @@ function PageComponent() {
       <section className="flex items-center w-full p-8 pt-20 opacity-90 animate-jump-in animate-once animate-duration-500">
       {(tags.length>0) ? (
         <div className="container mx-auto py-8">
-
-          <input
-            className=" w-full md:w-1/2 text-neroshi-blue-950 h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg mx-auto"
-            type="search"
-            placeholder="Search by title..."
-            onChange={(e) => setSearch(e.target.value)}
-            style={{
-              animation: 'expandFromLeft 2s ease-out forwards'
-            }}
-          />
+<div className="relative w-full mx-auto">
+  <input
+    className="w-full text-neroshi-blue-950 h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg"
+    type="search"
+    placeholder="Search by title..."
+    onChange={(e) => setSearch(e.target.value)}
+    style={{
+      animation: 'expandFromLeft 2s ease-out forwards',
+      paddingRight: '2rem', // make room for the checkbox
+    }}
+  />
+  <label htmlFor="toggleNSFW" className="absolute right-0 top-0 h-full mr-2 flex items-center text-neroshi-blue-950 animate-fade animate-once animate-duration-500 animate-delay-[2000ms] animate-ease-out">
+    Censor NSFW
+    <input
+      id="toggleNSFW"
+      type="checkbox"
+      checked={showNSFW}
+      onChange={()=>setShowNSFW(!showNSFW)}
+      className="form-checkbox h-5 w-5 text-neroshi-blue-950 ml-2 "
+    />
+  </label>
+</div>
           {(tags.length>0) ? (
           <nav className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4 justify-items-center">
             {tags.map((tag, index) => (
@@ -128,11 +141,12 @@ function PageComponent() {
         {galleries && galleries.map((gallery, index) => (
           <div className="mx-auto">
               <GalleryThumbnail
-                key={gallery.name}
+                key={gallery.name+" "+showNSFW}
                 id={gallery.name}
                 title={gallery.name}
                 tags={gallery.tags}
                 columns={gallery.columns}
+                showNsfw={showNSFW}
                 subscription={gallery.tier as string}
                 onSelect={selectGallery}
                 nsfw={gallery.nsfw}

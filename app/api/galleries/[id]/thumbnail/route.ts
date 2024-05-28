@@ -20,7 +20,9 @@ export async function GET(
   const galleryId = params.id.toLowerCase().replace(/\s+/g, '_');
   const supabase = createClient();
   const user = await supabase.auth.getUser();
-
+  const url = new URL(request.url);
+  const search = url.searchParams.get("nsfw");
+  const nsfw = search === "true";
 
   const { data: gallery, error: galleryError } = await supabase
     .from('galleries')
@@ -49,7 +51,7 @@ export async function GET(
     .select('*')
     .eq('user_id', userId)
     .single();
-  if(gallery.nsfw){
+  if(nsfw && gallery.nsfw){
     blobBuffer = await blurImage(blobBuffer);
   }
   const contentType = files[0].name.endsWith('.png') ? 'image/png' : 'image/jpeg';
