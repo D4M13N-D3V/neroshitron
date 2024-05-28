@@ -45,7 +45,11 @@ This is where all mail being sent shows up from the application for developers.
 http://localhost:8080/
 Configuration is done through the Owncast administration page located on your server under /admin. The login username is admin and the password is your stream key, the default being abc123.
 
+# User Flow Diagram
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/57379445-8bd5-4a7e-8a15-7fa0b3ae42dc)
 
+# Database Diagram
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/3a22f05b-0de3-4f6c-9f95-06e035d03cb5)
 
 # React Components
 ## Gallery Component
@@ -68,6 +72,8 @@ The example below will load the images of the the gallery with an ID of `5820155
 ```tsx
     <Gallery id={"58201557-b392-471e-ac55-dcf6171cd18d"} closeMenu={() => setIsOpen(false)}></Gallery>
 ```
+
+
 ## GalleryThumbnail Component
 The `GalleryThumbnail` component is a React component used to display a thumbnail of a gallery. It fetches the thumbnail image from an API and displays it. When clicked, it triggers a callback function with the gallery ID.
 ### Props
