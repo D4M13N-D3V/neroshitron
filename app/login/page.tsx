@@ -89,19 +89,19 @@ export default async function Login({
         Back
       </Link>
       <input
-        className="rounded-md px-4 py-2 bg-inherit border mb-2 mx-1"
+        className="rounded-md px-4 py-2 bg-inherit border mb-2 mx-1 w-full sm:w-auto"
         name="email"
         placeholder="Email Address"
         required
       />
       <input
-        className="rounded-md px-4 py-2 bg-inherit border mb-2 mx-1"
+        className="rounded-md px-4 py-2 bg-inherit border mb-2 mx-1 w-full sm:w-auto"
         type="password"
         name="password"
         placeholder="Password "
         required
       />
-      <div className="flex">
+      <div className="flex text-white white">
         <SubmitButton
           formAction={signIn}
           className="bg-neroshi-blue-500 hover:bg-neroshi-blue-400 rounded-md px-4 py-2 text-foreground mb-2 mx-1 w-1/2"
