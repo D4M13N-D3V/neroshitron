@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <body className="bg-background text-foreground">
-        <div className="w-full fixed z-30">
+        <div className="w-full fixed z-30 text-white white">
           <NavigationBar/>
         </div>
         <main className="min-h-screen flex flex-col items-center bg-gradient-to-r from-neroshi-blue-900 to-neroshi-blue-950 overflow-hidden">
