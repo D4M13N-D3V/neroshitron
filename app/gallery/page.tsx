@@ -86,7 +86,7 @@ function PageComponent() {
           alt="Background"
         />
       </div>
-      <section className="flex items-center w-full p-8 pt-20 opacity-90 animate-in">
+      <section className="flex items-center w-full p-8 pt-20 opacity-90 animate-jump-in animate-once animate-duration-500">
       {(tags.length>0) ? (
         <div className="container mx-auto py-8">
 
@@ -104,7 +104,7 @@ function PageComponent() {
             {tags.map((tag, index) => (
               <a
                 key={index}
-                className={`w-full rounded-lg no-underline text-white py-3 px-4 font-medium text-center ${
+                className={`w-full rounded-lg no-underline text-white py-3 px-4 font-medium text-center animate-jump-in animate-once animate-duration-500 animate-ease-out ${
                   selectedTags.includes(tag.name) ? 'bg-neroshi-blue-950 hover:bg-neroshi-blue-900' : 'bg-neroshi-blue-800 hover:bg-neroshi-blue-700'
                 }`}
                 href="#"
