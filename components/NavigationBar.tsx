@@ -1,9 +1,8 @@
-
-"use client";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
 import crypto from 'crypto';
-import { useRouter } from 'next/router';
+import { headers } from "next/headers";
 
 
 export default async function AuthButton() {
@@ -14,18 +13,19 @@ export default async function AuthButton() {
   } = await supabase.auth.getUser();
 
   const signOut = async () => {
+    "use server";
 
     const supabase = createClient();
     await supabase.auth.signOut();
-    window.location.href = "/gallery";
+    return redirect("/login");
   };
 
   
  
   // ...
-  
-  const router = useRouter();
-  const currentPage = router.pathname;
+
+  const heads = headers()
+  const currentPage = heads.get('x-path')
   if(user){
     let email = user.email;
     if(email != null){
