@@ -23,7 +23,6 @@ export default async function AuthButton() {
  
   // ...
 
-  const heads = headers()
   console.log(heads)
   const url = heads.get('next-url') 
   if(url == null) throw new Error('No URL found')
