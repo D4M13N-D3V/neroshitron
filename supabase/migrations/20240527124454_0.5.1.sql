@@ -14,6 +14,7 @@ CREATE TABLE galleries (
     name text primary key,
     column_number int8,
     tier tier,
+    nsfw boolean,
     tags text[]
 );
 
