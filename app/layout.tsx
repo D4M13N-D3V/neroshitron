@@ -2,6 +2,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import NavigationBar from "@/components/NavigationBar";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -23,6 +24,7 @@ export default function RootLayout({
         <div className="w-full fixed z-30 text-white white">
           <NavigationBar/>
           <SpeedInsights/>
+          <Analytics/>
         </div>
         <main className="min-h-screen flex flex-col items-center bg-gradient-to-r from-neroshi-blue-900 to-neroshi-blue-950 overflow-hidden">
           {children}
