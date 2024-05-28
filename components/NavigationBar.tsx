@@ -1,6 +1,7 @@
-import { createClient } from "@/utils/supabase/server";
+
+"use client";
+import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
 import crypto from 'crypto';
 import { headers } from "next/headers";
 
@@ -13,11 +14,10 @@ export default async function AuthButton() {
   } = await supabase.auth.getUser();
 
   const signOut = async () => {
-    "use server";
 
     const supabase = createClient();
     await supabase.auth.signOut();
-    return redirect("/login");
+    window.location.href = "/gallery";
   };
 
   
