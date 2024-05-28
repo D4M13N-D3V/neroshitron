@@ -9,6 +9,7 @@
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@vercel/speed-insights": "^1.0.11",
     "autoprefixer": "10.4.17",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.6",
