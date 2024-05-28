@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import crypto from 'crypto';
+import { useRouter } from 'next/router';
 
 
 export default async function AuthButton() {
@@ -22,9 +23,9 @@ export default async function AuthButton() {
   
  
   // ...
-  const url = window.location.href;
-  const urlObj = new URL(url);
-  const currentPage = urlObj.pathname;
+  
+  const router = useRouter();
+  const currentPage = router.pathname;
   if(user){
     let email = user.email;
     if(email != null){
