@@ -28,7 +28,7 @@ export default async function AuthButton() {
   const url = heads.get('x-url')
   if(url == null) throw new Error('No URL found')
   const urlObj = new URL(url);
-  
+  const currentPage = urlObj.pathname;
   if(user){
     let email = user.email;
     if(email != null){
