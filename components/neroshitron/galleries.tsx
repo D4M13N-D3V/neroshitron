@@ -41,7 +41,7 @@ const Galleries = ({ nsfw, tags, search }:TagProps) => {
 
     return (
         <div className="absolute inset-0 mx-auto ml-16 md:ml-0 pt-48 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-60 gap-x-4 animate-in overflow-y-scroll no-scrollbar z-0">
-            {galleries && galleries.map((gallery, index) => (
+            {galleries && galleries.map((gallery:any, index) => (
                 <GalleryThumbnail
                     key={gallery.name + " " + nsfw}
                     id={gallery.name}
