@@ -50,8 +50,8 @@ const TagSelector = forwardRef<TagSelectorProps, { selectedTagsInput: string[], 
     }, []);
 
     return (
-        <div className="flex md:w-full lg:w-1/2 animate-in mx-auto pt-4">
-            <div className="grid grid-cols-6 gap-4 w-full mx-auto pt-4 bg-neroshi-blue-900 pr-8 pb-4 rounded-md opacity-75 backdrop-filter backdrop-blur-md">
+        <div className="animate-in flex md:w-full lg:w-1/2 animate-in mx-auto pt-4">
+            <div className="grid grid-cols-5 gap-4 w-full mx-auto pt-4 bg-neroshi-blue-900 pr-8 pb-4 rounded-md opacity-75 backdrop-filter backdrop-blur-md">
                 {tags.map((tag: any) => (
                     <Tag key={tag.name} tag={tag.name} selected={selectedTags.includes(tag.name)} onTagClicked={(tag) => handleTag(tag)} />
                 ))}
