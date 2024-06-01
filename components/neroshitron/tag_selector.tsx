@@ -3,15 +3,14 @@ import React, { forwardRef, useState, useEffect } from 'react';
 import Tag from './tag_pill';
 
 interface TagSelectorProps { 
-    tagsInput: any[],
     tagSearch: string,
     selectedTagsInput: string[],
     tagsChanged: (tags: string[]) => void
  }
 
-const TagSelector = forwardRef<TagSelectorProps, {tagsInput:any[], tagSearch: string, selectedTagsInput: string[], tagsChanged: (tags: string[]) => void }>((props, ref) => {
+const TagSelector = forwardRef<TagSelectorProps, {tagSearch: string, selectedTagsInput: string[], tagsChanged: (tags: string[]) => void }>((props, ref) => {
 
-    const [tags, setTags] = useState<any[]>(props.tagsInput);
+    const [tags, setTags] = useState<any[]>([]);
     const [tagSearch, setTagSearch] = useState<string>(props.tagSearch);
     const [selectedTags, setSelectedTags] = useState<string[]>(props.selectedTagsInput);
 
@@ -26,14 +25,25 @@ const TagSelector = forwardRef<TagSelectorProps, {tagsInput:any[], tagSearch: st
         setTags(selectedTags);
     };
 
-
     const getData = async () => {
-    }
-
+        const tagsResponse = await fetch(`/api/galleries/tags`);
+        const tagsData = await tagsResponse.json();
+        setTags(tagsData);
+      }
+      
+      useEffect(() => {
+          props.tagsChanged(selectedTags);
+          getData();
+      }, [selectedTags,tagSearch]);
+      
     useEffect(() => {
         props.tagsChanged(selectedTags);
         getData();
-    }, [selectedTags,tagSearch,tags]);
+    }, [selectedTags,tagSearch]);
+
+    useEffect(() => {
+        getData();
+    }, []);
     
     const generateRandomString = () => {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -43,17 +53,19 @@ const TagSelector = forwardRef<TagSelectorProps, {tagsInput:any[], tagSearch: st
         }
         return result;
     };
+    console.log(tags.length)
         return (
-            (tags.length > 0)? (
-                <div className="animate-in flex md:w-full animate-in pt-4 justify-center items-center">
+
+            <div className="animate-in flex md:w-full animate-in pt-4 justify-center items-center">
+            {(tags.length > 0) && (
                     <div className="z-10 grid p-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1 w-full max-h-96 overflow-y-scroll pt-4 bg-neroshi-blue-900 rounded-md opacity-90 backdrop-filter backdrop-blur-md mx-auto">
-                    {props.tagsInput.map((tag: any) => (
+                    {tags.map((tag: any) => (
                             (tagSearch === '' || tag.name.toLowerCase().includes(tagSearch.toLowerCase())) && // Updated condition
-                            <Tag key={generateRandomString()} tag={tag.name} selected={selectedTags.includes(tag.name)} onTagClicked={(tag) => handleTag(tag)} />
+                            <Tag  tag={tag.name} selected={selectedTags.includes(tag.name)} onTagClicked={(tag) => handleTag(tag)} />
                         ))}
-                    </div>
-                </div>
-            ):(<></>)
+                    </div>  
+            )}
+            </div>
         );
 });
 

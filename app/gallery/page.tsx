@@ -2,17 +2,24 @@
 import { createClient } from "@/utils/supabase/client";
 import React, { useState, useEffect } from 'react';
 import Search from "@/components/neroshitron/search";
+import Gallery from "@/components/neroshitron/gallery";
 
 function PageComponent() {
 
+  const [selectedGallery, setSelectedGallery] = useState<string | null>(null);
   const supabase = createClient();
 
   const getData = async () => {
   }
-  
+
   useEffect(() => {
     getData();
-  }, []);
+    console.log(selectedGallery)
+  }, [selectedGallery]);
+
+   const closeGallery = () => {
+    setSelectedGallery(null);
+   }
 
 
   return (
@@ -24,7 +31,31 @@ function PageComponent() {
           alt="Background"
         />
       </div>
-        <Search/>
+        <Search gallerySelected={(gallery:string)=>{setSelectedGallery(gallery)}}/>
+
+       {selectedGallery!=null ? (
+         <>
+           {/*
+                 This is the modal for holding the gallery
+           */}
+           <div
+             className={`fixed inset-0 transition-opacity z-30 animate-in`}
+             aria-hidden="true"
+           >
+             <div
+               className="absolute inset-0 bg-neroshi-blue-900 opacity-70 z-30"
+               onClick={() => closeGallery()}
+             ></div>
+             <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">
+               <Gallery
+                 id={selectedGallery as string}
+                 columns={3}
+                 closeMenu={() => closeGallery()}
+               ></Gallery>
+             </div>
+           </div>
+         </>
+       ) : null}
     </div>
   );
 }
