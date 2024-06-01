@@ -50,12 +50,6 @@ const TagSelector = forwardRef<TagSelectorProps, {tagsInput:any[], tagSearch: st
                     {props.tagsInput.map((tag: any) => (
                             (tagSearch === '' || tag.name.toLowerCase().includes(tagSearch.toLowerCase())) && // Updated condition
                             <Tag key={generateRandomString()} tag={tag.name} selected={selectedTags.includes(tag.name)} onTagClicked={(tag) => handleTag(tag)} />
-                        ))}{props.tagsInput.map((tag: any) => (
-                            (tagSearch === '' || tag.name.toLowerCase().includes(tagSearch.toLowerCase())) && // Updated condition
-                            <Tag key={generateRandomString()} tag={tag.name} selected={selectedTags.includes(tag.name)} onTagClicked={(tag) => handleTag(tag)} />
-                        ))}{props.tagsInput.map((tag: any) => (
-                            (tagSearch === '' || tag.name.toLowerCase().includes(tagSearch.toLowerCase())) && // Updated condition
-                            <Tag key={generateRandomString()} tag={tag.name} selected={selectedTags.includes(tag.name)} onTagClicked={(tag) => handleTag(tag)} />
                         ))}
                     </div>
                 </div>
