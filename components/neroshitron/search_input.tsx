@@ -1,6 +1,7 @@
 "use client;"
 import React, { useState, useEffect, useRef,forwardRef } from 'react';
 import TagSelector from '../neroshitron/tag_selector';
+import Select from 'react-select';
 
 interface SearchInputProps {
   tagsChanged: (tags: string[]) => void;
@@ -10,7 +11,21 @@ interface SearchInputProps {
 
 const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProps) => {
 
-  const [search, setSearch] = useState<string>('');
+  const AutocompleteDropdown = ({ tags }: { tags: any[] }) => {
+    const options = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
+    return (
+      <div className="w-full max-w-xs mx-auto">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor={"tags"}>
+        
+        </label>
+        <Select 
+          className="text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id={"tags"}
+          options={options}
+        />
+      </div>
+    );
+  };
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -18,6 +33,11 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
   const tagSelectorRef = React.useRef(null);
   const [tags, setTags] = useState<any[]>([]);
 
+  const getData = async () => {
+    const tagsResponse = await fetch(`/api/galleries/tags`);
+    const tagsData = await tagsResponse.json();
+    setTags(tagsData);
+  }
 
   const updateTags = (newTags: string[]) => {
     setSelectedTags(newTags)
@@ -35,18 +55,17 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
   }
 
   useEffect(() => {
-    searchChanged(search);
-  }, [search]);
-  useEffect(() => {
     tagsChanged(selectedTags);
   }, [selectedTags]);
   useEffect(() => {
     nsfwChanged(nsfw);
   }, [nsfw]);
   useEffect(() => {
+    getData();
   }, []);
 
-
+  const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
+  console.log(tagOptions)
   return (
     <>
       <div className="relative md:w-full lg:w-1/2 mx-auto flex flex-col items-center justify-center z-10">
@@ -67,20 +86,22 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
             )
             :(       
               <>
-              <input autoFocus value={search} onChange={(e) => setSearch(e.target.value)} className="rounded-l-md h-16 bg-gray-100 text-grey-darker py-2 font-normal text-grey-darkest border border-gray-100 font-bold w-full py-1 px-2 outline-none text-lg text-gray-600" type="text" placeholder="Looking for a specific collection?" />
-
-              <span className="flex items-center bg-gray-100  rounded rounded-l-none border-0 px-3 font-bold text-grey-100">
-              <div className="relative">
+              <Select isMulti autoFocus options={tagOptions} onChange={ (newValue) =>{
+                if(newValue){
+                  setSelectedTags(newValue.map((option: { value: string }) => option.value));
+                }}}  placeholder="Start typing to search tags..." className='w-full' />
+              <span className="flex items-center rounded rounded-l-none border-0 px-3 font-bold text-grey-100">
+              {/* <div className="relative">
                 <button key="tags" data-tip={selectedTags.join(',')} onClick={()=>{openTags()}} type="button" className={`bg-neroshi-blue-900 hover:bg-neroshi-blue-800 text-lg text-white font-bold py-3 px-6 rounded ${selectedTags.length == 0 ? 'animate-pulse animate-infinite animate-ease-out' : 'animate-in'}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" />
                   </svg>
                 </button>
-                <span className="absolute top-8 left-14 inline-block w-6 h-6 text-xs bg-pink-800 text-white rounded-full flex items-center justify-center">
+                <span className="absolute top-8 left-14 inline-block w-6 h-6 </svg>text-xs bg-pink-800 text-white rounded-full flex items-center justify-center">
                   {selectedTags.length}
                 </span>
-              </div>
+              </div> */}
   
   
                 <button 
