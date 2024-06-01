@@ -34,11 +34,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
     }
   }
 
-  const getData = async () => {
-    const tagsResponse = await fetch(`/api/galleries/tags`);
-    const tagsData = await tagsResponse.json();
-    setTags(tagsData);
-  }
   useEffect(() => {
     searchChanged(search);
   }, [search]);
@@ -49,7 +44,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
     nsfwChanged(nsfw);
   }, [nsfw]);
   useEffect(() => {
-    getData();
   }, []);
 
 
@@ -101,7 +95,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
         </div>
       </div>
       {(selectingTags) && 
-      <TagSelector tagsInput={tags} key={tagSearch} tagSearch={tagSearch} tagsChanged={(newTags:string[])=>{ updateTags(newTags) }} selectedTagsInput={selectedTags} ref={tagSelectorRef} />}
+      <TagSelector key={tagSearch} tagSearch={tagSearch} tagsChanged={(newTags:string[])=>{ updateTags(newTags) }} selectedTagsInput={selectedTags} ref={tagSelectorRef} />}
     </>
   );
 };
