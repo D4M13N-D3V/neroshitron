@@ -56,9 +56,9 @@ const TagSelector = forwardRef<TagSelectorProps, {tagSearch: string, selectedTag
     console.log(tags.length)
         return (
 
-            <div className="animate-in flex md:w-full animate-in pt-4 justify-center items-center">
+            <div className="flex md:w-full pt-4 justify-center items-center">
             {(tags.length > 0) && (
-                    <div className="z-10 grid p-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1 w-full max-h-96 overflow-y-scroll pt-4 bg-neroshi-blue-900 rounded-md opacity-90 backdrop-filter backdrop-blur-md mx-auto">
+                    <div className="z-10 grid p-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-1 w-full max-h-96 overflow-y-scroll no-scrollbar pt-4 bg-neroshi-blue-900 rounded-md opacity-90 backdrop-filter backdrop-blur-md mx-auto">
                     {tags.map((tag: any) => (
                             (tagSearch === '' || tag.name.toLowerCase().includes(tagSearch.toLowerCase())) && // Updated condition
                             <Tag  tag={tag.name} selected={selectedTags.includes(tag.name)} onTagClicked={(tag) => handleTag(tag)} />
