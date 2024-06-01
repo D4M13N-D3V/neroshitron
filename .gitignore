@@ -23,3 +23,7 @@ yarn-error.log*
 /supabase/volumes/db/data
 /supabase/volumes/storage
 supabase.zip
+.idea/workspace.xml
+.idea/copilot/chatSessions/xd.lck
+.idea/copilot/chatSessions/blobs/version
+.idea/copilot/chatSessions/00000000000.xd

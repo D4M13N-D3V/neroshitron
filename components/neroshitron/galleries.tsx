@@ -6,9 +6,10 @@ interface TagProps {
     nsfw: boolean;
     tags: string[];
     search: string;
+    gallerySelected: (gallery: string) => void;
 }
 
-const Galleries = ({ nsfw, tags, search }:TagProps) => {
+const Galleries = ({ nsfw, tags, search, gallerySelected }:TagProps) => {
 
     const [galleries, setGalleries] = useState([]);
     const [nsfwState, setNsfwState] = useState<boolean>(nsfw);
@@ -19,6 +20,7 @@ const Galleries = ({ nsfw, tags, search }:TagProps) => {
 
     const selectGallery = (gallery: string) => {
         setSelectedGallery(gallery);
+        gallerySelected(gallery);   
     };
 
     console.log(tags)
