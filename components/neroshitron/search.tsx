@@ -9,7 +9,6 @@ const Search = ({ }:SearchProps) => {
   const [tags, setTags] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
-  const [selectingTags, setSelectingTags] = useState<boolean>(false);
 
   const getData = async () => {
   }
