@@ -12,18 +12,11 @@ interface GalleryProps {
 
 const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
-    const [isSingle, setIsSingle] = useState<boolean>(false);
-    const [loaded, setLoaded] = useState({})
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [images, setImages] = useState<string[]>([]);
     const [galleryId, setGalleryId] = useState(id as string);
     const [currentIndex, setCurrentIndex] = useState(0);
-
-    const getData = async () => {
-        const thumbnailResponse = await fetch('/api/galleries/' + String(galleryId) + '/images');
-        const thumbnailUrl = await thumbnailResponse.json() as string[];
-        setImages(thumbnailUrl);
-    }
+    const panZoomRef = useRef<any>(null);
 
     const next = () => {
         if (currentIndex < images.length - 1) {
@@ -40,6 +33,76 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
             setCurrentIndex(images.length - 1);
         }
     }
+
+    const handleDownload = (image: string) => {
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'image.jpg';  // or any other filename
+        link.style.display = 'none';
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    const getData = async () => {
+        const thumbnailResponse = await fetch('/api/galleries/' + String(galleryId) + '/images');
+        const thumbnailUrl = await thumbnailResponse.json() as string[];
+        setImages(thumbnailUrl);
+    }
+
+    useEffect(() => {
+        getData();
+        const handleKeyDown = (event: KeyboardEvent) => {
+            switch (event.key) {
+                case 'ArrowLeft':
+                case 'a':
+                case 'A':
+                    previous();
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                case 'D':
+                    next();
+                    break;
+                case 'Escape':
+                    close();
+                    break;
+                default:
+                    break;
+            }
+        };
+
+        setSelectedImage(images[currentIndex]);
+        window.addEventListener('keydown', handleKeyDown);
+
+        // Clean up the event listener when the component is unmounted
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+
+    }, [selectedImage, currentIndex]);
+
+    const handleClick = (image: string) => {
+        setSelectedImage(image);
+        setCurrentIndex(images.indexOf(image));
+    };
+
+    const resetPanZoom = (event: any) => {
+        if (panZoomRef.current && event.target.id != "image-container") {
+            panZoomRef.current.autoCenter();
+        }
+    };
+
+    const close = () => {
+        if (selectedImage != null) {
+            setSelectedImage(null);
+            setImages([]);
+        }
+        else {
+            closeMenu();
+        }
+    };
 
     const renderButtons = () => {
         return (
@@ -85,142 +148,59 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
             </div>
         );
     };
-    const handleDownload = (image: string) => {
-        const link = document.createElement('a');
-        link.href = image;
-        link.download = 'image.jpg';  // or any other filename
-        link.style.display = 'none';
 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
-    useEffect(() => {
-        getData();
-        const handleKeyDown = (event: KeyboardEvent) => {
-            switch (event.key) {
-                case 'ArrowLeft':
-                case 'a':
-                case 'A':
-                    previous();
-                    break;
-                case 'ArrowRight':
-                case 'd':
-                case 'D':
-                    next();
-                    break;
-                case 'Escape':
-                    close();
-                    break;
-                default:
-                    break;
-            }
-        };
-
-        setSelectedImage(images[currentIndex]);
-        window.addEventListener('keydown', handleKeyDown);
-
-        // Clean up the event listener when the component is unmounted
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-
-    }, [selectedImage,currentIndex]);
-
-    const handleClick = (image: string) => {
-        setSelectedImage(image);
-        setCurrentIndex(images.indexOf(image));
-    };
-
-    const open = () => {
-        if (selectedImage === null) return;
-        //console.log(selectedImage)
-        let base64Image = selectedImage.split(';base64,').pop();
-        if (!base64Image) return;
-        let blob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], { type: 'image/jpeg' }); // adjust the type as needed
-        let url = URL.createObjectURL(blob);
-        window.open(url, '_blank');
-    }
-
-    const panZoomRef = useRef<any>(null);
-  
-    const resetPanZoom = (event: any) => {
-        if (panZoomRef.current &&  event.target.id != "image-container") {
-          panZoomRef.current.autoCenter();
-        }   
-      };
-
-    const close = () => {
-        if (selectedImage != null) {
-            setSelectedImage(null);
-            setImages([]);
-        }
-        else {
-            closeMenu();
-        }
-    }
-
-    const breakpointColumnsObj = {
-        default: 3
-    };
     return (
         <div >
-        <div className="z-20" 
-                    onClick={resetPanZoom}  style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
-            <div className='flex justify-center items-center pt-2 pb-20'>
-            {renderButtons()}
+            <div className="z-20"
+                onClick={resetPanZoom} style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
+                <div className='flex justify-center items-center pt-2 pb-20'>
+                    {renderButtons()}
                 </div>
-            {selectedImage ? (
-                <>
-                <PanZoom
-                    key={selectedImage}
-                    autoCenter={true}
-                    ref={panZoomRef}
-                >
-{/* 
-<div 
-                onClick={() => resetPanZoom()} className='w-full h-full z-10'>
-                </div> */}
-                <div id="image-container" >
-                    <img
-                        src={images[currentIndex]}
-                        style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)", pointerEvents:"none" }}
-                        className="cursor-pointer animate-in w-full h-auto"
-                    >
-                    </img>
-                </div>
-                </PanZoom>
-                </>
-            ) : (
-                <div
-                    className="z-30"
-                    style={{
-                        display: selectedImage ? "flex" : "block",
-                        alignItems: "flex-start",
-                    }}
-                >            <div className='flex justify-center items-center pt-2 '>
-
-                    <Masonry
-                        breakpointCols={columns}
-                        className="my-masonry-grid pl-6 "
-                        style={{ width: selectedImage ? "50%" : "100%" }}
-                    >
-                        {images
-                            .filter((img) => img !== selectedImage)
-                            .map((image, index) => (
-                                <img
-                                    src={image}
-                                    onClick={() => handleClick(image)}
-                                    className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
-                                />
-                            ))}
-                    </Masonry>
-                    </div>
+                {selectedImage ? (
                     <>
+                        <PanZoom
+                            key={selectedImage}
+                            autoCenter={true}
+                            ref={panZoomRef}
+                        >
+                            <div id="image-container" >
+                                <img
+                                    src={images[currentIndex]}
+                                    style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "calc(100vh - 20px)", pointerEvents: "none" }}
+                                    className="cursor-pointer animate-in w-full h-auto"
+                                >
+                                </img>
+                            </div>
+                        </PanZoom>
                     </>
-                </div>
-            )}
-        </div>
+                ) : (
+                    <div
+                        className="z-30"
+                        style={{
+                            display: selectedImage ? "flex" : "block",
+                            alignItems: "flex-start",
+                        }}
+                    >            <div className='flex justify-center items-center pt-2 '>
+
+                            <Masonry
+                                breakpointCols={columns}
+                                className="my-masonry-grid pl-6 "
+                                style={{ width: selectedImage ? "50%" : "100%" }}
+                            >
+                                {images
+                                    .filter((img) => img !== selectedImage)
+                                    .map((image, index) => (
+                                        <img
+                                            src={image}
+                                            onClick={() => handleClick(image)}
+                                            className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
+                                        />
+                                    ))}
+                            </Masonry>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
