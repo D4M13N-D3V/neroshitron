@@ -4,23 +4,27 @@ import { on } from 'events';
 import TagSelector from '../neroshitron/tag_selector';
 
 interface SearchInputProps {
-
+  tagsChanged: (tags: string[]) => void;
+  searchChanged: (search: string) => void;
+  nsfwChanged: (nsfw: boolean) => void;
 }
 
-const SearchInput = ({ }: SearchInputProps) => {
+const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProps) => {
 
   const [search, setSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectingTags, setSelectingTags] = useState<boolean>(false);
   const tagSelectorRef = React.useRef(null);
-  
+
+
+  const updateTags = (newTags: string[]) => {
+    setSelectedTags(newTags)
+    tagsChanged(newTags);
+  }
+
   const onTagsClosed = (tags:string[]) => {
-    if(tagSelectorRef.current !== null){
-      setSelectedTags((tagSelectorRef.current as any).getSelectedTags());
-    }
     setSelectingTags(false);
-    setSelectedTags(tags);
   }
 
   const openTags = () => {
@@ -29,6 +33,14 @@ const SearchInput = ({ }: SearchInputProps) => {
       onTagsClosed(selectedTags);
     }
   }
+
+  const getData = async () => {
+    setSelectedTags(selectedTags)
+  }
+
+  useEffect(() => {
+    getData();
+  }, [selectedTags]);
 
   return (
     <>
@@ -48,7 +60,7 @@ const SearchInput = ({ }: SearchInputProps) => {
           </div>
         </div>
       </div>
-      {(selectingTags) && <TagSelector ref={tagSelectorRef} />}
+      {(selectingTags) && <TagSelector tagsChanged={(newTags:string[])=>{ updateTags(newTags) }} selectedTagsInput={selectedTags} ref={tagSelectorRef} />}
     </>
   );
 };

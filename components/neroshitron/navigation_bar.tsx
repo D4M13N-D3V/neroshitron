@@ -20,10 +20,6 @@ export default async function AuthButton() {
     return redirect("/login");
   };
 
-  
- 
-  // ...
-
   const heads = headers()
   const currentPage = heads.get('x-path')
 
