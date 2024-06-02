@@ -58,7 +58,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
     getData();
   }, []);
 
-  const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
+  const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: "🏷️"+tag.name }));
   return (
     <>
       <div className="relative md:w-full lg:w-2/3 mx-auto flex flex-col items-center justify-center z-10">
