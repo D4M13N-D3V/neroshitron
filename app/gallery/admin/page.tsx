@@ -44,7 +44,7 @@ function PageComponent() {
 
     return (
         <div className="w-full h-1/2 text-white flex justify-center items-center animate-in">
-        <div className="w-full lg:w-1/3 rounded-md bg-primary p-12 m-1 mt-32 shadow-lg">
+        <div className="w-full lg:w-1/3 rounded-md bg-primary opacity-90 p-12 m-1 mt-32 shadow-lg backdrop-blur">
             <div className="w-full flex">
                 <input type="text" className="mb-8 mr-2 rounded-md bg-secondary p-2 w-1/2 text-white shadow-lg" placeholder="Tag Name" />
                 <button  className="ml-2 shadow-lg w-1/2 h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
@@ -80,7 +80,7 @@ function PageComponent() {
             </table>
             </div>
         </div>
-        <div className="w-full lg:w-1/2 rounded-md bg-primary p-12 m-1 mt-32 shadow-lg">
+        <div className="w-full lg:w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-12 m-1 mt-32 shadow-lg">
             <div className="w-full flex">
                 <SearchInput placeholderTags={[
                     { value: "tags", label: "❗️ click here to add tags to search" }

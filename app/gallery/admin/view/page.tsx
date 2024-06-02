@@ -14,7 +14,7 @@ function PageComponent() {
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
-            <div className="w-full lg:w-1/2 rounded-md bg-primary p-12 mt-32 shadow-lg  ">
+            <div className="w-full lg:w-1/2 rounded-md opacity-90 backdrop-blur-lg bg-primary p-12 mt-32 shadow-lg  ">
                 <div className="w-full flex pb-48">
                 <GalleryThumbnail id={"Test Gallery"} columns={3} onSelect={function (id: string, columns: number): void {
                 } } title={""} subscription={""} tags={[]} showNsfw={false} nsfw={false} ></GalleryThumbnail>

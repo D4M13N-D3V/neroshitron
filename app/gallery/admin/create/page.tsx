@@ -44,7 +44,7 @@ function PageComponent() {
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
-            <div className="w-1/2 rounded-md bg-primary p-12 mt-32 shadow-lg">
+            <div className="w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-12 mt-32 shadow-lg">
                 <div className="w-full flex">
                     <input
                         type="text"

@@ -37,8 +37,8 @@ function PageComponent() {
   return (
     
     <div className="w-full text-white flex justify-center items-center animate-in">
-        <div className="w-2/3 rounded-md bg-primary p-12 mt-32 shadow-lg">
-          <div className="w-1/2 rounded-md bg-primary-dark p-12 shadow-lg">
+        <div className="w-2/3 rounded-md bg-primary p-12 mt-32 shadow-lg opacity-90 backdrop-blur-lg">
+          <div className="w-1/2 rounded-md bg-primary-dark p-12 shadow-lg opacity-90 backdrop-blur-lg">
             <input type="text" className="mb-4 mr-2 rounded-md bg-primary p-2 w-full text-white" placeholder="Search all users by email" />
             <div className="w-full h-96 overflow-y-scroll no-scrollbar">
             <table className="w-full">
