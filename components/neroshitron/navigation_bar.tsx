@@ -89,7 +89,9 @@ console.log(currentPage)
                     <span className="hidden lg:block">Logout</span>
                   </button>
                 </form>
-                <img src={url} alt="Profile" className="w-10 h-10 object-cover rounded-full cursor-pointer" />
+                <a href="https://gravatar.com/" target="_blank">
+                  <img src={url} alt="Profile" className="w-10 h-10 object-cover rounded-full cursor-pointer" />
+                </a>
               </>
             ) : (
               <Link
