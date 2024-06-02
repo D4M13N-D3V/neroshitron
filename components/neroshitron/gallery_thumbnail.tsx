@@ -41,8 +41,8 @@ const GalleryThumbnail = ({ id, columns, onSelect, title,showNsfw, nsfw, subscri
     }, [galleryId]);
 
     return (
-        <div className="py-3 sm:max-w-xl sm:mx-auto flex-3 animate-fade-up animate-once animate-duration-1000 animate-ease-out animate-normal animate-fill-forwards">
-            <div className="h-48 overflow-visible w-full relative hover:scale-95 rounded-3xl">
+        <div className=" py-3 sm:max-w-xl sm:mx-auto flex-3 animate-fade-up animate-once animate-duration-1000 animate-ease-out animate-normal animate-fill-forwards">
+            <div className="h-48 overflow-visible w-full relative hover:scale-95 rounded-3xl" style={{ cursor: 'pointer' }}>
                 {!isLoading ? (
                     <>
                         <img
