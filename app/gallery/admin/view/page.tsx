@@ -14,7 +14,7 @@ function PageComponent() {
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
-            <div className="w-full lg:w-1/2 rounded-md bg-primary p-12 mt-32">
+            <div className="w-full lg:w-1/2 rounded-md bg-primary p-12 mt-32 shadow-lg  ">
                 <div className="w-full flex pb-48">
                 <GalleryThumbnail id={"Test Gallery"} columns={3} onSelect={function (id: string, columns: number): void {
                 } } title={""} subscription={""} tags={[]} showNsfw={false} nsfw={false} ></GalleryThumbnail>
@@ -54,19 +54,19 @@ function PageComponent() {
                         />
                     </div>
                     <div className="w-1/2">
-                        <select className="mb-2 rounded-md bg-secondary p-2 w-full text-white">
+                        <select className="mb-2 shadow-lg rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled selected> </option>
                             {filePreviews.map((preview, index) => (
                                 <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
                             ))}
                         </select>
-                        <select className="mb-2 mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                        <select className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled selected>Select New Tier</option>
                             {filePreviews.map((preview, index) => (
                                 <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
                             ))}
                         </select>
-                        <select className="mb-2 mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                        <select className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled selected>Select New Thumbnail</option>
                             {filePreviews.map((preview, index) => (
                                 <option key={index} value={preview}>{`Thumbnail ${index}`}</option>

@@ -44,20 +44,20 @@ function PageComponent() {
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
-            <div className="w-1/2 rounded-md bg-primary p-12 mt-32">
+            <div className="w-1/2 rounded-md bg-primary p-12 mt-32 shadow-lg">
                 <div className="w-full flex">
                     <input
                         type="text"
-                        className="mb-8 mr-2 rounded-md bg-secondary p-2 w-1/2 text-white"
+                        className="mb-8 mr-2 rounded-md bg-secondary p-2 w-1/2 text-white shadow-lg"
                         placeholder="Gallery Name"
                     />
                     <div className="w-1/4">
-                        <button  onClick={() => window.location.href = "/gallery/admin"}  className="w-full bg-error hover:bg-error-light text-white rounded-md p-2">
+                        <button  onClick={() => window.location.href = "/gallery/admin"}  className="w-full bg-error hover:bg-error-light text-white rounded-md p-2 shadow-lg">
                             Back
                         </button>
                     </div>
                     <div className="w-1/4">
-                        <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-2">
+                        <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-2 shadow-lg    ">
                             Create Gallery
                         </button>
                     </div>

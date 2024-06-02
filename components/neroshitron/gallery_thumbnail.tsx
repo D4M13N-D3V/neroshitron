@@ -46,7 +46,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscr
                 {!isLoading ? (
                     <>
                         <img
-                            className={`aspect-content rounded-3xl`}
+                            className={`aspect-content rounded-3xl  shadow-lg`}
                             src={thumbnailUrl}
                             alt=""
                             onClick={openGallery}

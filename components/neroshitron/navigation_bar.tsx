@@ -39,7 +39,7 @@ console.log(currentPage)
 
   return (
     <div className="flex justify-center items-center pt-2 ">
-      <nav className="w-auto bg-primary-dark bg-opacity-40  flex justify-center z-10 h-16 animate-in rounded-md" style={{ backdropFilter: 'blur(10px)' }}>
+      <nav className="w-auto bg-primary-dark bg-opacity-40  flex justify-center z-10 h-16 animate-in rounded-md  shadow-lg" style={{ backdropFilter: 'blur(10px)' }}>
         <div className="w-auto flex justify-between items-center p-3 text-sm">
           <div className="flex items-center gap-2 z-10">
 
