@@ -14,8 +14,6 @@ const TagSelector = forwardRef<TagSelectorProps, { tagSearch: string, selectedTa
     const [tagSearch, setTagSearch] = useState<string>(props.tagSearch);
     const [selectedTags, setSelectedTags] = useState<string[]>(props.selectedTagsInput);
 
-    console.log()
-
     const handleTag = (tag: string) => {
         if (selectedTags.includes(tag)) {
             setSelectedTags(selectedTags.filter(t => t !== tag));

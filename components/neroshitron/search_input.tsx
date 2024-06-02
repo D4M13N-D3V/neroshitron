@@ -56,7 +56,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
   }, []);
 
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
-  console.log(tagOptions)
   return (
     <>
       <div className="relative md:w-full lg:w-1/2 mx-auto flex flex-col items-center justify-center z-10">
@@ -92,12 +91,13 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
                         setSelectedTagsInput([value])
                       }
                     }}
-                    value={selectedTagsInput} primaryColor={'neroshi-blue'} />
+                    value={selectedTagsInput} 
+                    primaryColor={"indigo"} />
                   <span className="flex items-center rounded rounded-l-none border-0 px-3 font-bold text-grey-100">
                     <button
                       onClick={() => { setNsfw(!nsfw) }}
                       type="button"
-                      className={`animate-in text-sm text-white font-bold py-1 w-16 px-2 rounded ml-2 ${nsfw ? "bg-pink-900 hover:bg-pink-800" : "bg-green-900 hover:bg-green-800"}`}
+                      className={`animate-in text-sm text-white font-bold py-1 w-16 px-2 rounded ml-2 ${nsfw ? "bg-error hover:bg-error-light" : "bg-success hover:bg-success-light"}`}
 
                     >
                       {nsfw ? "NSFW" : "SFW"}

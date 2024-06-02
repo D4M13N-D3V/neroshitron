@@ -30,7 +30,6 @@ export default async function Login({
       password,
     });
 
-    //console.log(error);
     if (error) {
       return redirect("/login?message=Could not authenticate user");
     }
@@ -54,7 +53,6 @@ export default async function Login({
       },
     });
 
-    //console.log(error);
     if (error) {
       return redirect("/login?message=Could not authenticate user");
     }
@@ -104,14 +102,14 @@ export default async function Login({
       <div className="flex text-white white">
         <SubmitButton
           formAction={signIn}
-          className="bg-neroshi-blue-500 hover:bg-neroshi-blue-400 rounded-md px-4 py-2 text-white mb-2 mx-1 w-1/2"
+          className="bg-success hover:bg-success-light rounded-md px-4 py-2 text-white mb-2 mx-1 w-1/2"
           pendingText="Signing In..."
         >
           Sign In
         </SubmitButton>
         <SubmitButton
           formAction={signUp}
-          className="bg-neroshi-blue-300 hover:bg-neroshi-blue-200 border border-foreground/20 rounded-md px-4 py-2 text-white mb-2 mx-1 w-1/2"
+          className="bg-info hover:bg-info-light border border-foreground/20 rounded-md px-4 py-2 text-white mb-2 mx-1 w-1/2"
           pendingText="Signing Up..."
         >
           Sign Up

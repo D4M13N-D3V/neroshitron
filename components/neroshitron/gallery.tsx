@@ -106,10 +106,10 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
     const renderButtons = () => {
         return (
-            <div className="z-20 bottom-10 fixed pt-4 bg-purple-900 bg-opacity-40 animate-in rounded-2xl" style={{ backdropFilter: 'blur(10px)' }}>
+            <div className="z-20 bottom-10 fixed text-white pt-4 bg-primary bg-opacity-90 animate-in rounded-2xl" style={{ backdropFilter: 'blur(10px)' }}>
                 <div className='grid grid-cols-4 pl-4 gap-4 pr-4'>
                     <button
-                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 bg-neroshi-blue-900 hover:bg-neroshi-blue-800`}
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 bg-error hover:bg-error-light`}
                         onClick={() => close()}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -117,7 +117,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                         </svg>
                     </button>
                     <button
-                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-secondary hover:bg-secondary-light'}`}
                         onClick={() => previous()}
                         disabled={!selectedImage}
                     >
@@ -127,7 +127,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
                     </button>
                     <button
-                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-pink-700 hover:bg-pink-600'}`}
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-secondary hover:bg-secondary-light'}`}
                         onClick={() => next()}
                         disabled={!selectedImage}
                     >
@@ -136,7 +136,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                         </svg>
                     </button>
                     <button
-                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-purple-700 hover:bg-purple-600'}`}
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-success hover:bg-success-light'}`}
                         onClick={() => selectedImage && handleDownload(selectedImage)}
                         disabled={!selectedImage}
                     >

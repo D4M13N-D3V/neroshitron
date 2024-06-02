@@ -14,7 +14,6 @@ function PageComponent() {
 
   useEffect(() => {
     getData();
-    console.log(selectedGallery)
   }, [selectedGallery]);
 
    const closeGallery = () => {
@@ -43,7 +42,7 @@ function PageComponent() {
              aria-hidden="true"
            >
              <div
-               className="absolute inset-0 bg-neroshi-blue-900 opacity-70 z-30"
+               className="absolute inset-0 bg-secondary-dark opacity-70 z-30"
                onClick={() => closeGallery()}
              ></div>
              <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">

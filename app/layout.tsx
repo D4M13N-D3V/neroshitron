@@ -26,7 +26,7 @@ export default function RootLayout({
           <SpeedInsights/>
           <Analytics/>
         </div>
-        <main className="min-h-screen flex flex-col items-center bg-gradient-to-r from-neroshi-blue-900 to-neroshi-blue-950 overflow-hidden">
+        <main className="min-h-screen flex flex-col items-center bg-gradient-to-r from-primary to-secondary overflow-hidden">
           {children}
         </main>
       </body>

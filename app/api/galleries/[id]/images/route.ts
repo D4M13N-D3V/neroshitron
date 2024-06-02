@@ -54,8 +54,6 @@ export async function GET(
     .select('*')
     .eq('user_id', userId)
     .single();
-    //console.log(subscription)
-    //console.log(gallery.tier)
     switch(gallery.tier){
       case "Tier 3":
         if(subscription?.tier!="Tier 3"){
