@@ -60,6 +60,9 @@ function PageComponent() {
                     <div className="w-full flex">
                     <div className="w-1/2">
                         <SearchInput
+                            placeholderTags={[
+                                { value: "tags", label: "❗️ click here to add tags" },
+                            ]}
                             nsfwButtonEnabled={false}
                             searchChanged={(search) => {}}
                             nsfwChanged={(nsfw) => {}}

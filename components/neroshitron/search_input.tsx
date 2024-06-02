@@ -10,17 +10,15 @@ interface SearchInputProps {
   searchChanged: (search: string) => void;
   nsfwChanged: (nsfw: boolean) => void;
   nsfwButtonEnabled: boolean | null;
+  placeholderTags: Option[];
 }
 
-const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnabled }: SearchInputProps) => {
+const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnabled, placeholderTags }: SearchInputProps) => {
 
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>([
-    { value: "neroshi", label: "🧑‍🎨 neroshi" },
-    { value: "neroshi", label: "❗️ click here for tags!" },
-  ]);
+  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>(placeholderTags);
   const [selectingTags, setSelectingTags] = useState<boolean>(false);
   const tagSelectorRef = React.useRef(null);
   const [tags, setTags] = useState<any[]>([]);
