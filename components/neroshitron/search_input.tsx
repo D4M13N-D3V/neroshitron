@@ -105,7 +105,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                       menu: "bg-secondary-dark text-white pb-4 rounded",
                       searchBox: "rounded-md bg-secondary w-1/2 text-white w-full mt-2 p-2 mb-2 animate-in",
                       searchIcon: "hidden",
-                      tagItem: (value) => "bg-primary-light rounded-md pl-2 p-1 m-1 flex",
+                      tagItem: (value) => "hover:scale-95 bg-primary-light rounded-md pl-2 p-1 m-1 flex",
                       tagItemText: "text-white",
                       closeIcon: "text-white"
                     }}
