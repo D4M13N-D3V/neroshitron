@@ -57,8 +57,8 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
   useEffect(() => {
     getData();
   }, []);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [color, setColor] = useState('black');
+
 
   useEffect(() => {
   }, []);
@@ -66,9 +66,9 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
   return (
     <>
-      <div className={` ${scrollPosition>0 ?? 'opacity-30'} opacity 0 relative w-full flex flex-col items-center justify-center z-10`}>
+      <div className={`  opacity 0 relative w-full flex flex-col items-center justify-center z-10`}>
         <div className="search-box mx-auto my-auto w-full">
-          <div className={`${scrollPosition>0 ?? 'opacity-30'} opacityflex flex-row`}>
+          <div className={`flex flex-row`}>
 
             {(selectingTags) ? (
               <>
@@ -84,6 +84,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
             )
               : (
                 <>
+                <div className="absolute w-full top-0">
                   <Select isMultiple isSearchable isClearable searchInputPlaceholder='Start typing to search tags...' 
                     options={tagOptions}
                     placeholder="Select tags for your search"
@@ -100,6 +101,9 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                         setSelectedTagsInput([value])
                       }
                     }}
+                    onSearchInputChange={(value) => {
+                      
+                    }}
                     classNames={{
                       
                       menu: "bg-secondary-dark text-white pb-4 rounded",
@@ -111,21 +115,19 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                     }}
 
                     formatOptionLabel={data => (
-                      <li
-                          className={`animate-in block transition rounded duration-200 px-2 py-2 cursor-pointer select-none truncate pt-2 ${
-                              !data.isSelected
-                                  ? `text-white bg-primary hover:bg-primary-light`
-                                  : `bg-primary-light text-white`
-                          }`}
+                      <li id={"tag-" + data.value}
+                        className={`animate-in block transition rounded duration-200 px-2 py-2 cursor-pointer select-none truncate pt-2 bg-primarytext-white hover:bg-primary-light
+                        }`}
                       >
-                          {data.label}
+                        {data.label}
                       </li>
-                  )}
+                    )}
                     value={selectedTagsInput} 
                     primaryColor={"indigo"} />
+                </div>
 
-                  {(nsfwButtonEnabled) ?? (
-                  <span className="flex items-center  border-0 font-bold text-grey-100">
+                    {(nsfwButtonEnabled==true) ?? (
+                    <span className="flex items-center  border-0 font-bold text-grey-100">
                     <button
                       onClick={() => { setNsfw(!nsfw) }}
                       type="button"
