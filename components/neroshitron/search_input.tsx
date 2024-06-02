@@ -15,8 +15,10 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
 
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>(["neroshi"]);
+  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>([
+    { value: "neroshi", label: "neroshi" }
+  ]);
   const [selectingTags, setSelectingTags] = useState<boolean>(false);
   const tagSelectorRef = React.useRef(null);
   const [tags, setTags] = useState<any[]>([]);
@@ -58,7 +60,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
   return (
     <>
-      <div className="relative md:w-full lg:w-1/2 mx-auto flex flex-col items-center justify-center z-10">
+      <div className="relative md:w-full lg:w-2/3 mx-auto flex flex-col items-center justify-center z-10">
         <div className="search-box mx-auto my-auto w-full sm:w-full md:w-full lg:w-3/4 xl:w-3/4">
           <div className="flex flex-row">
 
@@ -78,6 +80,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
                 <>
                   <Select isMultiple isSearchable isClearable searchInputPlaceholder='Start typing to search tags...' 
                     options={tagOptions}
+                    placeholder="Select tags for your search"
                     onChange={(value: Option | Option[] | null) => {
                       if (value === null) {
                         setSelectedTags([]);
