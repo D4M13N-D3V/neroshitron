@@ -52,9 +52,9 @@ function PageComponent() {
                 <table className="w-full">
                     <thead>
                         <tr>
-                            <th className="px-4 py-2" style={{ width: '60%' }}>Name</th>
-                            <th className="px-4 py-2" style={{width:"15%"}}>📸 #</th>
-                            <th className="px-4 py-2">Tier</th>
+                            <th className="px-4 py-2" style={{ width: '60%' }}></th>
+                            <th className="px-4 py-2" style={{width:"15%"}}></th>
+                            <th className="px-4 py-2"></th>
                             <th className="px-4 py-2"></th>
                         </tr>
                     </thead>
