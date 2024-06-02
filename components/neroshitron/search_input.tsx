@@ -67,10 +67,32 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
             )
             :(       
               <>
+<<<<<<< Updated upstream
               <input autoFocus value={search} onChange={(e) => setSearch(e.target.value)} className="rounded-l-md h-16 bg-gray-100 text-grey-darker py-2 font-normal text-grey-darkest border border-gray-100 font-bold w-full py-1 px-2 outline-none text-lg text-gray-600" type="text" placeholder="Looking for a specific collection?" />
 
               <span className="flex items-center bg-gray-100  rounded rounded-l-none border-0 px-3 font-bold text-grey-100">
               <div className="relative">
+=======
+              <Select isMultiple isSearchable isClearable searchInputPlaceholder='Start typing to search tags...' options={tagOptions} placeholder="Start typing to search tags..." 
+              
+              onChange={(value: SelectValue | SelectValue[] | null) => {
+                if (value === null) {
+                      setSelectedTags([]);
+                      setSelectedTagsInput([]);
+                }
+                    if (Array.isArray(value)) {
+                      setSelectedTags(value.map((option: { value: string; }) => option.value));
+                      setSelectedTagsInput(value as Option[])
+                    } else if (value) {
+                      setSelectedTags([value.value]);
+                      setSelectedTagsInput([value])
+                    }
+                  } }
+              
+              value={selectedTagsInput} primaryColor={'neroshi-blue'}/>
+              <span className="flex items-center rounded rounded-l-none border-0 px-3 font-bold text-grey-100">
+              {/* <div className="relative">
+>>>>>>> Stashed changes
                 <button key="tags" data-tip={selectedTags.join(',')} onClick={()=>{openTags()}} type="button" className={`bg-neroshi-blue-900 hover:bg-neroshi-blue-800 text-lg text-white font-bold py-3 px-6 rounded ${selectedTags.length == 0 ? 'animate-pulse animate-infinite animate-ease-out' : 'animate-in'}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
@@ -86,7 +108,11 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
                 <button 
                 onClick={()=>{ setNsfw(!nsfw) }} 
                 type="button" 
+<<<<<<< Updated upstream
                 className={`animate-in text-sm w-28 text-lg text-white font-bold py-3 px-6 rounded ml-2 ${nsfw ? "bg-pink-900 hover:bg-pink-800":"bg-green-900 hover:bg-green-800"}`}
+=======
+                className={`animate-in text-sm text-white font-bold py-1 w-16 px-2 rounded ml-2 ${nsfw ? "bg-pink-900 hover:bg-pink-800":"bg-green-900 hover:bg-green-800"}`}
+>>>>>>> Stashed changes
                 
                 >
                   {nsfw ? "NSFW" : "SFW"}
