@@ -1,7 +1,9 @@
 "use client;"
 import React, { useState, useEffect, useRef,forwardRef } from 'react';
 import TagSelector from '../neroshitron/tag_selector';
-import Select from 'react-select';
+import Select from "react-tailwindcss-select";
+import { SelectValue } from 'react-tailwindcss-select/dist/components/type';
+import { Option } from 'react-tailwindcss-select/dist/components/type';
 
 interface SearchInputProps {
   tagsChanged: (tags: string[]) => void;
@@ -11,24 +13,10 @@ interface SearchInputProps {
 
 const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProps) => {
 
-  const AutocompleteDropdown = ({ tags }: { tags: any[] }) => {
-    const options = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
-    return (
-      <div className="w-full max-w-xs mx-auto">
-        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor={"tags"}>
-        
-        </label>
-        <Select 
-          className="text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id={"tags"}
-          options={options}
-        />
-      </div>
-    );
-  };
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>([]);
   const [selectingTags, setSelectingTags] = useState<boolean>(false);
   const tagSelectorRef = React.useRef(null);
   const [tags, setTags] = useState<any[]>([]);
@@ -38,6 +26,9 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
     const tagsData = await tagsResponse.json();
     setTags(tagsData);
   }
+
+
+
 
   const updateTags = (newTags: string[]) => {
     setSelectedTags(newTags)
@@ -86,10 +77,23 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
             )
             :(       
               <>
-              <Select isMulti autoFocus options={tagOptions} onChange={ (newValue) =>{
-                if(newValue){
-                  setSelectedTags(newValue.map((option: { value: string }) => option.value));
-                }}}  placeholder="Start typing to search tags..." className='w-full' />
+              <Select isMultiple isSearchable isClearable options={tagOptions} placeholder="Start typing to search tags..." 
+              
+              onChange={(value: SelectValue | SelectValue[] | null) => {
+                if (value === null) {
+                      setSelectedTags([]);
+                      setSelectedTagsInput([]);
+                }
+                    if (Array.isArray(value)) {
+                      setSelectedTags(value.map((option: { value: string; }) => option.value));
+                      setSelectedTagsInput(value as Option[])
+                    } else if (value) {
+                      setSelectedTags([value.value]);
+                      setSelectedTagsInput([value])
+                    }
+                  } }
+              
+              value={selectedTagsInput} primaryColor={'neroshi-blue'}/>
               <span className="flex items-center rounded rounded-l-none border-0 px-3 font-bold text-grey-100">
               {/* <div className="relative">
                 <button key="tags" data-tip={selectedTags.join(',')} onClick={()=>{openTags()}} type="button" className={`bg-neroshi-blue-900 hover:bg-neroshi-blue-800 text-lg text-white font-bold py-3 px-6 rounded ${selectedTags.length == 0 ? 'animate-pulse animate-infinite animate-ease-out' : 'animate-in'}`}>
@@ -107,7 +111,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
                 <button 
                 onClick={()=>{ setNsfw(!nsfw) }} 
                 type="button" 
-                className={`animate-in text-sm w-28 text-lg text-white font-bold py-3 px-6 rounded ml-2 ${nsfw ? "bg-pink-900 hover:bg-pink-800":"bg-green-900 hover:bg-green-800"}`}
+                className={`animate-in text-sm text-white font-bold py-3 px-6 rounded ml-2 ${nsfw ? "bg-pink-900 hover:bg-pink-800":"bg-green-900 hover:bg-green-800"}`}
                 
                 >
                   {nsfw ? "NSFW" : "SFW"}
