@@ -5,10 +5,11 @@ import Search from "@/components/neroshitron/search";
 import Gallery from "@/components/neroshitron/gallery";
 import Masonry from "react-masonry-css";
 import SearchInput from "@/components/neroshitron/search_input";
+import GalleryThumbnail from "@/components/neroshitron/gallery_thumbnail";
 
 function PageComponent() {
 
-    const [selectedGallery, setSelectedGallery] = useState<string | null>(null);
+    const [selectedGallery, setSelectedGallery] = useState<string | null>("Test Gallery");
     const [filePreviews, setFilePreviews] = useState<string[]>([]);
     const supabase = createClient();
     const user = supabase.auth.getUser();
@@ -45,6 +46,10 @@ function PageComponent() {
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
             <div className="w-1/2 rounded-md bg-primary p-12 mt-32">
+                <div className="w-full flex pb-36">
+                <GalleryThumbnail id={selectedGallery as string} columns={3} onSelect={function (id: string, columns: number): void {
+                } } title={""} subscription={""} tags={[]} showNsfw={false} nsfw={false} ></GalleryThumbnail>
+                </div>
                 <div className="w-full flex">
                     <input
                         type="text"
@@ -76,7 +81,7 @@ function PageComponent() {
                     </div>
                     <div className="w-1/2">
                         <select className="mb-2 rounded-md bg-secondary p-2 w-full text-white">
-                            <option value="" disabled selected>Select NSFW Setting</option>
+                            <option value="" disabled selected> </option>
                             {filePreviews.map((preview, index) => (
                                 <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
                             ))}
