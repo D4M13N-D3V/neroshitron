@@ -15,9 +15,10 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
 
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
-  const [selectedTags, setSelectedTags] = useState<string[]>(["neroshi"]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>([
-    { value: "neroshi", label: "neroshi" }
+    { value: "neroshi", label: "🧑‍🎨 neroshi" },
+    { value: "neroshi", label: "📢 start searching by using tags!" },
   ]);
   const [selectingTags, setSelectingTags] = useState<boolean>(false);
   const tagSelectorRef = React.useRef(null);
