@@ -58,7 +58,7 @@ function PageComponent() {
                     </div>
                     <div className="w-1/4">
                         <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-2">
-                            Save Gallery
+                            Save     Gallery
                         </button>
                     </div>
                 </div>
@@ -75,6 +75,12 @@ function PageComponent() {
                         />
                     </div>
                     <div className="w-1/2">
+                        <select className="mb-8 mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                            <option value="" disabled selected>Select new thumbnail</option>
+                            {filePreviews.map((preview, index) => (
+                                <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
+                            ))}
+                        </select>
                         <Masonry breakpointCols={3} className="my-masonry-grid pl-6 col-span-2">
                             {filePreviews.map((preview, index) => (
                                 <img key={index} src={preview} alt={`Preview ${index}`} />
