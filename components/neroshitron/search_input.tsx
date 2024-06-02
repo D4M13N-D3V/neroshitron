@@ -97,13 +97,16 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                         setSelectedTagsInput([value])
                       }
                     }}
+                    classNames={{
+                      searchBox: "rounded-r-none"
+                    }}
                     value={selectedTagsInput} 
                     primaryColor={"indigo"} />
-                  <span className="flex items-center rounded rounded-l-none border-0 font-bold text-grey-100">
+                  <span className="flex items-center  border-0 font-bold text-grey-100">
                     <button
                       onClick={() => { setNsfw(!nsfw) }}
                       type="button"
-                      className={`animate-in text-sm text-white font-bold h-full w-16 px-2 rounded ${nsfw ? "bg-error hover:bg-error-light" : "bg-success hover:bg-success-light"}`}
+                      className={`animate-in text-sm text-white font-bold h-full w-16 px-2 rounded rounded-l-none ${nsfw ? "bg-error hover:bg-error-light" : "bg-success hover:bg-success-light"}`}
 
                     >
                       {nsfw ? "NSFW" : "SFW"}
