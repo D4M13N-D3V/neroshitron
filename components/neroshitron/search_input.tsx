@@ -48,8 +48,8 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
   }
 
   useEffect(() => {
-    setSelectedTags(selectedTags.filter(tag => tag !== "neroshi"));
-    tagsChanged(selectedTags);
+    
+    tagsChanged(selectedTags.filter(tag => tag != "neroshi"));
   }, [selectedTags]);
   useEffect(() => {
     nsfwChanged(nsfw);
