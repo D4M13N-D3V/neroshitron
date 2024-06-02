@@ -66,7 +66,7 @@ function PageComponent() {
                                 <td className="px-4 py-2">{item.imageCount}</td>
                                 <td className="px-4 py-2">{item.tier.replace("Tier","")}</td>
                                 <td className="px-4 py-2">
-                                    <a href="/gallery/admin/view" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right">
+                                    <a href="/gallery/admin/view" className="bg-secondary hover:bg-secondary-light text-white font-bold py-2 px-4 rounded float-right">
                                         View
                                     </a>
                                 </td>

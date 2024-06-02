@@ -56,13 +56,18 @@ function PageComponent() {
                         className="mb-8 mr-2 rounded-md bg-secondary p-2 w-1/2 text-white"
                         placeholder="Gallery Name"
                     />
-                    <div className="w-1/4">
+                    <div className="w-1/6">
                         <button  onClick={() => window.location.href = "/gallery/admin"}  className="w-full bg-error hover:bg-error-light text-white rounded-md p-2">
+                            Delete
+                        </button>
+                    </div>
+                    <div className="w-1/6">
+                        <button  onClick={() => window.location.href = "/gallery/admin"}  className="w-full bg-error-dark hover:bg-error text-white rounded-md p-2 ml-2">
                             Back
                         </button>
                     </div>
                     <div className="w-1/4">
-                        <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-2">
+                        <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-4">
                             Save     Gallery
                         </button>
                     </div>
