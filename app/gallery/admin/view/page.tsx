@@ -8,46 +8,15 @@ import SearchInput from "@/components/neroshitron/search_input";
 import GalleryThumbnail from "@/components/neroshitron/gallery_thumbnail";
 
 function PageComponent() {
-
-    const [selectedGallery, setSelectedGallery] = useState<string | null>("Test Gallery");
     const [filePreviews, setFilePreviews] = useState<string[]>([]);
     const supabase = createClient();
     const user = supabase.auth.getUser();
-    const getData = async () => {
-    }
-    useEffect(() => {
-        getData();
-    }, [selectedGallery]);
-
-    const closeGallery = () => {
-        setSelectedGallery(null);
-    }
-
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const files = event.target.files;
-        if (files) {
-            const previews: string[] = [];
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    if (e.target && e.target.result) {
-                        previews.push(e.target.result.toString());
-                        if (previews.length === files.length) {
-                            setFilePreviews(previews);
-                        }
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    };
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
             <div className="w-1/2 rounded-md bg-primary p-12 mt-32">
                 <div className="w-full flex pb-48">
-                <GalleryThumbnail id={encodeURIComponent(selectedGallery as string)} columns={3} onSelect={function (id: string, columns: number): void {
+                <GalleryThumbnail id={"Test Gallery"} columns={3} onSelect={function (id: string, columns: number): void {
                 } } title={""} subscription={""} tags={[]} showNsfw={false} nsfw={false} ></GalleryThumbnail>
                 </div>
                 <div className="w-full flex">

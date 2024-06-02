@@ -27,9 +27,9 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscr
 
     const getData = async () => {
         setIsLoading(true);
-        const thumbnailResponse = await fetch('/api/galleries/' + title + '/thumbnail?nsfw=' + showNsfwState);
+        const thumbnailResponse = await fetch('/api/galleries/' + id + '/thumbnail?nsfw=' + showNsfwState);
         const thumbnailUrl = await thumbnailResponse.text();
-        const imagesCountResponse = await fetch('/api/galleries/' + title + '/images/count');
+        const imagesCountResponse = await fetch('/api/galleries/' + id + '/images/count');
         const imageCount = await imagesCountResponse.json() as number;
         setImageCount(imageCount);
         setThumbnailUrl(thumbnailUrl);
