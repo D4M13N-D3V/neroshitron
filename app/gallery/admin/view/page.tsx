@@ -14,7 +14,7 @@ function PageComponent() {
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
-            <div className="w-1/2 rounded-md bg-primary p-12 mt-32">
+            <div className="w-full lg:w-1/2 rounded-md bg-primary p-12 mt-32">
                 <div className="w-full flex pb-48">
                 <GalleryThumbnail id={"Test Gallery"} columns={3} onSelect={function (id: string, columns: number): void {
                 } } title={""} subscription={""} tags={[]} showNsfw={false} nsfw={false} ></GalleryThumbnail>
@@ -37,7 +37,7 @@ function PageComponent() {
                     </div>
                     <div className="w-1/4">
                         <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-4">
-                            Save     Gallery
+                            Save
                         </button>
                     </div>
                 </div>
