@@ -2,14 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import GalleryThumbnail from './gallery_thumbnail';
 
-interface TagProps { 
+interface TagProps {
     nsfw: boolean;
     tags: string[];
     search: string;
     gallerySelected: (gallery: string) => void;
 }
 
-const Galleries = ({ nsfw, tags, search, gallerySelected }:TagProps) => {
+const Galleries = ({ nsfw, tags, search, gallerySelected }: TagProps) => {
 
     const [galleries, setGalleries] = useState([]);
     const [nsfwState, setNsfwState] = useState<boolean>(nsfw);
@@ -20,7 +20,7 @@ const Galleries = ({ nsfw, tags, search, gallerySelected }:TagProps) => {
 
     const selectGallery = (gallery: string) => {
         setSelectedGallery(gallery);
-        gallerySelected(gallery);   
+        gallerySelected(gallery);
     };
 
     console.log(tags)
@@ -32,19 +32,19 @@ const Galleries = ({ nsfw, tags, search, gallerySelected }:TagProps) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ tags: tagsState })
-            });
+        });
         const galleriesData = await galleriesResponse.json();
         setGalleries(galleriesData);
     }
-      
+
     useEffect(() => {
-    getData();
+        getData();
     }, [tagsState]);
 
     return (
         <div className="absolute inset-0 mx-auto ml-16 md:ml-0 pt-48 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-60 gap-x-4 animate-in overflow-y-scroll no-scrollbar z-0">
 
-            {galleries && galleries.map((gallery:any, index) => (
+            {galleries && galleries.map((gallery: any, index) => (
                 <GalleryThumbnail
                     key={gallery.name + " " + nsfw}
                     id={gallery.name}

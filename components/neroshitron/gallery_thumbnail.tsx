@@ -11,7 +11,7 @@ interface GalleryThumbnailProps {
     nsfw: boolean;
 }
 
-const GalleryThumbnail = ({ id, columns, onSelect, title,showNsfw, nsfw, subscription, tags }: GalleryThumbnailProps) => {
+const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscription, tags }: GalleryThumbnailProps) => {
     const [galleryId, setGalleryId] = useState<string>(id);
     const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);

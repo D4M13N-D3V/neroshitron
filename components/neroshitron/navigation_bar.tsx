@@ -24,30 +24,29 @@ export default async function AuthButton() {
   const currentPage = heads.get('x-path')
 
   const getGravatarUrl = () => {
-    if(user==null)
-    {
+    if (user == null) {
       return;
     }
     let email = user.email;
-    if(email != null){
+    if (email != null) {
       const emailHash = crypto.createHash('md5').update(email.trim().toLowerCase()).digest('hex');
       return `https://www.gravatar.com/avatar/${emailHash}`;
     }
     return "";
   }
   const url = getGravatarUrl();
-  return(
+  return (
     <div className="flex justify-center items-center pt-2 ">
-    <nav className="w-auto bg-neroshi-blue-300 bg-opacity-10  flex justify-center z-10 h-16 animate-in rounded-md" style={{ backdropFilter: 'blur(10px)' }}>
-      <div className="w-full max-w-2xl flex justify-between items-center p-3 text-sm">
+      <nav className="w-auto bg-neroshi-blue-300 bg-opacity-10  flex justify-center z-10 h-16 animate-in rounded-md" style={{ backdropFilter: 'blur(10px)' }}>
+        <div className="w-full max-w-2xl flex justify-between items-center p-3 text-sm">
           <div className="flex items-center gap-2 z-10">
             <Link
               href="/gallery"
               className={`py-2 px-3 flex rounded-md no-underline ${currentPage === '/gallery' ? 'bg-neroshi-blue-800 hover:bg-neroshi-blue-700' : 'bg-neroshi-blue-900 hover:bg-neroshi-blue-800'}`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 lg:hidden  block">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+              </svg>
 
               <span className="hidden lg:block">Gallery</span>
             </Link>
@@ -80,28 +79,28 @@ export default async function AuthButton() {
             </Link>
           </div>
           <div className="flex items-center gap-2">
-            {(user!=null) ? (
+            {(user != null) ? (
               <>
-              <form action={signOut}>
-                <button className="py-2 px-4 ml-2 rounded-md no-underline bg-pink-950 hover:bg-pink-900">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 md:hidden ">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                  </svg>
-                  <span className="hidden lg:block">Logout</span>
-                </button>
-              </form>
-              <img src={url} alt="Profile" className="w-10 h-10 object-cover rounded-full cursor-pointer" />
-            </>
+                <form action={signOut}>
+                  <button className="py-2 px-4 ml-2 rounded-md no-underline bg-pink-950 hover:bg-pink-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 md:hidden ">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                    <span className="hidden lg:block">Logout</span>
+                  </button>
+                </form>
+                <img src={url} alt="Profile" className="w-10 h-10 object-cover rounded-full cursor-pointer" />
+              </>
             ) : (
               <Link
-              href="/subscriptions"
-              className={`ml-2 py-2 px-3 flex rounded-md no-underline ${currentPage === '/gallery' ? 'bg-neroshi-blue-800 hover:bg-neroshi-blue-700' : 'bg-neroshi-blue-900 hover:bg-neroshi-blue-800'}`}
-            >
+                href="/subscriptions"
+                className={`ml-2 py-2 px-3 flex rounded-md no-underline ${currentPage === '/gallery' ? 'bg-neroshi-blue-800 hover:bg-neroshi-blue-700' : 'bg-neroshi-blue-900 hover:bg-neroshi-blue-800'}`}
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 lg:hidden  block">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                 </svg>
-            <span className="hidden lg:block">Login</span>
-            </Link>
+                <span className="hidden lg:block">Login</span>
+              </Link>
             )}
           </div>
         </div>
