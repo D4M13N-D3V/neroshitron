@@ -63,7 +63,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
   useEffect(() => {
   }, []);
 
-  const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: "🏷️ "+tag.name }));
+  const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
   return (
     <>
       <div className={` ${scrollPosition>0 ?? 'opacity-30'} opacity 0 relative w-full flex flex-col items-center justify-center z-10`}>
@@ -101,7 +101,26 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                       }
                     }}
                     classNames={{
+                      
+                      menu: "bg-secondary-dark text-white pb-4 rounded",
+                      searchBox: "rounded-md bg-secondary w-1/2 text-white w-full mt-2 p-2 mb-2 animate-in",
+                      searchIcon: "hidden",
+                      tagItem: (value) => "bg-primary-light rounded-md pl-2 p-1 m-1 flex",
+                      tagItemText: "text-white",
+                      closeIcon: "text-white"
                     }}
+
+                    formatOptionLabel={data => (
+                      <li
+                          className={`animate-in block transition rounded duration-200 px-2 py-2 cursor-pointer select-none truncate pt-2 ${
+                              !data.isSelected
+                                  ? `text-white bg-primary hover:bg-primary-light`
+                                  : `bg-primary-light text-white`
+                          }`}
+                      >
+                          {data.label}
+                      </li>
+                  )}
                     value={selectedTagsInput} 
                     primaryColor={"indigo"} />
 

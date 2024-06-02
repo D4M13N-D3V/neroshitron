@@ -50,6 +50,12 @@ console.log(currentPage)
             >
               <span className="hidden lg:block">Gallery Admin</span>
             </Link>
+            <Link
+              href="/admin/"
+              className={`py-2 px-3 w-38  text-center flex rounded-md lg:block hidden no-underline ${currentPage!="gallery" ? 'bg-secondary hover:bg-secondary-light' : 'bg-secondary hover:bg-secondary-light'}`}
+            >
+              <span className="hidden lg:block">System Settings</span>
+            </Link>
 
             <Link
               href="/gallery"
