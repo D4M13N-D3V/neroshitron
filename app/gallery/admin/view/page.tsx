@@ -75,8 +75,20 @@ function PageComponent() {
                         />
                     </div>
                     <div className="w-1/2">
-                        <select className="mb-8 mr-2 rounded-md bg-secondary p-2 w-full text-white">
-                            <option value="" disabled selected>Select new thumbnail</option>
+                        <select className="mb-2 rounded-md bg-secondary p-2 w-full text-white">
+                            <option value="" disabled selected>Select NSFW Setting</option>
+                            {filePreviews.map((preview, index) => (
+                                <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
+                            ))}
+                        </select>
+                        <select className="mb-2 mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                            <option value="" disabled selected>Select New Tier</option>
+                            {filePreviews.map((preview, index) => (
+                                <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
+                            ))}
+                        </select>
+                        <select className="mb-2 mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                            <option value="" disabled selected>Select New Thumbnail</option>
                             {filePreviews.map((preview, index) => (
                                 <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
                             ))}
