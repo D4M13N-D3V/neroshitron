@@ -47,7 +47,7 @@ function PageComponent() {
         <div className="w-full text-white flex justify-center items-center animate-in">
             <div className="w-1/2 rounded-md bg-primary p-12 mt-32">
                 <div className="w-full flex pb-48">
-                <GalleryThumbnail id={selectedGallery as string} columns={3} onSelect={function (id: string, columns: number): void {
+                <GalleryThumbnail id={encodeURIComponent(selectedGallery as string)} columns={3} onSelect={function (id: string, columns: number): void {
                 } } title={""} subscription={""} tags={[]} showNsfw={false} nsfw={false} ></GalleryThumbnail>
                 </div>
                 <div className="w-full flex">
