@@ -79,13 +79,13 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged}: SearchInputProp
               <>
               <Select isMultiple isSearchable isClearable searchInputPlaceholder='Start typing to search tags...' options={tagOptions} placeholder="Start typing to search tags..." 
               
-              onChange={(value: SelectValue | SelectValue[] | null) => {
+              onChange={(value: Option | Option[] | null) => {
                 if (value === null) {
                       setSelectedTags([]);
                       setSelectedTagsInput([]);
                 }
                     if (Array.isArray(value)) {
-                      setSelectedTags(value.map((option: { value: string; }) => option.value));
+                      setSelectedTags(value.map((option) => option.value));
                       setSelectedTagsInput(value as Option[])
                     } else if (value) {
                       setSelectedTags([value.value]);
