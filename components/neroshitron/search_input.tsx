@@ -57,13 +57,18 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
   useEffect(() => {
     getData();
   }, []);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [color, setColor] = useState('black');
+
+  useEffect(() => {
+  }, []);
 
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: "🏷️ "+tag.name }));
   return (
     <>
-      <div className="relative w-full flex flex-col items-center justify-center z-10">
+      <div className={` ${scrollPosition>0 ?? 'opacity-30'} opacity 0 relative w-full flex flex-col items-center justify-center z-10`}>
         <div className="search-box mx-auto my-auto w-full">
-          <div className="flex flex-row">
+          <div className={`${scrollPosition>0 ?? 'opacity-30'} opacityflex flex-row`}>
 
             {(selectingTags) ? (
               <>

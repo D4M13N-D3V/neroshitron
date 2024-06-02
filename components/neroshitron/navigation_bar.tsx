@@ -35,6 +35,8 @@ console.log(currentPage)
     return "";
   }
   const url = getGravatarUrl();
+
+
   return (
     <div className="flex justify-center items-center pt-2 ">
       <nav className="w-auto bg-info bg-opacity-80  flex justify-center z-10 h-16 animate-in rounded-md" style={{ backdropFilter: 'blur(10px)' }}>

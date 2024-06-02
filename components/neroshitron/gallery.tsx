@@ -191,6 +191,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                                     .filter((img) => img !== selectedImage)
                                     .map((image, index) => (
                                         <img
+                                        key={index}
                                             src={image}
                                             onClick={() => handleClick(image)}
                                             className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
