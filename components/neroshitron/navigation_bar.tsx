@@ -38,8 +38,17 @@ console.log(currentPage)
   return (
     <div className="flex justify-center items-center pt-2 ">
       <nav className="w-auto bg-info bg-opacity-80  flex justify-center z-10 h-16 animate-in rounded-md" style={{ backdropFilter: 'blur(10px)' }}>
-        <div className="w-full max-w-2xl flex justify-between items-center p-3 text-sm">
+        <div className="w-auto flex justify-between items-center p-3 text-sm">
           <div className="flex items-center gap-2 z-10">
+
+          {/* This is admin stuff */}
+            <Link
+              href="/gallery/admin"
+              className={`py-2 px-3 w-32  text-center flex rounded-md lg:block hidden no-underline ${currentPage!="gallery" ? 'bg-secondary hover:bg-secondary-light' : 'bg-secondary hover:bg-secondary-light'}`}
+            >
+              <span className="hidden lg:block">Gallery Admin</span>
+            </Link>
+
             <Link
               href="/gallery"
               className={`py-2 px-3 flex rounded-md no-underline ${currentPage!="gallery" ? 'bg-primary hover:bg-primary-light' : 'bg-secondary hover:bg-secondary-light'}`}

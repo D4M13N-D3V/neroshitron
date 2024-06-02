@@ -3,6 +3,7 @@ import { createClient } from "@/utils/supabase/client";
 import React, { useState, useEffect } from 'react';
 import Search from "@/components/neroshitron/search";
 import Gallery from "@/components/neroshitron/gallery";
+import Link from "next/link";
 
 function PageComponent() {
 
@@ -30,7 +31,9 @@ function PageComponent() {
           alt="Background"
         />
       </div>
+      <div className="w-2/3">
         <Search gallerySelected={(gallery:string)=>{setSelectedGallery(gallery)}}/>
+      </div>
 
        {selectedGallery!=null ? (
          <>

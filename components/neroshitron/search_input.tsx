@@ -64,7 +64,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
   return (
     <>
       <div className="relative w-full flex flex-col items-center justify-center z-10">
-        <div className="search-box mx-auto my-auto w-full sm:w-full md:w-full lg:w-3/4 xl:w-3/4">
+        <div className="search-box mx-auto my-auto w-full">
           <div className="flex flex-row">
 
             {(selectingTags) ? (

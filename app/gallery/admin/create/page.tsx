@@ -58,7 +58,7 @@ function PageComponent() {
                     </div>
                     </div>
                     <div className="w-full flex">
-                    <div className="w-1/2">
+                    <div className="w-1/2 mr-2">
                         <SearchInput
                             nsfwButtonEnabled={false}
                             searchChanged={(search) => {}}
