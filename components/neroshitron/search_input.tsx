@@ -98,7 +98,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                       }
                     }}
                     classNames={{
-                      searchBox: "rounded-r-none"
                     }}
                     value={selectedTagsInput} 
                     primaryColor={"indigo"} />
