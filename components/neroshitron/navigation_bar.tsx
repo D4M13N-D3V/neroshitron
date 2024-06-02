@@ -36,7 +36,17 @@ console.log(currentPage)
   }
   const url = getGravatarUrl();
 
-
+  const admins = await supabase.from('admins').select('user_id');
+  let isAdmin = false;
+  if(!admins.error) {
+    for (const admin of admins.data) {
+      if (admin.user_id == user?.id) {
+        isAdmin = true;
+        break;
+      }
+    }
+  }
+  
   return (
     <div className="flex justify-center items-center pt-2 ">
       <nav className="w-auto bg-primary-dark bg-opacity-40  flex justify-center z-10 h-16 animate-in rounded-md  shadow-lg" style={{ backdropFilter: 'blur(10px)' }}>
@@ -44,18 +54,24 @@ console.log(currentPage)
           <div className="flex items-center gap-2 z-10">
 
           {/* This is admin stuff */}
-            <Link
-              href="/gallery/admin"
-              className={`py-2 px-3 w-32  text-center flex rounded-md lg:block hidden no-underline ${currentPage!="gallery" ? 'bg-secondary hover:bg-secondary-light' : 'bg-secondary hover:bg-secondary-light'}`}
-            >
-              <span className="hidden lg:block">Gallery Admin</span>
-            </Link>
-            <Link
-              href="/admin/"
-              className={`py-2 px-3 w-38  text-center flex rounded-md lg:block hidden no-underline ${currentPage!="gallery" ? 'bg-secondary hover:bg-secondary-light' : 'bg-secondary hover:bg-secondary-light'}`}
-            >
-              <span className="hidden lg:block">System Settings</span>
-            </Link>
+
+            {(isAdmin) && (
+              <>
+              
+              <Link
+                href="/gallery/admin"
+                className={`py-2 px-3 w-32  text-center flex rounded-md lg:block hidden no-underline ${currentPage!="gallery" ? 'bg-secondary hover:bg-secondary-light' : 'bg-secondary hover:bg-secondary-light'}`}
+              >
+                <span className="hidden lg:block">Gallery Admin</span>
+              </Link>
+              <Link
+                href="/admin/"
+                className={`py-2 px-3 w-38  text-center flex rounded-md lg:block hidden no-underline ${currentPage!="gallery" ? 'bg-secondary hover:bg-secondary-light' : 'bg-secondary hover:bg-secondary-light'}`}
+              >
+                <span className="hidden lg:block">System Settings</span>
+              </Link>
+            </>
+            )}
 
             <Link
               href="/gallery"

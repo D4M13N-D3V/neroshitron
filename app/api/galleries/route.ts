@@ -17,13 +17,13 @@ export async function POST(request: Request) {
   }
   else{
     // Rest of the code...
-  let { data: galleries, error } = await supabase
-    .from('galleries')
-    .select('*')
-    .contains('tags', tags) // Fix: Use contains instead of overlaps
-    .ilike('name', `%${search}%`)
+    let { data: galleries, error } = await supabase
+      .from('galleries')
+      .select('*')
+      .contains('tags', tags) // Fix: Use contains instead of overlaps
+      .ilike('name', `%${search}%`)
 
-  return NextResponse.json(galleries);
+    return NextResponse.json(galleries);
   }
 }
   
