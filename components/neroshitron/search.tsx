@@ -44,7 +44,7 @@ const Search = ({ gallerySelected }: SearchProps) => {
       <Galleries gallerySelected={(gallery: string) => { setGallery(gallery) }} key={search + "-" + tags.length + "-" + nsfw} search={search} nsfw={nsfw} tags={tags} />
       <section className="fixed flex items-center w-full p-8 pt-20 opacity-90 animate-in animate-once animate-duration-500">
         <div className="container mx-auto py-8">
-          <SearchInput searchChanged={(search) => { setSearch(search) }} nsfwChanged={(nsfw) => { setNsfw(nsfw) }} tagsChanged={(tags) => { setTags(tags); }} />
+          <SearchInput nsfwButtonDisabled={true} searchChanged={(search) => { setSearch(search) }} nsfwChanged={(nsfw) => { setNsfw(nsfw) }} tagsChanged={(tags) => { setTags(tags); }} />
         </div>
       </section>
     </>

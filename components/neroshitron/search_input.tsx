@@ -9,9 +9,10 @@ interface SearchInputProps {
   tagsChanged: (tags: string[]) => void;
   searchChanged: (search: string) => void;
   nsfwChanged: (nsfw: boolean) => void;
+  nsfwButtonEnabled: boolean | null;
 }
 
-const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputProps) => {
+const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnabled }: SearchInputProps) => {
 
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
@@ -62,7 +63,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: "🏷️ "+tag.name }));
   return (
     <>
-      <div className="relative md:w-full lg:w-2/3 mx-auto flex flex-col items-center justify-center z-10">
+      <div className="relative w-full flex flex-col items-center justify-center z-10">
         <div className="search-box mx-auto my-auto w-full sm:w-full md:w-full lg:w-3/4 xl:w-3/4">
           <div className="flex flex-row">
 
@@ -108,6 +109,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged }: SearchInputPro
                       {nsfw ? "NSFW" : "SFW"}
                     </button>
                   </span>
+                  )}
                 </>
               )}
           </div>
