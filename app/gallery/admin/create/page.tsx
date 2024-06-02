@@ -51,13 +51,18 @@ function PageComponent() {
                         className="mb-8 mr-2 rounded-md bg-secondary p-2 w-1/2 text-white"
                         placeholder="Gallery Name"
                     />
-                    <div className="w-1/2">
-                        <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2">
+                    <div className="w-1/4">
+                        <button  onClick={() => window.location.href = "/gallery/admin"}  className="w-full bg-error hover:bg-error-light text-white rounded-md p-2">
+                            Back
+                        </button>
+                    </div>
+                    <div className="w-1/4">
+                        <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-2">
                             Create Gallery
                         </button>
                     </div>
-                    </div>
-                    <div className="w-full flex">
+                </div>
+                <div className="w-full flex">
                     <div className="w-1/2 mr-2">
                         <SearchInput
                             placeholderTags={[

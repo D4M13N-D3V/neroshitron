@@ -46,7 +46,7 @@ const Search = ({ gallerySelected }: SearchProps) => {
         <div className="container mx-auto py-8">
           <SearchInput placeholderTags={[
     { value: "neroshi", label: "🧑‍🎨 neroshi" },
-    { value: "neroshi", label: "❗️ click here for tags!" },
+    { value: "neroshi", label: "❗️ click here for tags to search!" },
   ]} nsfwButtonEnabled={true} searchChanged={(search) => { setSearch(search) }} nsfwChanged={(nsfw) => { setNsfw(nsfw) }} tagsChanged={(tags) => { setTags(tags); }} />
         </div>
       </section>
