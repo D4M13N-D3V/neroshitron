@@ -106,7 +106,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
     const renderButtons = () => {
         return (
-            <div className="z-20 bottom-10 fixed text-white pt-4 bg-primary bg-opacity-90 animate-in rounded-2xl" style={{ backdropFilter: 'blur(10px)' }}>
+            <div className="z-20 bottom-10 fixed text-white pt-4 bg-primary bg-opacity-90 animate-in rounded-md" style={{ backdropFilter: 'blur(10px)' }}>
                 <div className='grid grid-cols-4 pl-4 gap-4 pr-4'>
                     <button
                         className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 bg-error hover:bg-error-light`}
@@ -183,7 +183,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                     >            <div className='flex justify-center items-center pt-2 '>
 
                             <Masonry
-                                breakpointCols={columns}
+                                breakpointCols={3}
                                 className="my-masonry-grid pl-6 "
                                 style={{ width: selectedImage ? "50%" : "100%" }}
                             >
