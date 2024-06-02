@@ -102,6 +102,8 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                     }}
                     value={selectedTagsInput} 
                     primaryColor={"indigo"} />
+
+                  {(nsfwButtonEnabled) ?? (
                   <span className="flex items-center  border-0 font-bold text-grey-100">
                     <button
                       onClick={() => { setNsfw(!nsfw) }}
