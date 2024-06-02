@@ -60,7 +60,7 @@ function PageComponent() {
                     </thead>
                     <tbody>
                         {/* Replace this with your data mapping logic */}
-                        {galleries.map((item) => (
+                        {galleries.map((item: { name: string, imageCount: number, tier: string }) => (
                             <tr key={item.name} className="animate-in">
                                 <td className="px-4 py-2">{item.name}</td>
                                 <td className="px-4 py-2">{item.imageCount}</td>
