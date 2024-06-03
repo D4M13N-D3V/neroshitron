@@ -58,11 +58,12 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
     getData();
   }, []);
   const [color, setColor] = useState('black');
-
+  const selectRef = useRef(null);
   const [currentTag, setCurrentTag] = useState<string>('');
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      
       if (event.key === 'ArrowUp') {
         const currentIndex = tags.findIndex(tag => tag.name === currentTag);
         const newIndex = currentIndex === 0 ? tags.length - 1 : currentIndex - 1;
@@ -74,10 +75,12 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
       }
       else if(event.key === 'Enter'){
         const currentIndex = tags.findIndex(tag => tag.name === currentTag);
-        setSelectedTags([...selectedTags, tags[currentIndex].name]);
-        const tagsInput = selectedTagsInput;
-        tagsInput.push({value: tags[currentIndex].name, label: tags[currentIndex].name});
-        setSelectedTagsInput(tagsInput);
+        if (currentIndex !== -1 && !selectedTags.includes(tags[currentIndex].name)) {
+          setSelectedTags([...selectedTags, tags[currentIndex].name]);
+          const tagsInput = selectedTagsInput;
+          tagsInput.push({ value: tags[currentIndex].name, label: tags[currentIndex].name });
+          setSelectedTagsInput(tagsInput);
+        }
       }
     };
 
