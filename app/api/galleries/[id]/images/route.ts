@@ -18,7 +18,7 @@ export async function GET(
     { params }: { params: { id: string } }
   ) {
 
-  const galleryId = params.id.toLowerCase().replace(/\s+/g, '_');  const supabase = createClient();
+  const galleryId = params.id;  const supabase = createClient();
   const user = await supabase.auth.getUser();
 
   

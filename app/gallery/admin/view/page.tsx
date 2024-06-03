@@ -21,6 +21,7 @@ function PageComponent() {
     const [fileNames, setFileNames] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
+    const [images, setImages] = useState<string[]>([]);
     const getData = async () => {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
@@ -49,6 +50,9 @@ function PageComponent() {
         if(originalName === ''){
             setOriginalGalleryName(galleryData.gallery.name);
         }
+        const imagesResponse = await fetch('/api/galleries/' + galleryData.gallery.name+ '/images');
+        const imagesUrls = await imagesResponse.json() as string[];
+        setImages(imagesUrls);
     }
     useEffect(() => {
         getData();
@@ -202,14 +206,24 @@ function PageComponent() {
                                 <option selected={name==gallery.thumbnail_file} key={index} value={name}>{name}</option>
                             ))}
                         </select>
-                        <Masonry breakpointCols={3} className="my-masonry-grid pl-6 col-span-2">
-                            {filePreviews.map((preview, index) => (
-                                <img key={index} src={preview} alt={`Preview ${index}`} />
-                            ))}
-                        </Masonry>
                     </>
                     )}
                     </div>
+                </div>
+                <div className="w-full flex opacity-90 backdrop-blur-lg bg-primary  shadow-lg p-8 pt-0 rounded">
+                    
+                            <Masonry
+                                breakpointCols={3}
+                                className="my-masonry-grid pl-6 "
+                            >
+                                {images.map((image, index) => (
+                                        <img
+                                        key={index}
+                                            src={image}
+                                            className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
+                                        />
+                                    ))}
+                            </Masonry>
                 </div>
             </div>
         </div>
