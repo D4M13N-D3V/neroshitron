@@ -15,7 +15,6 @@ export async function POST(request: Request) {
   const supabase = createClient();
   const data = await request.json();
   const { data: tag, error } = await supabase.from('tags').insert({ name: data.tag }).single();
-  console.log(error)
   if (error) {
     return NextResponse.error();
   }

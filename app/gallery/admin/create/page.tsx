@@ -68,7 +68,7 @@ function PageComponent() {
                             placeholderTags={[
                                 { value: "tags", label: "❗️ click here to add tags" },
                             ]}
-                            nsfwButtonEnabled={false}
+                            nsfwButtonEnabled={true}
                             searchChanged={(search) => {}}
                             nsfwChanged={(nsfw) => {}}
                             tagsChanged={(tags) => {}}

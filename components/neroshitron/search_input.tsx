@@ -63,7 +63,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      console.log("TEST")
       if (event.key === 'ArrowUp') {
         const currentIndex = tags.findIndex(tag => tag.name === currentTag);
         const newIndex = currentIndex === 0 ? tags.length - 1 : currentIndex - 1;
@@ -82,7 +81,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
     };
   }, [currentTag, tags]);
   
-  console.log(currentTag)
 
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
   return (

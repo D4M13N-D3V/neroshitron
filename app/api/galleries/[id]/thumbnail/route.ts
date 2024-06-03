@@ -17,7 +17,6 @@ export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const galleryId = params.id.toLowerCase().replace(/\s+/g, '_');
   const supabase = createClient();
   const user = await supabase.auth.getUser();
   const url = new URL(request.url);
@@ -29,16 +28,13 @@ export async function GET(
     .select('*')
     .eq('name', params.id)
     .single();
-
-  let { data: files, error } = await supabase.storage.from('galleries').list(galleryId);
+  let { data: files, error } = await supabase.storage.from('galleries').list(params.id);
   if (files == null || files?.length == 0) {
-
     return NextResponse.error();
   }
 
   // Loop through each file, download it, convert it to base64, and add the data URL to the array
-  let { data: blobdata, error: fileError } = await supabase.storage.from('galleries').download(galleryId + "/" + files[0].name);
-
+  let { data: blobdata, error: fileError } = await supabase.storage.from('galleries').download(params.id + "/" + files[0].name);
   if (fileError || blobdata == null) {
     //console.error('Error downloading file:', error);
     return NextResponse.error();
