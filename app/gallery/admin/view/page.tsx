@@ -122,7 +122,7 @@ function PageComponent() {
     }
 
     return (
-        <div  className="w-full text-white flex justify-center items-center animate-in">
+        <div  className="w-full h-screen text-white flex justify-center items-center animate-in">
             <div className="w-full lg:w-1/2 rounded-md p-12 mt-14 ">
                 <div className="w-full flex pb-60">
                     {gallery != null && (
@@ -223,10 +223,10 @@ function PageComponent() {
                 aria-hidden="true"
                 >
                 <div
-                    className="absolute inset-0 bg-secondary-dark opacity-70 z-30"
+                    className="absolute w-full h-full inset-0 bg-secondary-dark opacity-70 z-30"
                     onClick={() => setOpen(true)}
                 ></div>
-                <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">
+                <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 h-full z-30">
                     <Gallery
                     id={gallery.name}
                     columns={3}
