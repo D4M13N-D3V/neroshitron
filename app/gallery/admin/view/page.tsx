@@ -21,6 +21,9 @@ function PageComponent() {
     const [fileNames, setFileNames] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
+    const [open, setOpen] = useState<boolean>(false);
+
+
     const [images, setImages] = useState<string[]>([]);
     const getData = async () => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -127,7 +130,7 @@ function PageComponent() {
                             key={"galleryThumbnail"+galleryName+"-"+tags.join("")}
                             id={originalName}
                             columns={3}
-                            onSelect={function (id: string, columns: number): void {}}
+                            onSelect={function (id: string, columns: number): void { setOpen(true) }}
                             title={galleryName}
                             subscription={tier}
                             tags={tags}
@@ -210,21 +213,29 @@ function PageComponent() {
                     )}
                     </div>
                 </div>
-                <div className="w-full flex opacity-90 backdrop-blur-lg bg-primary  shadow-lg p-8 pt-0 rounded">
-                    
-                            <Masonry
-                                breakpointCols={3}
-                                className="my-masonry-grid pl-6 "
-                            >
-                                {images.map((image, index) => (
-                                        <img
-                                        key={index}
-                                            src={image}
-                                            className={`animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse hover:scale-105 p-2 cursor-pointer my-2 transition-all opacity-100 duration-500 ease-in-out transform`}
-                                        />
-                                    ))}
-                            </Masonry>
+            {(open) && (
+                <>
+                {/*
+                    This is the modal for holding the gallery
+                */}
+                <div
+                className={`fixed inset-0 transition-opacity z-30 animate-in`}
+                aria-hidden="true"
+                >
+                <div
+                    className="absolute inset-0 bg-secondary-dark opacity-70 z-30"
+                    onClick={() => setOpen(true)}
+                ></div>
+                <div className="absolute inset-0 overflow-y-auto overflow-x-hidden no-scrollbar pt-2 w-full p-20 z-30">
+                    <Gallery
+                    id={gallery.name}
+                    columns={3}
+                    closeMenu={() => setOpen(false)}
+                    ></Gallery>
                 </div>
+                </div>
+                </>
+            )}
             </div>
         </div>
     );
