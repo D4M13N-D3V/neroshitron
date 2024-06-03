@@ -28,13 +28,18 @@ export async function GET(
     .select('*')
     .eq('name', params.id)
     .single();
-  let { data: files, error } = await supabase.storage.from('galleries').list(params.id);
-  if (files == null || files?.length == 0) {
-    return NextResponse.error();
+
+  var thumbnailFile = gallery.thumbnail_file;
+  if(thumbnailFile==null || thumbnailFile==""){
+    let { data: files, error } = await supabase.storage.from('galleries').list(params.id);
+    if (files == null || files?.length == 0) {
+      return NextResponse.error();
+    }
+    thumbnailFile = files[0].name;
   }
 
   // Loop through each file, download it, convert it to base64, and add the data URL to the array
-  let { data: blobdata, error: fileError } = await supabase.storage.from('galleries').download(params.id + "/" + files[0].name);
+  let { data: blobdata, error: fileError } = await supabase.storage.from('galleries').download(params.id + "/" + thumbnailFile);
   if (fileError || blobdata == null) {
     //console.error('Error downloading file:', error);
     return NextResponse.error();
@@ -50,7 +55,7 @@ export async function GET(
   if(nsfw && gallery.nsfw){
     blobBuffer = await blurImage(blobBuffer);
   }
-  const contentType = files[0].name.endsWith('.png') ? 'image/png' : 'image/jpeg';
+  const contentType = thumbnailFile.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const dataUrl = `data:${contentType};base64,${blobBuffer.toString('base64')}`;
 
 

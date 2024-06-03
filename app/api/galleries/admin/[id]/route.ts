@@ -13,21 +13,54 @@ export async function GET(
 }
 
 
+
 export async function PUT(
     request: Request,
-    { params }: { params: { id: string } }
-  ) {
-    const id = params.id;
+    { params }: { params: { id: string } }){
+
     const supabase = createClient();
     const formData = await request.formData();
-    const tags = formData.getAll('tags');
-    const name = formData.get('name');
-    const nsfw = formData.get('nsfw');
-    const tier = formData.get('tier');
-    console.log(id)
-    const { data: gallery, error } = await supabase.from('galleries').update({ name, tags, nsfw, tier }).eq('name', id).single();
+    const tags = JSON.parse(formData.getAll('tags').toString()) as string[];
+    const originalName = formData.get('originalName');
+    const name = formData.get('name')?.toString();
+    const nsfw = formData.get('nsfw')?.toString();
+    const tier = formData.get('tier')?.toString();
+    const thumbnail = formData.get('thumbnail');
+
+    console.log(tier)
+    const { error } = await supabase.from('galleries').update({name, tags, nsfw, tier, thumbnail_file:thumbnail}).eq('name', originalName ?? '');
+    
+    async function renameFolder(oldFolderName: any, newFolderName: string) {
+        // Get a list of all files in the old folder
+        let { data: oldFiles, error } = await supabase.storage.from('galleries').list(oldFolderName);
+        if (error) {
+            console.error('Error fetching files:', error);
+            return;
+        }
+    
+        // Move each file to the new folder
+        if (oldFiles) {
+            for (let file of oldFiles) {
+                let oldPath = file.name;
+                let newPath = newFolderName + '/' + oldPath.split('/').pop();
+
+                let { error: moveError } = await supabase.storage.from('galleries').move(oldPath, newPath);
+                if (moveError) {
+                    console.error(`Error moving file ${oldPath} to ${newPath}:`, moveError);
+                }
+            }
+        }
+
+        // Delete the old folder
+        let { error: deleteError } = await supabase.storage.from('galleries').remove([oldFolderName]);
+        if (deleteError) {
+            console.error('Error deleting old folder:', deleteError);
+        }
+    }
+
+    renameFolder(originalName, name ?? '');
+
     if(error){
-        console.log(error)
         return NextResponse.error();
     }
     let { data: galleries, error:galleriesError } = await supabase
@@ -35,6 +68,7 @@ export async function PUT(
     .select('*');
     return NextResponse.json({ success: true, galleries });
 }
+
 
 export async function DELETE(
     request: Request,

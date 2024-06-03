@@ -14,6 +14,7 @@ function PageComponent() {
     const [nsfw, setNsfw] = useState<boolean>(false);
     const [tags, setTags] = useState<string[]>([]);
     const [tier, setTier] = useState<string>('Free');
+    const [thumbnail, setThumbnail] = useState<string>("");
     const [files, setFiles] = useState<FileList>();
 
     const supabase = createClient();
@@ -38,6 +39,7 @@ function PageComponent() {
         }
         formData.append('tags', JSON.stringify(tags));
         formData.append('nsfw', nsfw.toString());
+        formData.append('thumbnail', thumbnail);
         formData.append('tier', tier);
         const response = await fetch('/api/galleries/admin', {
             method: 'POST',
@@ -46,6 +48,7 @@ function PageComponent() {
 
         if (response.ok) {
             const data = await response.json();
+            window.location.href = "/gallery/admin/view?id="+name;
         } else {
             console.log(response)
         }
@@ -100,6 +103,7 @@ function PageComponent() {
                             placeholderTags={[
                                 { value: "tags", label: "❗️ click here to add tags" },
                             ]}
+                            startingTags={tags}
                             nsfwButtonEnabled={true}
                             searchChanged={(search) => { }}
                             nsfwChanged={(nsfw) => { }}
@@ -121,8 +125,11 @@ function PageComponent() {
                             <option value="Tier 2" selected={tier === "Tier 2"}>Tier 2</option>
                             <option value="Tier 3" selected={tier === "Tier 3"}>Tier 3</option>
                         </select>
-                        <select className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
-                            <option value="" disabled selected>Select New Thumbnail</option>
+                        <select  onChange={e=>{setThumbnail(e.target.value)}}  className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                            <option value="" disabled selected>Select Thumbnail</option>
+                            {files && Array.from(files).map((file: File, index: number) => (
+                                <option key={index} value={file.name}>{file.name}</option>
+                            ))}
                         </select>
                         <input
                             className="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-secondary-lighter bg-transparent bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-surface transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:me-3 file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-e file:border-solid file:border-inherit file:bg-transparent file:px-3  file:py-[0.32rem] file:text-surface focus:border-primary focus:text-gray-700 focus:shadow-inset focus:outline-none dark:border-white/70 dark:text-white  file:dark:text-white"

@@ -11,14 +11,15 @@ interface SearchInputProps {
   nsfwChanged: (nsfw: boolean) => void;
   nsfwButtonEnabled: boolean | null;
   placeholderTags: Option[];
+  startingTags: string[] | null;
 }
 
-const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnabled, placeholderTags }: SearchInputProps) => {
+const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnabled, placeholderTags, startingTags }: SearchInputProps) => {
 
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>(placeholderTags);
+  const [selectedTags, setSelectedTags] = useState<string[]>(startingTags ?? []);
+  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>(startingTags?.map((tag) => ({ value: tag, label: tag })) || []);
   const [selectingTags, setSelectingTags] = useState<boolean>(false);
   const tagSelectorRef = React.useRef(null);
   const [tags, setTags] = useState<any[]>([]);
@@ -28,9 +29,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
     const tagsData = await tagsResponse.json();
     setTags(tagsData);
   }
-
-
-
 
   const updateTags = (newTags: string[]) => {
     setSelectedTags(newTags)

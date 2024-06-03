@@ -12,10 +12,14 @@ function PageComponent() {
     const supabase = createClient();
     const user = supabase.auth.getUser();
     const [gallery , setGallery] = useState<any>(null);
+    const [originalName, setOriginalGalleryName] = useState<string>('');
     const [galleryName, setGalleryName] = useState<string>('');
     const [nsfw, setNsfw] = useState<boolean>(false);
     const [tags, setTags] = useState<string[]>([]);
     const [tier, setTier] = useState<string>('Free');
+    const [thumbnail, setThumbnail] = useState<string>();
+    const [fileNames, setFileNames] = useState<string[]>([]);
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     const getData = async () => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -28,14 +32,29 @@ function PageComponent() {
         });
         const galleryData = await galleryResponse.json();
         setGallery(galleryData.gallery);
+
+        const filesResponse = await fetch(`/api/galleries/${id}/images/names`, {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+        const filesData = await filesResponse.json();
+        setFileNames(filesData);
+
         setNsfw(galleryData.gallery.nsfw);
         setTags(galleryData.gallery.tags);
         setTier(galleryData.gallery.tier);
         setGalleryName(galleryData.gallery.name);
+        if(originalName === ''){
+            setOriginalGalleryName(galleryData.gallery.name);
+        }
     }
     useEffect(() => {
         getData();
     }, []);
+    useEffect(() => {
+    }, [gallery]);
 
     useEffect(() => {
     }, [gallery, ]);
@@ -54,29 +73,55 @@ function PageComponent() {
         const formData = new FormData();
         formData.append('id', gallery.id);
         formData.append('name', galleryName);
-        formData.append('tags', JSON.stringify(tags));
+        formData.append('thumbnail', thumbnail ?? '');
+        formData.append('originalName', originalName);
+        formData.append('tags', JSON.stringify(selectedTags));
         formData.append('nsfw', nsfw.toString());
         formData.append('tier', tier);
-        const response = await fetch(`/api/galleries/admin/${id}`, {
+        const response = await fetch(`/api/galleries/admin/${originalName}`, {
             method: 'PUT',
-            body: formData,
+            body: formData
         });
 
         if (response.ok) {
+            console.log(response)
             const data = await response.json();
+        } else {
+            console.log(response)
+        }
+        if(originalName != galleryName){
+            window.location.href=`/gallery/admin/view?id=${galleryName}`
+        }
+        else{
+            window.location.reload();
+        }
+    }
+
+    const deleteGallery = async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const response = await fetch(`/api/gallery/admin/${id}`, {
+            method: 'DELETE',
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+        if (response.ok) {
+            const data = await response.json();
+            window.location.href = "/gallery/admin";
         } else {
             console.log(response)
         }
     }
 
     return (
-        <div className="w-full text-white flex justify-center items-center animate-in">
+        <div  className="w-full text-white flex justify-center items-center animate-in">
             <div className="w-full lg:w-1/2 rounded-md p-12 mt-14 ">
                 <div className="w-full flex pb-60">
                     {gallery != null && (
                         <GalleryThumbnail
                             key={"galleryThumbnail"+galleryName+"-"+tags.join("")}
-                            id={galleryName}
+                            id={originalName}
                             columns={3}
                             onSelect={function (id: string, columns: number): void {}}
                             title={galleryName}
@@ -97,7 +142,7 @@ function PageComponent() {
                     />
                     <div className="w-1/6">
                         <button
-                            onClick={() => (window.location.href = "/gallery/admin")}
+                            onClick={() => deleteGallery()}
                             className="w-full bg-error hover:bg-error-light text-white rounded-md p-2"
                         >
                             Delete
@@ -119,32 +164,43 @@ function PageComponent() {
                 </div>
                 <div className="w-full flex opacity-90 backdrop-blur-lg bg-primary  shadow-lg p-8 pt-0 rounded">
                     <div className="w-1/2 mr-2">
+                        {gallery &&(
                         <SearchInput
-                            placeholderTags={[
-                                { value: "tags", label: "❗️ click here to add tags" },
-                            ]}
+                        placeholderTags={[
+                            { value: "tags", label: "❗️ click here to add tags" },
+                        ]}
+                            startingTags={gallery.tags}
                             nsfwButtonEnabled={true}
                             searchChanged={(search) => {}}
                             nsfwChanged={(nsfw) => {}}
-                            tagsChanged={(tags) => {}}
+                            tagsChanged={(tags) => { setSelectedTags(tags) }}
                         />
+                        )}
                     </div>
                     <div className="w-1/2">
                     {gallery != null && (<>
                         <select value={nsfw ? "NSFW" : "SFW"} className="mb-2 shadow-lg rounded-md bg-secondary p-2 w-full text-white" onChange={e=>{
-                            setNsfw(e.target.value === "NSFW");
+                            setNsfw(e.target.value == "NSFW");
                         }}>
+                            <option value="" disabled >Set NSFW</option>
                             <option value="NSFW" selected={nsfw}>NSFW</option>
-                            <option value="SFW" selected={nsfw}>SFW</option>
+                            <option value="SFW" selected={!nsfw}>SFW</option>
                         </select>
-                        <select className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                        <select onChange={e=>{
+                            setTier(e.target.value);
+                        
+                        }} className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                            <option value="" disabled >Select New Tier</option>
                             <option value="Free"   selected={tier === "Free"}>Free</option>
                             <option value="Tier 1" selected={tier === "Tier 1"}>Tier 1</option>
                             <option value="Tier 2" selected={tier === "Tier 2"}>Tier 2</option>
                             <option value="Tier 3" selected={tier === "Tier 3"}>Tier 3</option>
                         </select>
-                        <select className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
+                        <select onChange={e=>{setThumbnail(e.target.value)}} className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled selected>Select New Thumbnail</option>
+                            {fileNames.map((name, index) => (
+                                <option selected={name==gallery.thumbnail_file} key={index} value={name}>{name}</option>
+                            ))}
                         </select>
                         <Masonry breakpointCols={3} className="my-masonry-grid pl-6 col-span-2">
                             {filePreviews.map((preview, index) => (

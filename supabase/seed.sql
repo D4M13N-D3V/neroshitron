@@ -100,7 +100,14 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 	('00000000-0000-0000-0000-000000000000', 'bf2935a0-244a-449d-925c-ca7ad6bf91d6', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-02 21:49:06.535623+00', ''),
 	('00000000-0000-0000-0000-000000000000', '88b130fb-5418-49ec-9e54-7db1df9b9353', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-02 21:49:06.536554+00', ''),
 	('00000000-0000-0000-0000-000000000000', '2aafc337-642d-4f4c-b550-b1c88b0f698a', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-02 22:47:33.949246+00', ''),
-	('00000000-0000-0000-0000-000000000000', '7b7bc3c1-3751-4e00-a08c-14b5bb3cf892', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-02 22:47:33.950537+00', '');
+	('00000000-0000-0000-0000-000000000000', '7b7bc3c1-3751-4e00-a08c-14b5bb3cf892', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-02 22:47:33.950537+00', ''),
+	('00000000-0000-0000-0000-000000000000', '7b3b5a37-ed60-4b75-84ae-0caba9254581', '{"action":"login","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-06-03 00:10:51.713229+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'd984ff2d-6d96-43d9-9a39-703de7400fd1', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-03 01:10:47.663131+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'e996a172-f818-489a-84b3-8dc8b8a1068b', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-03 01:10:47.663668+00', ''),
+	('00000000-0000-0000-0000-000000000000', '0f07359e-4c78-40a7-8711-4127dc74c0fb', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-03 02:08:53.524332+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'b8f1d6e8-4e3f-473c-b0be-98f4540da6f3', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-03 02:08:53.525533+00', ''),
+	('00000000-0000-0000-0000-000000000000', '1043d8ee-0301-46e0-a451-2bb043fe6634', '{"action":"token_refreshed","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-03 03:07:09.462821+00', ''),
+	('00000000-0000-0000-0000-000000000000', '6924eb3a-0588-46ff-94dc-b45f29a06e74', '{"action":"token_revoked","actor_id":"893c7701-d5df-4415-80bd-1ec089764400","actor_username":"damienostler1@outlook.com","actor_via_sso":false,"log_type":"token"}', '2024-06-03 03:07:09.463674+00', '');
 
 
 --
@@ -115,7 +122,7 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 
 INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") VALUES
 	('00000000-0000-0000-0000-000000000000', 'e11e6fda-d1fc-4b0a-bd61-80233fcb5cdd', 'authenticated', 'authenticated', 'damienostler1@gmail.com', '', '2024-05-28 02:01:35.370491+00', '2024-05-27 15:44:27.171961+00', '', '2024-05-27 15:44:27.171961+00', '', NULL, '', '', NULL, '2024-05-28 02:01:35.372861+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2024-05-27 15:44:27.167772+00', '2024-06-01 01:54:12.344577+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false),
-	('00000000-0000-0000-0000-000000000000', '893c7701-d5df-4415-80bd-1ec089764400', 'authenticated', 'authenticated', 'damienostler1@outlook.com', '$2a$10$ISYdoWsKL7gxfRz7c5IKDOTsmcjNpGgg9OOApYLMOvtOoNTo4HGM6', '2024-05-27 14:10:29.639017+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-06-02 07:19:23.345098+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', NULL, '2024-05-27 14:10:29.634157+00', '2024-06-02 22:47:33.95328+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
+	('00000000-0000-0000-0000-000000000000', '893c7701-d5df-4415-80bd-1ec089764400', 'authenticated', 'authenticated', 'damienostler1@outlook.com', '$2a$10$ISYdoWsKL7gxfRz7c5IKDOTsmcjNpGgg9OOApYLMOvtOoNTo4HGM6', '2024-05-27 14:10:29.639017+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-06-03 00:10:51.713875+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "893c7701-d5df-4415-80bd-1ec089764400", "email": "damienostler1@outlook.com", "email_verified": false, "phone_verified": false}', NULL, '2024-05-27 14:10:29.634157+00', '2024-06-03 03:07:09.465697+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
 
 
 --
@@ -138,7 +145,8 @@ INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "pro
 --
 
 INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after", "refreshed_at", "user_agent", "ip", "tag") VALUES
-	('d3d3a53c-1b42-47cb-8701-fc95698d7106', '893c7701-d5df-4415-80bd-1ec089764400', '2024-06-02 07:19:23.345142+00', '2024-06-02 22:47:33.954405+00', NULL, 'aal1', NULL, '2024-06-02 22:47:33.954341', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', '192.168.65.1', NULL);
+	('d3d3a53c-1b42-47cb-8701-fc95698d7106', '893c7701-d5df-4415-80bd-1ec089764400', '2024-06-02 07:19:23.345142+00', '2024-06-02 22:47:33.954405+00', NULL, 'aal1', NULL, '2024-06-02 22:47:33.954341', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', '192.168.65.1', NULL),
+	('93e61e5f-de83-43c0-8736-57075b701efb', '893c7701-d5df-4415-80bd-1ec089764400', '2024-06-03 00:10:51.713915+00', '2024-06-03 03:07:09.466859+00', NULL, 'aal1', NULL, '2024-06-03 03:07:09.466798', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', '192.168.65.1', NULL);
 
 
 --
@@ -146,7 +154,8 @@ INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "fac
 --
 
 INSERT INTO "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "authentication_method", "id") VALUES
-	('d3d3a53c-1b42-47cb-8701-fc95698d7106', '2024-06-02 07:19:23.346896+00', '2024-06-02 07:19:23.346896+00', 'password', '0d591b77-28af-4a30-a301-daacc838d19c');
+	('d3d3a53c-1b42-47cb-8701-fc95698d7106', '2024-06-02 07:19:23.346896+00', '2024-06-02 07:19:23.346896+00', 'password', '0d591b77-28af-4a30-a301-daacc838d19c'),
+	('93e61e5f-de83-43c0-8736-57075b701efb', '2024-06-03 00:10:51.715581+00', '2024-06-03 00:10:51.715581+00', 'password', 'c6b47f07-cd77-4dfa-be78-eb7bbccce167');
 
 
 --
@@ -179,7 +188,11 @@ INSERT INTO "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "r
 	('00000000-0000-0000-0000-000000000000', 68, 'p7WgXO_PVshB62rUN5xU7A', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-06-02 20:49:23.87952+00', '2024-06-02 21:49:06.536985+00', '3Ycsbg5jBAuM3LxZn1UGAw', 'd3d3a53c-1b42-47cb-8701-fc95698d7106'),
 	('00000000-0000-0000-0000-000000000000', 69, 'p5zdPnIXjOLqif0nIF3dSg', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-06-02 21:49:06.537664+00', '2024-06-02 22:47:33.951389+00', 'p7WgXO_PVshB62rUN5xU7A', 'd3d3a53c-1b42-47cb-8701-fc95698d7106'),
 	('00000000-0000-0000-0000-000000000000', 70, 'TyWiGmwbMN4hLag9hdEfJw', '893c7701-d5df-4415-80bd-1ec089764400', false, '2024-06-02 22:47:33.952392+00', '2024-06-02 22:47:33.952392+00', 'p5zdPnIXjOLqif0nIF3dSg', 'd3d3a53c-1b42-47cb-8701-fc95698d7106'),
-	('00000000-0000-0000-0000-000000000000', 63, 'Fdh3420OVU8_AcHtT7SOEQ', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-06-02 07:19:23.345863+00', '2024-06-02 08:17:36.071756+00', NULL, 'd3d3a53c-1b42-47cb-8701-fc95698d7106');
+	('00000000-0000-0000-0000-000000000000', 63, 'Fdh3420OVU8_AcHtT7SOEQ', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-06-02 07:19:23.345863+00', '2024-06-02 08:17:36.071756+00', NULL, 'd3d3a53c-1b42-47cb-8701-fc95698d7106'),
+	('00000000-0000-0000-0000-000000000000', 71, 'K42SmAHYG6ial6I2WsSp2Q', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-06-03 00:10:51.714543+00', '2024-06-03 01:10:47.66392+00', NULL, '93e61e5f-de83-43c0-8736-57075b701efb'),
+	('00000000-0000-0000-0000-000000000000', 72, 'YrwUhJkYZp_5uG5hP-MIdw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-06-03 01:10:47.664502+00', '2024-06-03 02:08:53.525987+00', 'K42SmAHYG6ial6I2WsSp2Q', '93e61e5f-de83-43c0-8736-57075b701efb'),
+	('00000000-0000-0000-0000-000000000000', 73, 'QCdIahteFhdcLV35WOcclw', '893c7701-d5df-4415-80bd-1ec089764400', true, '2024-06-03 02:08:53.52661+00', '2024-06-03 03:07:09.464089+00', 'YrwUhJkYZp_5uG5hP-MIdw', '93e61e5f-de83-43c0-8736-57075b701efb'),
+	('00000000-0000-0000-0000-000000000000', 74, 'ib_wWqebr4i9I1enr1X16A', '893c7701-d5df-4415-80bd-1ec089764400', false, '2024-06-03 03:07:09.464595+00', '2024-06-03 03:07:09.464595+00', 'QCdIahteFhdcLV35WOcclw', '93e61e5f-de83-43c0-8736-57075b701efb');
 
 
 --
@@ -224,24 +237,26 @@ INSERT INTO "public"."admins" ("user_id", "created_at", "assigner") VALUES
 -- Data for Name: galleries; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO "public"."galleries" ("name", "column_number", "tier", "tags", "nsfw") VALUES
-	('Another Test Gallery', 3, 'Free', '{Hentai}', true),
-	('Test Gallery', 3, 'Tier 1', '{Dojin}', true),
-	('More Test Gallery', 3, 'Tier 3', '{Hentai,VTuber}', true),
-	('Some More Testing', 3, 'Tier 2', '{Hentai,Dojin}', false),
-	('Even More Testing', 3, 'Free', '{VTuber}', false),
-	('Killa Testing Here', 3, 'Tier 1', '{VTuber,Dojin}', false),
-	('Popcorn Tester', 3, 'Free', '{Hentai}', true);
+INSERT INTO "public"."galleries" ("name", "column_number", "tier", "nsfw", "tags") VALUES
+	('Another Test Gallery', 3, 'Free', true, '{Hentai}'),
+	('Test Gallery', 3, 'Tier 1', true, '{Dojin}'),
+	('More Test Gallery', 3, 'Tier 3', true, '{Hentai,VTuber}'),
+	('Some More Testing', 3, 'Tier 2', false, '{Hentai,Dojin}'),
+	('Even More Testing', 3, 'Free', false, '{VTuber}'),
+	('Killa Testing Here', 3, 'Tier 1', false, '{VTuber,Dojin}'),
+	('Popcorn Tester', 3, 'Free', true, '{Hentai}'),
+	('test', 3, 'Free', false, '{"[\"hentai\"]"}'),
+	('testtttt', 3, 'Free', false, '{"[\"hentai\"]"}');
 
 
 --
 -- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO "public"."tags" ("name") VALUES
-	('vtuber'),
-	('hentai'),
-	('test');
+INSERT INTO "public"."tags" ("name", "gallery_name") VALUES
+	('vtuber', NULL),
+	('hentai', NULL),
+	('test', NULL);
 
 
 --
@@ -256,6 +271,9 @@ INSERT INTO "public"."user_subscriptions" ("user_id", "tier") VALUES
 -- Data for Name: buckets; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
 --
 
+--
+-- Data for Name: objects; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
+--
 
 
 --
@@ -270,6 +288,11 @@ INSERT INTO "public"."user_subscriptions" ("user_id", "tier") VALUES
 
 
 
+--
+-- Data for Name: hooks; Type: TABLE DATA; Schema: supabase_functions; Owner: supabase_functions_admin
+--
+
+
 
 --
 -- Data for Name: secrets; Type: TABLE DATA; Schema: vault; Owner: supabase_admin
@@ -281,7 +304,7 @@ INSERT INTO "public"."user_subscriptions" ("user_id", "tier") VALUES
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 70, true);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 74, true);
 
 
 --
@@ -289,6 +312,12 @@ SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 70, true);
 --
 
 SELECT pg_catalog.setval('"pgsodium"."key_key_id_seq"', 1, false);
+
+
+--
+-- Name: hooks_id_seq; Type: SEQUENCE SET; Schema: supabase_functions; Owner: supabase_functions_admin
+--
+
 
 
 --
