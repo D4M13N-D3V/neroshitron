@@ -70,13 +70,13 @@ function PageComponent() {
         <div className="w-full h-1/2 text-white lg:flex justify-center items-center animate-in">
         <div className="w-full lg:w-1/3 rounded-md bg-primary opacity-90 p-12 m-1 mt-32 shadow-lg backdrop-blur">
             <div className="w-full flex">
-                <input type="text" onChange={(e)=>{setNewTagName(e.target.value)}} className="hover:scale-105 focus:scale-95 mb-8 mr-2 rounded-md bg-info-bright p-2 w-1/2 text-white shadow-lg" placeholder="Tag Name" />
+                <input type="text" onChange={(e)=>{setNewTagName(e.target.value)}} className="hover:scale-105 focus:scale-95 mb-8 mr-2 rounded-md bg-secondary-bright p-2 w-1/2 text-white shadow-lg" placeholder="Tag Name" />
                 <button onClick={createTag} className="hover:scale-95 ml-2 shadow-lg w-1/2 h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
                     Create New Tag
                 </button>
             </div>
             <div className="w-full flex">
-                <input type="text" value={tagSearch} onChange={(e)=>{setTagSearch(e.target.value)}} className="hover:scale-105 focus:scale-95 mb-8 shadow-lg mr-2 rounded-md bg-info-bright p-2 w-full text-white" placeholder="Search all tags by name" />
+                <input type="text" value={tagSearch} onChange={(e)=>{setTagSearch(e.target.value)}} className="hover:scale-105 focus:scale-95 mb-8 shadow-lg mr-2 rounded-md bg-secondary-bright p-2 w-full text-white" placeholder="Search all tags by name" />
             </div>
             <div className="w-full h-96 overflow-y-scroll no-scrollbar">
             <table className="w-full bg-primary-light rounded">
