@@ -102,7 +102,9 @@ function PageComponent() {
         </div>
         <div className="w-full lg:w-1/2  h-max rounded-md bg-primary opacity-90 backdrop-blur-lg p-12 m-1 mt-32 shadow-lg">
             <div className="w-full flex pb-2">
-                <SearchInput placeholderTags={[
+                <SearchInput 
+                startingTags={[]}
+                placeholderTags={[
                     { value: "tags", label: "❗️ click here to add tags to search" }
                 ]} nsfwButtonEnabled={true} searchChanged={(search) => { setSearchState(search) }} nsfwChanged={(nsfw) => { setNsfwState(nsfw) }} tagsChanged={(tags) => { setTagsState(tags) }} />
             
