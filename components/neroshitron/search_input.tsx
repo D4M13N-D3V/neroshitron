@@ -59,9 +59,30 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
   }, []);
   const [color, setColor] = useState('black');
 
+  const [currentTag, setCurrentTag] = useState<string>('');
 
   useEffect(() => {
-  }, []);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      console.log("TEST")
+      if (event.key === 'ArrowUp') {
+        const currentIndex = tags.findIndex(tag => tag.name === currentTag);
+        const newIndex = currentIndex === 0 ? tags.length - 1 : currentIndex - 1;
+        setCurrentTag(tags[newIndex].name);
+      } else if (event.key === 'ArrowDown') {
+        const currentIndex = tags.findIndex(tag => tag.name === currentTag);
+        const newIndex = currentIndex === tags.length - 1 ? 0 : currentIndex + 1;
+        setCurrentTag(tags[newIndex].name);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentTag, tags]);
+  
+  console.log(currentTag)
 
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
   return (
@@ -115,18 +136,18 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                     }}
 
                     formatOptionLabel={data => (
-                      <li id={"tag-" + data.value}
-                        className={`animate-in block transition rounded duration-200 px-2 py-2 cursor-pointer select-none truncate pt-2 bg-primarytext-white hover:bg-primary-light
-                        }`}
+                      <li key={"tag-" + data.value}
+                      className={`animate-in block transition rounded duration-200 px-2 py-2 cursor-pointer select-none truncate pt-2 bg-primary text-white ${currentTag==data.value ? "bg-primary-light" : ""} hover:bg-primary-light
+                      }`}
                       >
-                        {data.label}
+                      {data.label}
                       </li>
                     )}
                     value={selectedTagsInput} 
                     primaryColor={"indigo"} />
-                </div>
+                  </div>
 
-                    {(nsfwButtonEnabled==true) ?? (
+                    {(nsfwButtonEnabled!=true) && (
                     <span className="flex items-center  border-0 font-bold text-grey-100">
                     <button
                       onClick={() => { setNsfw(!nsfw) }}
