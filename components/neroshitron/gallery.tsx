@@ -101,6 +101,12 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
             closeMenu();
         }
     };
+    const back_page = () => {
+        if (selectedImage != null) {
+            setSelectedImage(null);
+            setImages([]);
+        }
+    };
 
     const renderButtons = () => {
         return (
@@ -108,7 +114,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                 <div className='grid grid-cols-5 pl-4 gap-4 pr-4'>
                     <button
                         className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 bg-error hover:bg-error-light`}
-                        onClick={() => close()}
+                        onClick={() => back_page()}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -159,8 +165,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
 
     return (
         <div >
-            <div className="z-20"
-                onClick={close} style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
+            <div className="z-20" style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
                 <div className='flex justify-center items-center pt-2 pb-20'>
                     {renderButtons()}
                 </div>
