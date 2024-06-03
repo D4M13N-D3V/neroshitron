@@ -22,7 +22,6 @@ export default async function AuthButton() {
 
   const heads = headers()
   const currentPage = heads.get('x-path')
-console.log(currentPage)
   const getGravatarUrl = () => {
     if (user == null) {
       return;

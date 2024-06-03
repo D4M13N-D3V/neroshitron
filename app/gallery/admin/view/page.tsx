@@ -11,27 +11,74 @@ function PageComponent() {
     const [filePreviews, setFilePreviews] = useState<string[]>([]);
     const supabase = createClient();
     const user = supabase.auth.getUser();
+    const [gallery , setGallery] = useState<any>(null);
+    const [galleryName, setGalleryName] = useState<string>('');
+    const [nsfw, setNsfw] = useState<boolean>(false);
+    const [tags, setTags] = useState<string[]>([]);
+    const [tier, setTier] = useState<string>('Free');
+
+    const getData = async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const galleryResponse = await fetch(`/api/galleries/admin/${id}`, {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+        const galleryData = await galleryResponse.json();
+        setGallery(galleryData.gallery);
+        setNsfw(galleryData.gallery.nsfw);
+        setTags(galleryData.gallery.tags);
+        setTier(galleryData.gallery.tier);
+        setGalleryName(galleryData.gallery.name);
+    }
+    useEffect(() => {
+        getData();
+    }, []);
+
+    useEffect(() => {
+    }, [gallery, nsfw, tags, galleryName, tier]);
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
-            <div className="w-full lg:w-1/2 rounded-md opacity-90 backdrop-blur-lg bg-primary p-12 mt-32 shadow-lg  ">
-                <div className="w-full flex pb-48">
-                <GalleryThumbnail id={"Test Gallery"} columns={3} onSelect={function (id: string, columns: number): void {
-                } } title={""} subscription={""} tags={[]} showNsfw={false} nsfw={false} ></GalleryThumbnail>
+            <div className="w-full lg:w-1/2 rounded-md p-12 mt-14 ">
+                <div className="w-full flex pb-60">
+                    {gallery != null && (
+                        <GalleryThumbnail
+                            key={"galleryThumbnail"}
+                            id={galleryName}
+                            columns={3}
+                            onSelect={function (id: string, columns: number): void {}}
+                            title={galleryName}
+                            subscription={tier}
+                            tags={tags}
+                            showNsfw={true}
+                            nsfw={nsfw}
+                        ></GalleryThumbnail>
+                    )}
                 </div>
-                <div className="w-full flex">
+                <div className="w-full flex opacity-90 backdrop-blur-lg bg-primary  shadow-lg p-8 pb-0 rounded">
                     <input
                         type="text"
                         className="mb-8 mr-2 rounded-md bg-secondary p-2 w-1/2 text-white"
                         placeholder="Gallery Name"
+                        value={galleryName}
+                        onChange={(e) => setGalleryName(e.target.value)}
                     />
                     <div className="w-1/6">
-                        <button  onClick={() => window.location.href = "/gallery/admin"}  className="w-full bg-error hover:bg-error-light text-white rounded-md p-2">
+                        <button
+                            onClick={() => (window.location.href = "/gallery/admin")}
+                            className="w-full bg-error hover:bg-error-light text-white rounded-md p-2"
+                        >
                             Delete
                         </button>
                     </div>
                     <div className="w-1/6">
-                        <button  onClick={() => window.location.href = "/gallery/admin"}  className="w-full bg-error-dark hover:bg-error text-white rounded-md p-2 ml-2">
+                        <button
+                            onClick={() => (window.location.href = "/gallery/admin")}
+                            className="w-full bg-error-dark hover:bg-error text-white rounded-md p-2 ml-2"
+                        >
                             Back
                         </button>
                     </div>
@@ -41,42 +88,42 @@ function PageComponent() {
                         </button>
                     </div>
                 </div>
-                <div className="w-full flex">
+                <div className="w-full flex opacity-90 backdrop-blur-lg bg-primary  shadow-lg p-8 pt-0 rounded">
                     <div className="w-1/2 mr-2">
                         <SearchInput
                             placeholderTags={[
                                 { value: "tags", label: "❗️ click here to add tags" },
                             ]}
-                            nsfwButtonEnabled={false}
+                            nsfwButtonEnabled={true}
                             searchChanged={(search) => {}}
                             nsfwChanged={(nsfw) => {}}
                             tagsChanged={(tags) => {}}
                         />
                     </div>
                     <div className="w-1/2">
-                        <select className="mb-2 shadow-lg rounded-md bg-secondary p-2 w-full text-white">
-                            <option value="" disabled selected> </option>
-                            {filePreviews.map((preview, index) => (
-                                <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
-                            ))}
+                    {gallery != null && (<>
+                        <select value={nsfw ? "NSFW" : "SFW"} className="mb-2 shadow-lg rounded-md bg-secondary p-2 w-full text-white" onChange={e=>{
+                            setNsfw(e.target.value === "NSFW");
+                        }}>
+                            <option value="NSFW" selected={nsfw}>NSFW</option>
+                            <option value="SFW" selected={nsfw}>SFW</option>
                         </select>
                         <select className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
-                            <option value="" disabled selected>Select New Tier</option>
-                            {filePreviews.map((preview, index) => (
-                                <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
-                            ))}
+                            <option value="Free"   selected={tier === "Free"}>Free</option>
+                            <option value="Tier 1" selected={tier === "Tier 1"}>Tier 1</option>
+                            <option value="Tier 2" selected={tier === "Tier 2"}>Tier 2</option>
+                            <option value="Tier 3" selected={tier === "Tier 3"}>Tier 3</option>
                         </select>
                         <select className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled selected>Select New Thumbnail</option>
-                            {filePreviews.map((preview, index) => (
-                                <option key={index} value={preview}>{`Thumbnail ${index}`}</option>
-                            ))}
                         </select>
                         <Masonry breakpointCols={3} className="my-masonry-grid pl-6 col-span-2">
                             {filePreviews.map((preview, index) => (
                                 <img key={index} src={preview} alt={`Preview ${index}`} />
                             ))}
                         </Masonry>
+                    </>
+                    )}
                     </div>
                 </div>
             </div>

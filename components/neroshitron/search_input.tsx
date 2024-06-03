@@ -63,7 +63,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      console.log("TEST")
       if (event.key === 'ArrowUp') {
         const currentIndex = tags.findIndex(tag => tag.name === currentTag);
         const newIndex = currentIndex === 0 ? tags.length - 1 : currentIndex - 1;
@@ -72,6 +71,13 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
         const currentIndex = tags.findIndex(tag => tag.name === currentTag);
         const newIndex = currentIndex === tags.length - 1 ? 0 : currentIndex + 1;
         setCurrentTag(tags[newIndex].name);
+      }
+      else if(event.key === 'Enter'){
+        const currentIndex = tags.findIndex(tag => tag.name === currentTag);
+        setSelectedTags([...selectedTags, tags[currentIndex].name]);
+        const tagsInput = selectedTagsInput;
+        tagsInput.push({value: tags[currentIndex].name, label: tags[currentIndex].name});
+        setSelectedTagsInput(tagsInput);
       }
     };
 
@@ -82,7 +88,6 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
     };
   }, [currentTag, tags]);
   
-  console.log(currentTag)
 
   const tagOptions = tags.map((tag: { name: string; }) => ({ value: tag.name, label: tag.name }));
   return (
