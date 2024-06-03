@@ -78,7 +78,7 @@ function PageComponent() {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
         const formData = new FormData();
-        formData.append('id', gallery.id);
+        formData.append('id', gallery.name);
         formData.append('name', galleryName);
         formData.append('thumbnail', thumbnail ?? '');
         formData.append('originalName', originalName);
