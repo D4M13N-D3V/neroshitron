@@ -107,7 +107,7 @@ function PageComponent() {
     const deleteGallery = async () => {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
-        const response = await fetch(`/api/gallery/admin/${id}`, {
+        const response = await fetch(`/api/gallery/admin/${gallery.name}`, {
             method: 'DELETE',
             headers: {
             'Content-Type': 'application/json'
