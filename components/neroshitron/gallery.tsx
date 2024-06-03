@@ -88,10 +88,8 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
         setCurrentIndex(images.indexOf(image));
     };
 
-    const resetPanZoom = (event: any) => {
-        if (panZoomRef.current && event.target.id != "image-container") {
-            panZoomRef.current.autoCenter();
-        }
+    const resetPanZoom = () => {
+        panZoomRef.current.autoCenter();
     };
 
     const close = () => {
@@ -107,7 +105,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
     const renderButtons = () => {
         return (
             <div className="z-20 bottom-10 fixed text-white pt-4 bg-primary bg-opacity-90 animate-in rounded-md" style={{ backdropFilter: 'blur(10px)' }}>
-                <div className='grid grid-cols-4 pl-4 gap-4 pr-4'>
+                <div className='grid grid-cols-5 pl-4 gap-4 pr-4'>
                     <button
                         className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 bg-error hover:bg-error-light`}
                         onClick={() => close()}
@@ -115,6 +113,16 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
+                    </button>
+                    <button
+                        className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-secondary hover:bg-secondary-light'}`}
+                        onClick={() => resetPanZoom()}
+                        disabled={!selectedImage}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
+                        </svg>
+
                     </button>
                     <button
                         className={`justify-center text-center w-full animate-in animate-once animate-duration-1000 animate-ease-out animate-reverse mb-4 py-2 px-4 rounded-lg no-underline flex items-center z-50 ${!selectedImage ? 'opacity-50 cursor-not-allowed bg-gray-800' : 'bg-secondary hover:bg-secondary-light'}`}
@@ -152,7 +160,7 @@ const Gallery = ({ id, columns, closeMenu }: GalleryProps) => {
     return (
         <div >
             <div className="z-20"
-                onClick={resetPanZoom} style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
+                onClick={close} style={{ width: selectedImage ? "100%" : "auto", height: selectedImage ? "100%" : "auto" }}>
                 <div className='flex justify-center items-center pt-2 pb-20'>
                     {renderButtons()}
                 </div>
