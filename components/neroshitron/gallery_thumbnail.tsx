@@ -72,16 +72,16 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscr
                                     {nsfwState && (
                                         <span className=" bg-error text-white px-2 py-1 mr-2 rounded-md text-sm h-full flex items-center">NSFW</span>
                                     )}
-                                    {subscription === "Free" && (
+                                    {subscriptionState === "Free" && (
                                         <span className=" bg-free text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Free</span>
                                     )}
-                                    {subscription === "Tier 1" && (
+                                    {subscriptionState === "Tier 1" && (
                                         <span className=" bg-tier1 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 1</span>
                                     )}
-                                    {subscription === "Tier 2" && (
+                                    {subscriptionState === "Tier 2" && (
                                         <span className=" bg-tier2 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 2</span>
                                     )}
-                                    {subscription === "Tier 3" && (
+                                    {subscriptionState === "Tier 3" && (
                                         <span className=" bg-tier3 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 3</span>
                                     )}
                                 </div>

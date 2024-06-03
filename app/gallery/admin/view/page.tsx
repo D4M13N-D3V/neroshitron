@@ -38,7 +38,36 @@ function PageComponent() {
     }, []);
 
     useEffect(() => {
-    }, [gallery, nsfw, tags, galleryName, tier]);
+    }, [gallery, ]);
+    useEffect(() => {
+    }, [ nsfw ]);
+    useEffect(() => {
+    }, [tags ]);
+    useEffect(() => {
+    }, [galleryName]);
+    useEffect(() => {
+    }, [ tier]);
+
+    const updateGallery = async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const formData = new FormData();
+        formData.append('id', gallery.id);
+        formData.append('name', galleryName);
+        formData.append('tags', JSON.stringify(tags));
+        formData.append('nsfw', nsfw.toString());
+        formData.append('tier', tier);
+        const response = await fetch(`/api/galleries/admin/${id}`, {
+            method: 'PUT',
+            body: formData,
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+        } else {
+            console.log(response)
+        }
+    }
 
     return (
         <div className="w-full text-white flex justify-center items-center animate-in">
@@ -46,14 +75,14 @@ function PageComponent() {
                 <div className="w-full flex pb-60">
                     {gallery != null && (
                         <GalleryThumbnail
-                            key={"galleryThumbnail"}
+                            key={"galleryThumbnail"+galleryName+"-"+tags.join("")}
                             id={galleryName}
                             columns={3}
                             onSelect={function (id: string, columns: number): void {}}
                             title={galleryName}
                             subscription={tier}
                             tags={tags}
-                            showNsfw={true}
+                            showNsfw={false}
                             nsfw={nsfw}
                         ></GalleryThumbnail>
                     )}
@@ -83,7 +112,7 @@ function PageComponent() {
                         </button>
                     </div>
                     <div className="w-1/4">
-                        <button className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-4">
+                        <button onClick={()=>{updateGallery()}} className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-4">
                             Save
                         </button>
                     </div>

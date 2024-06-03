@@ -19,8 +19,17 @@ export async function PUT(
   ) {
     const id = params.id;
     const supabase = createClient();
-    const { files, tags, name, nsfw, tier}: { files: File[], tags: string[], name: string, nsfw:boolean, tier:string } = await request.json();
+    const formData = await request.formData();
+    const tags = formData.getAll('tags');
+    const name = formData.get('name');
+    const nsfw = formData.get('nsfw');
+    const tier = formData.get('tier');
+    console.log(id)
     const { data: gallery, error } = await supabase.from('galleries').update({ name, tags, nsfw, tier }).eq('name', id).single();
+    if(error){
+        console.log(error)
+        return NextResponse.error();
+    }
     let { data: galleries, error:galleriesError } = await supabase
     .from('galleries')
     .select('*');
