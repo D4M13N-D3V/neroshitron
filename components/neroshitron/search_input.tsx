@@ -114,7 +114,7 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
             )
               : (
                 <>
-                <div className="absolute w-full top-0">
+                <div className="w-5/6 top-0">
                   <Select isMultiple isSearchable isClearable searchInputPlaceholder='Start typing to search tags...' 
                     options={tagOptions}
                     placeholder="Select tags for your search"
@@ -155,10 +155,10 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                     )}
                     value={selectedTagsInput} 
                     primaryColor={"indigo"} />
-                  </div>
 
-                    {(nsfwButtonEnabled!=true) && (
-                    <span className="flex items-center  border-0 font-bold text-grey-100">
+                </div>
+                    {(nsfwButtonEnabled) && (
+                <span className="w-1/6 border-0 font-bold text-grey-100">
                     <button
                       onClick={() => { setNsfw(!nsfw) }}
                       type="button"

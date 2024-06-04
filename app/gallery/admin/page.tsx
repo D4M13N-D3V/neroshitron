@@ -108,7 +108,7 @@ function PageComponent() {
                 startingTags={[]}
                 placeholderTags={[
                     { value: "tags", label: "❗️ click here to add tags to search" }
-                ]} nsfwButtonEnabled={true} searchChanged={(search) => { setSearchState(search) }} nsfwChanged={(nsfw) => { setNsfwState(nsfw) }} tagsChanged={(tags) => { setTagsState(tags) }} />
+                ]} nsfwButtonEnabled={false} searchChanged={(search) => { setSearchState(search) }} nsfwChanged={(nsfw) => { setNsfwState(nsfw) }} tagsChanged={(tags) => { setTagsState(tags) }} />
             
                 <a href="/gallery/admin/create" className="hover:scale-95 ml-2 p-2 shadow-lg h-10 text-center bg-success hover:bg-success-light text-white w-1/6 font-bold rounded flex items-center justify-center">
                     + Gallery

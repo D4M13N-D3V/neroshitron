@@ -45,6 +45,7 @@ const Search = ({ gallerySelected }: SearchProps) => {
       <section className="fixed flex items-center w-full p-8 pt-20 opacity-90 animate-in animate-once animate-duration-500">
         <div className="container mx-auto py-8">
           <SearchInput
+          
            startingTags={[]} 
           placeholderTags={[
     { value: "neroshi", label: "🧑‍🎨 neroshi" },
