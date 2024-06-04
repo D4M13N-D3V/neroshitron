@@ -69,12 +69,17 @@ function PageComponent() {
     ];
 
     return (
-        <div className="w-full h-1/2 text-white lg:flex justify-center items-center animate-in">
+        <div className="w-full p-8 h-1/2 text-white lg:flex justify-center items-center animate-in">
         <div className="w-full lg:w-1/3 rounded-md bg-primary opacity-90 p-12 m-1 mt-32 shadow-lg backdrop-blur">
             <div className="w-full flex">
                 <input value={newTagName} type="text" onChange={(e)=>{setNewTagName(e.target.value)}} className="hover:scale-105 focus:scale-105 mb-8 mr-2 rounded-md bg-info-bright p-2 w-1/2 text-black shadow-lg" placeholder="Tag Name" />
                 <button onClick={createTag} className="hover:scale-95 ml-2 shadow-lg w-1/2 h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
-                    Create New Tag
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="lg:hidden size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+
+                    <span className="lg:hidden block">Tag</span>
+                    <span className="lg:block hidden">New Tag</span>
                 </button>
             </div>
             <div className="w-full flex">
@@ -112,7 +117,11 @@ function PageComponent() {
                     ]} nsfwButtonEnabled={false} searchChanged={(search) => { setSearchState(search) }} nsfwChanged={(nsfw) => { setNsfwState(nsfw) }} tagsChanged={(tags) => { setTagsState(tags) }} />
                 </div>
                 <a href="/gallery/admin/create" className="w-1/6 hover:scale-95 ml-2 p-2 shadow-lg h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
-                    New Gallery
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="xl:hidden size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+
+                    <span className="xl:block hidden">New Gallery</span>
                 </a>
             </div>
             <div className="w-full h-96 overflow-y-scroll no-scrollbar">

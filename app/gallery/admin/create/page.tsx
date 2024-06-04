@@ -76,8 +76,8 @@ function PageComponent() {
     };
 
     return (
-        <div className="w-full text-white flex justify-center items-center animate-in">
-            <div className="w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-12 mt-32 shadow-lg">
+        <div className="w-full p-8 text-white flex justify-center items-center animate-in">
+            <div className="w-full lg:w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-12 mt-32 shadow-lg">
                 <div className="w-full flex">
                     <input
                         type="text"
@@ -93,12 +93,12 @@ function PageComponent() {
                     </div>
                     <div className="w-1/4">
                         <button onClick={()=>{createGallery()}} className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-2 shadow-lg    ">
-                            Create Gallery
+                            <span></span>Create
                         </button>
                     </div>
                 </div>
-                <div className="w-full flex">
-                    <div className="w-1/2 mr-2">
+                <div className="w-full lg:flex">
+                    <div className="w-full lg:w-1/2 mr-2">
                         <SearchInput
                             placeholderTags={[
                                 { value: "tags", label: "❗️ click here to add tags" },
@@ -110,7 +110,7 @@ function PageComponent() {
                             tagsChanged={(tags) => { setTags(tags)  }}
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-full lg:w-1/2 lg:pt-0 pt-4">
                         <select value={nsfw ? "NSFW" : "SFW"} className="mb-2 shadow-lg rounded-md bg-secondary p-2 w-full text-white" onChange={e=>{
                             setNsfw(e.target.value === "NSFW");
                         }}>
