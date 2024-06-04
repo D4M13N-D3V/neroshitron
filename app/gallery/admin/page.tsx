@@ -103,19 +103,20 @@ function PageComponent() {
             </div>
         </div>
         <div className="w-full lg:w-1/2  h-max rounded-md bg-primary opacity-90 backdrop-blur-lg p-12 m-1 mt-32 shadow-lg">
-            <div className="w-full flex pb-2">
-                <SearchInput 
-                startingTags={[]}
-                placeholderTags={[
-                    { value: "tags", label: "❗️ click here to add tags to search" }
-                ]} nsfwButtonEnabled={false} searchChanged={(search) => { setSearchState(search) }} nsfwChanged={(nsfw) => { setNsfwState(nsfw) }} tagsChanged={(tags) => { setTagsState(tags) }} />
-            
-                <a href="/gallery/admin/create" className="hover:scale-95 ml-2 p-2 shadow-lg h-10 text-center bg-success hover:bg-success-light text-white w-1/6 font-bold rounded flex items-center justify-center">
-                    + Gallery
+            <div className="w-full fixed flex pb-2 z-20">
+                <div className="w-4/6">
+                    <SearchInput 
+                    startingTags={[]}
+                    placeholderTags={[
+                        { value: "tags", label: "❗️ click here to add tags to search" }
+                    ]} nsfwButtonEnabled={false} searchChanged={(search) => { setSearchState(search) }} nsfwChanged={(nsfw) => { setNsfwState(nsfw) }} tagsChanged={(tags) => { setTagsState(tags) }} />
+                </div>
+                <a href="/gallery/admin/create" className="w-1/6 hover:scale-95 ml-2 p-2 shadow-lg h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
+                    New Gallery
                 </a>
             </div>
             <div className="w-full h-96 overflow-y-scroll no-scrollbar">
-                <table className="w-full mt-8 bg-primary-light rounded">
+                <table className="w-full mt-20 bg-primary-light rounded">
                     <tbody>
                         {/* Replace this with your data mapping logic */}
                         {galleries.map((item: { name: string, imageCount: number, tier: string }) => (
