@@ -73,14 +73,14 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
         const currentIndex = tags.findIndex(tag => tag.name === currentTag);
         const newIndex = currentIndex === tags.length - 1 ? 0 : currentIndex + 1;
         setCurrentTag(tags[newIndex].name);
-      }
-      else if(event.key === 'Enter'){
+      } else if (event.key === 'Enter') {
         const currentIndex = tags.findIndex(tag => tag.name === currentTag);
         if (currentIndex !== -1 && !selectedTags.includes(tags[currentIndex].name)) {
           setSelectedTags([...selectedTags, tags[currentIndex].name]);
           const tagsInput = selectedTagsInput;
           tagsInput.push({ value: tags[currentIndex].name, label: tags[currentIndex].name });
           setSelectedTagsInput(tagsInput);
+          setCurrentTag('');
         }
       }
     };
@@ -129,6 +129,13 @@ const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnable
                       } else if (value) {
                         setSelectedTags([value.value]);
                         setSelectedTagsInput([value])
+                      }
+                      if (Array.isArray(value)) {
+                        setSelectedTags(value.map((option) => option.value));
+                        setSelectedTagsInput(value.filter((option) => option.value !== 'placeholder'));
+                      } else if (value) {
+                        setSelectedTags([value.value]);
+                        setSelectedTagsInput([value]);
                       }
                     }}
                     onSearchInputChange={(value) => {
