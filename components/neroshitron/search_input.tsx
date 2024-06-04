@@ -16,10 +16,13 @@ interface SearchInputProps {
 
 const SearchInput = ({ tagsChanged, searchChanged, nsfwChanged, nsfwButtonEnabled, placeholderTags, startingTags }: SearchInputProps) => {
 
+
+  
+
   const [tagSearch, setTagSearch] = useState<string>('');
   const [nsfw, setNsfw] = useState<boolean>(false);
   const [selectedTags, setSelectedTags] = useState<string[]>(startingTags ?? []);
-  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>(startingTags?.map((tag) => ({ value: tag, label: tag })) || []);
+  const [selectedTagsInput, setSelectedTagsInput] = useState<Option[]>([...placeholderTags, ...(startingTags ?? []).map((tag) => ({ value: tag, label: tag }))]);
   const [selectingTags, setSelectingTags] = useState<boolean>(false);
   const tagSelectorRef = React.useRef(null);
   const [tags, setTags] = useState<any[]>([]);
