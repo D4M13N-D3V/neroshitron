@@ -49,5 +49,6 @@ Configuration is done through the Owncast administration page located on your se
 ![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/57379445-8bd5-4a7e-8a15-7fa0b3ae42dc)
 
 # Database Diagram
-![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/39bc92d1-7e8b-4d75-adaa-48b08f7425bb)
+![image](https://github.com/D4M13N-D3V/neroshitron/assets/13697702/98dc3c1e-beca-4b32-b4f6-bd975ca36bea)
+
 
