@@ -173,8 +173,8 @@ function PageComponent() {
                     </button>
                 </div>
                     <div className="w-1/4">
-                        <button onClick={()=>{updateGallery()}} className="w-full bg-success hover:bg-success-light text-white rounded-md p-2 ml-4">
-                            <span>Save</span>
+                        <button onClick={()=>{updateGallery()}} className="w-full bg-warning hover:bg-warning-light text-white rounded-md p-2 ml-4">
+                            <span>Update</span>
                         </button>
                     </div>
                 </div>
