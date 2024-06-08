@@ -133,6 +133,8 @@ function PageComponent() {
         }
     }
 
+    const tierObj = tiers.find((tier) => tier.name == gallery.tier);
+    const subscriptionColor = tier ? tierObj.color : null;
     return (
         <div className="w-full p-8 h-screen text-white flex justify-center items-center animate-in">
             <div className="w-full lg:w-1/2 rounded-md p-12 mt-14 ">
@@ -146,6 +148,7 @@ function PageComponent() {
                             title={galleryName}
                             subscription={tier}
                             tags={tags}
+                            subscriptionColor={subscriptionColor}
                             showNsfw={false}
                             nsfw={nsfw}
                         ></GalleryThumbnail>

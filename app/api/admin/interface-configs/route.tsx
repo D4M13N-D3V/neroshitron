@@ -16,7 +16,7 @@ export async function PUT(request: Request) {
     return NextResponse.json({});
 }
 
-export async function GET(request: NextApiRequest, response: NextApiResponse) {
+export async function GET(request: Request) {
 
     const url = new URL(request.url as string, 'http://localhost');
     const name = url.searchParams.get('name') || '';
