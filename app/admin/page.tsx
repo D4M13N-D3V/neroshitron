@@ -13,7 +13,7 @@ function PageComponent() {
   const router = useRouter();
   return (
     <div className="w-full text-white flex justify-center items-center animate-in">
-        <div className="w-2/3 lg:w-1/3 rounded-md bg-primary p-12 mt-32 shadow-lg opacity-90 backdrop-blur-lg">
+        <div className="w-2/3 lg:w-1/3 rounded-md bg-primary p-8 mt-32 shadow-lg opacity-90 backdrop-blur-lg">
             <div className="w-full flex justify-center">
                 <span className="text-2xl pb-4">System Settings</span>
             </div>
