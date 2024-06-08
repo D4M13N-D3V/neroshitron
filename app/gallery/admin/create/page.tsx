@@ -16,9 +16,21 @@ function PageComponent() {
     const [thumbnail, setThumbnail] = useState<string>("");
     const [files, setFiles] = useState<FileList>();
 
+    const [tiers, setTiers] = useState<any[]>([]);
     const supabase = createClient();
     const user = supabase.auth.getUser();
     const getData = async () => {
+        try {
+            const response = await fetch('/api/tiers');
+            if (response.ok) {
+                const data = await response.json();
+                setTiers(data);
+            } else {
+                console.error('Failed to fetch users');
+            }
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
     }
     useEffect(() => {
         getData();
@@ -100,8 +112,8 @@ function PageComponent() {
                     </div>
                 </div>
                 <div className="w-full lg:flex">
-                    <div className="w-full lg:w-1/2 mr-2">
-                        <div className="absolute">  
+                    <div className="w-full lg:w-1/2">
+                        <div className="w-1/2 absolute pr-14">  
                             <SearchInput
                                 placeholderTags={[
                                     { value: "tags", label: "❗️ click here to add tags" },
@@ -124,10 +136,10 @@ function PageComponent() {
                         <select onChange={e=>{
                             setTier(e.target.value);
                         }} className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
-                            <option value="Free"   selected={tier === "Free"}>Free</option>
-                            <option value="Tier 1" selected={tier === "Tier 1"}>Tier 1</option>
-                            <option value="Tier 2" selected={tier === "Tier 2"}>Tier 2</option>
-                            <option value="Tier 3" selected={tier === "Tier 3"}>Tier 3</option>
+                        <option value="" disabled >Select New Tier</option>
+                            {tiers.map((tier, index) => (
+                                <option key={index} value={tier.name}>{tier.name}</option>
+                            ))}
                         </select>
                         <select  onChange={e=>{setThumbnail(e.target.value)}}  className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled selected>Select Thumbnail</option>

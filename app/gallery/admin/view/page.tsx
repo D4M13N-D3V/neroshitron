@@ -21,11 +21,23 @@ function PageComponent() {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const router = useRouter();
 
+    const [tiers, setTiers] = useState<any[]>([]);
     const [open, setOpen] = useState<boolean>(false);
 
 
     const [images, setImages] = useState<string[]>([]);
     const getData = async () => {
+        try {
+            const response = await fetch('/api/tiers');
+            if (response.ok) {
+                const data = await response.json();
+                setTiers(data);
+            } else {
+                console.error('Failed to fetch users');
+            }
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
         const galleryResponse = await fetch(`/api/galleries/admin/${id}`, {
@@ -212,10 +224,9 @@ function PageComponent() {
                         
                         }} className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled >Select New Tier</option>
-                            <option value="Free"   selected={tier === "Free"}>Free</option>
-                            <option value="Tier 1" selected={tier === "Tier 1"}>Tier 1</option>
-                            <option value="Tier 2" selected={tier === "Tier 2"}>Tier 2</option>
-                            <option value="Tier 3" selected={tier === "Tier 3"}>Tier 3</option>
+                            {tiers.map((tier, index) => (
+                                <option selected={tier.name==gallery.tier} key={index} value={tier.name}>{tier.name}</option>
+                            ))}
                         </select>
                         <select onChange={e=>{setThumbnail(e.target.value)}} className="mb-2 shadow-lg mr-2 rounded-md bg-secondary p-2 w-full text-white">
                             <option value="" disabled selected>Select New Thumbnail</option>
