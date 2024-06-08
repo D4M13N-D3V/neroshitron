@@ -27,7 +27,6 @@ export async function PUT(
     const tier = formData.get('tier')?.toString();
     const thumbnail = formData.get('thumbnail');
 
-    console.log(tier)
     const { error } = await supabase.from('galleries').update({name, tags, nsfw, tier, thumbnail_file:thumbnail}).eq('name', originalName ?? '');
     
     async function renameFolder(oldFolderName: any, newFolderName: string) {

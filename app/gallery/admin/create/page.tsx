@@ -1,13 +1,12 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
 import React, { useState, useEffect } from 'react';
-import Search from "@/components/neroshitron/search";
-import Gallery from "@/components/neroshitron/gallery";
+import { useRouter } from 'next/navigation';
 import Masonry from "react-masonry-css";
 import SearchInput from "@/components/neroshitron/search_input";
 
 function PageComponent() {
-
+    const router = useRouter();
     const [selectedGallery, setSelectedGallery] = useState<string | null>(null);
     const [filePreviews, setFilePreviews] = useState<string[]>([]);
     const [name, setName] = useState<string>('');
@@ -87,7 +86,7 @@ function PageComponent() {
                         placeholder="Gallery Name"
                     />
                     <div className="w-1/4">
-                        <button onClick={() => window.location.href = "/gallery/admin"} className="w-full bg-error hover:bg-error-light text-white rounded-md p-2 shadow-lg">
+                        <button onClick={() => router.push("/gallery/admin")} className="w-full bg-error hover:bg-error-light text-white rounded-md p-2 shadow-lg">
                             Back
                         </button>
                     </div>

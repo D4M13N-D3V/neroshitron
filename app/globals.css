@@ -79,3 +79,33 @@
     transform: translateY(0);
   }
 }
+
+
+
+button:disabled {
+  filter: grayscale(50%);
+}
+
+
+
+
+:root {
+  --color-primary: #201240;
+  --color-primary-light: #403260;
+  --color-primary-dark: #100120;
+  --color-secondary: #4F3D70;
+  --color-secondary-light: #6F5D90;
+  --color-secondary-dark: #2F1D50;
+  --color-error: #862117;
+  --color-error-light: #C44C4C;
+  --color-error-dark: #5C0D0D;
+  --color-success: #00C9A6;
+  --color-success-light: #20E9C6;
+  --color-success-dark: #00A986;
+  --color-warning: #E17558;
+  --color-warning-light: #E39578;
+  --color-warning-dark: #C15538;
+  --color-info: #222140;
+  --color-info-light: #424260;
+  --color-info-dark: #020120;
+}

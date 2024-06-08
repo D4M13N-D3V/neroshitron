@@ -1,9 +1,8 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
 import React, { useState, useEffect } from 'react';
-import Search from "@/components/neroshitron/search";
+import { useRouter } from 'next/navigation';
 import Gallery from "@/components/neroshitron/gallery";
-import Masonry from "react-masonry-css";
 import SearchInput from "@/components/neroshitron/search_input";
 import GalleryThumbnail from "@/components/neroshitron/gallery_thumbnail";
 
@@ -20,6 +19,7 @@ function PageComponent() {
     const [thumbnail, setThumbnail] = useState<string>();
     const [fileNames, setFileNames] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const router = useRouter();
 
     const [open, setOpen] = useState<boolean>(false);
 
@@ -97,7 +97,7 @@ function PageComponent() {
             console.log(response)
         }
         if(originalName != galleryName){
-            window.location.href=`/gallery/admin/view?id=${galleryName}`
+            router.push(`/gallery/admin/view?id=${galleryName}`)
         }
         else{
             window.location.reload();
@@ -115,7 +115,7 @@ function PageComponent() {
         });
         if (response.ok) {
             const data = await response.json();
-            window.location.href = "/gallery/admin";
+            router.push("/gallery/admin");
         } else {
             console.log(response)
         }
@@ -161,7 +161,7 @@ function PageComponent() {
                 </div>
                 <div className="w-1/6">
                     <button
-                        onClick={() => (window.location.href = "/gallery/admin")}
+                        onClick={() => (router.push("/gallery/admin"))}
                         className="w-full bg-error-dark hover:bg-error text-white rounded-md p-2 ml-2 flex items-center justify-center"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
