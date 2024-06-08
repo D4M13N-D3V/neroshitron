@@ -6,12 +6,13 @@ interface GalleryThumbnailProps {
     onSelect: (id: string, columns: number) => void;
     title: string;
     subscription: string;
+    subscriptionColor: string;
     tags: string[];
     showNsfw: boolean;
     nsfw: boolean;
 }
 
-const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscription, tags }: GalleryThumbnailProps) => {
+const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscription, subscriptionColor, tags }: GalleryThumbnailProps) => {
     const [galleryId, setGalleryId] = useState<string>(id);
     const [thumbnailUrl, setThumbnailUrl] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -21,6 +22,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscr
     const [showNsfwState, setShowNsfw] = useState<boolean>(showNsfw);
     const [subscriptionState, setSubscription] = useState<string>(subscription);
     const [tagsState, setTags] = useState<string[]>(tags);
+    console.log(subscriptionColor)
     const openGallery = () => {
         onSelect(galleryId, galleryCollumns);
     };
@@ -42,7 +44,7 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscr
 
     return (
         <div className=" py-3 sm:max-w-xl sm:mx-auto flex-3 animate-fade-up animate-once animate-duration-1000 animate-ease-out animate-normal animate-fill-forwards">
-            <div className="h-48 overflow-visible w-full relative hover:scale-95 rounded-3xl" style={{ cursor: 'pointer' }}>
+            <div className="h-48 overflow-visible w-full relative hover:scale-95 rounded-3xl" style={{ cursor: 'pointer'}}>
                 {!isLoading ? (
                     <>
                         <img
@@ -72,18 +74,8 @@ const GalleryThumbnail = ({ id, columns, onSelect, title, showNsfw, nsfw, subscr
                                     {nsfwState && (
                                         <span className=" bg-error text-white px-2 py-1 mr-2 rounded-md text-sm h-full flex items-center">NSFW</span>
                                     )}
-                                    {subscriptionState === "Free" && (
-                                        <span className=" bg-free text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Free</span>
-                                    )}
-                                    {subscriptionState === "Tier 1" && (
-                                        <span className=" bg-tier1 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 1</span>
-                                    )}
-                                    {subscriptionState === "Tier 2" && (
-                                        <span className=" bg-tier2 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 2</span>
-                                    )}
-                                    {subscriptionState === "Tier 3" && (
-                                        <span className=" bg-tier3 text-white px-2 py-1 rounded-md text-sm h-full flex items-center">Tier 3</span>
-                                    )}
+                                    <span className="text-white px-2 py-1 rounded-md text-sm h-full flex items-center" style={{ cursor: 'pointer', backgroundColor: subscriptionColor }}>Free</span>
+
                                 </div>
                             </div>
                             {/* <div className="text-white flex justify-between">
