@@ -27,7 +27,7 @@ function PageComponent() {
 
     return (
         <div className="w-2/3 p-8 h-1/2 text-white lg:flex justify-center items-center animate-in">
-            <div className="w-full lg:w-1/3 rounded-md bg-primary opacity-90 p-12 m-1 mt-32 shadow-lg backdrop-blur">
+            <div className="w-full lg:w-1/3 rounded-md bg-primary opacity-90 p-8 m-1 mt-32 shadow-lg backdrop-blur">
                 <div className="w-full flex justify-center">
                     <span className="text-2xl pb-4">Tiers Management</span>
                 </div>
