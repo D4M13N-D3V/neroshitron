@@ -62,11 +62,14 @@ function PageComponent() {
 
 
     return (
-        <div className="w-full p-8 h-max text-white lg:flex justify-center items-center animate-in">
-            <div className="w-full h-max lg:w-1/3 rounded-md bg-primary opacity-90 p-12 m-1 mt-32 shadow-lg backdrop-blur">
-                <div className="w-full flex">
-                    <input value={newTagName} type="text" onChange={(e)=>{setNewTagName(e.target.value)}} className="  mb-8 mr-2 rounded-md bg-info-bright p-2 w-1/2 text-black shadow-lg" placeholder="Tag Name" />
-                    <button onClick={createTag} className=" ml-2 shadow-lg w-1/2 h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
+        <div className="w-full p-8 h-max text-white lg:flex justify-center items-start animate-in mt-32">
+            <div className="w-full h-max lg:w-1/3 rounded-md bg-primary opacity-90 p-4 m-1 shadow-lg backdrop-blur">
+                <span className="text-2xl">Tags Management</span>
+                <div className="w-full flex pt-4">
+                    <form onSubmit={createTag} className="flex w-full">
+
+                    <input value={newTagName} required type="text" onChange={(e)=>{setNewTagName(e.target.value)}} className="  mb-8 mr-2 rounded-md bg-info-bright p-2 w-1/2 text-black shadow-lg" placeholder="Tag Name" />
+                    <button className=" ml-2 shadow-lg w-1/2 h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="lg:hidden size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
@@ -74,6 +77,7 @@ function PageComponent() {
                         <span className="lg:hidden block">Tag</span>
                         <span className="lg:block hidden">New Tag</span>
                     </button>
+                    </form>
                 </div>
                 <div className="w-full flex">
                     <input type="text" value={tagSearch} onChange={(e)=>{setTagSearch(e.target.value)}} className="  mb-8 shadow-lg mr-2 rounded-md bg-info-bright p-2 w-full text-black" placeholder="Search all tags by name" />
@@ -88,8 +92,8 @@ function PageComponent() {
                                 <td className="px-4 py-2">{item.name}</td>
                                 <td className="px-4 py-2">
                                     <button onClick={()=>{deleteTag(item.name)}}  className=" bg-error shadow-lg hover:bg-error-light text-white font-bold py-2 px-4 rounded float-right">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="</button>none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                        <path strokeLinecap="round" strokeLinejoin="ro</svg>und" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
                                     </svg>  
 
                                     </button>
@@ -100,22 +104,34 @@ function PageComponent() {
                 </table>
                 </div>
             </div>
-            <div className="w-full h-max lg:w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-4 shadow-lg">
+            <div className="w-full h-max lg:w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-4 m-1 shadow-lg">
+                <div className="w-full pb-2 flex justify-between">
+                    <span className="text-2xl">Galleries Management</span>
+                    <div>
+                        <button onClick={()=>{router.push("/admin/")}} className="ml-2 p-2 shadow-lg h-10 text-center bg-error hover:bg-error-light text-white font-bold rounded">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="xl:hidden size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+
+                            <span className="xl:block hidden">Back</span>
+                        </button>
+                        <button onClick={()=>{router.push("/gallery/admin/create")}} className="ml-2 p-2 shadow-lg h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="xl:hidden size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+
+                            <span className="xl:block hidden">New Gallery</span>
+                        </button>
+                    </div>
+                </div>
                 <div className="w-full pb-2 flex">
-                    <div className="fixed w-4/5 z-20">
+                    <div className="absolute w-full z-20 pr-8">
                         <SearchInput 
                         startingTags={[]}
                         placeholderTags={[
                             { value: "tags", label: "❗️ click here to add tags to search" }
                         ]} nsfwButtonEnabled={false} searchChanged={(search) => { setSearchState(search) }} nsfwChanged={(nsfw) => { setNsfwState(nsfw) }} tagsChanged={(tags) => { setTagsState(tags) }} />
-                    </div>
-                    <button onClick={()=>{router.push("/gallery/admin/create")}} className="right-0  mr-2 mt-2 fixed w-1/6  ml-2 p-2 shadow-lg h-10 text-center bg-success hover:bg-success-light text-white font-bold rounded flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="xl:hidden size-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-
-                        <span className="xl:block hidden">New Gallery</span>
-                    </button>
+                    </div> 
                 </div>
                 <div className="w-full h-96 overflow-y-scroll no-scrollbar">
                     <table className="w-full mt-20 bg-primary-light rounded">

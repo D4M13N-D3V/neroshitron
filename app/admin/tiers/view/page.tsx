@@ -19,7 +19,6 @@ function PageComponent() {
             const response = await fetch('/api/tiers/'+name);
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 setTier(data);
                 setName(data.name);
                 setPrice(data.price);

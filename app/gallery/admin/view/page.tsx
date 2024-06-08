@@ -179,7 +179,9 @@ function PageComponent() {
                     </div>
                 </div>
                 <div className="w-full lg:flex opacity-90 backdrop-blur-lg bg-primary  shadow-lg p-8 pt-0 rounded">
-                    <div className="w-full lg:w-1/2 mr-8">
+                    <div className="w-full lg:w-1/2 mr-44">
+                        <div className="w-1/2 fixed mr-8">
+
                         {gallery &&(
                         <SearchInput
                         placeholderTags={[
@@ -192,6 +194,7 @@ function PageComponent() {
                             tagsChanged={(tags) => { setSelectedTags(tags) }}
                         />
                         )}
+                        </div>
                     </div>
                     <div className="w-full lg:w-1/2  pt-4">
                     {gallery != null && (<>

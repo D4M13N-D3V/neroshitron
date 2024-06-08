@@ -12,7 +12,6 @@ function PageComponent() {
             const response = await fetch('/api/tiers');
             if (response.ok) {
                 const data = await response.json();
-                console.log(data)
                 setTiers(data);
             } else {
                 console.error('Failed to fetch users');

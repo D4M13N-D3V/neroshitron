@@ -77,6 +77,9 @@ function PageComponent() {
     return (
         <div className="w-full p-8 text-white flex justify-center items-center animate-in">
             <div className="w-full lg:w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-12 mt-32 shadow-lg">
+                <div className="w-full flex pb-4">
+                    <span className="text-2xl">Creating New Gallery</span>
+                </div>
                 <div className="w-full flex">
                     <input
                         type="text"
@@ -98,16 +101,18 @@ function PageComponent() {
                 </div>
                 <div className="w-full lg:flex">
                     <div className="w-full lg:w-1/2 mr-2">
-                        <SearchInput
-                            placeholderTags={[
-                                { value: "tags", label: "❗️ click here to add tags" },
-                            ]}
-                            startingTags={tags}
-                            nsfwButtonEnabled={true}
-                            searchChanged={(search) => { }}
-                            nsfwChanged={(nsfw) => { }}
-                            tagsChanged={(tags) => { setTags(tags)  }}
-                        />
+                        <div className="absolute">  
+                            <SearchInput
+                                placeholderTags={[
+                                    { value: "tags", label: "❗️ click here to add tags" },
+                                ]}
+                                startingTags={tags}
+                                nsfwButtonEnabled={true}
+                                searchChanged={(search) => { }}
+                                nsfwChanged={(nsfw) => { }}
+                                tagsChanged={(tags) => { setTags(tags)  }}
+                            />
+                        </div>
                     </div>
                     <div className="w-full lg:w-1/2 lg:pt-0 pt-4">
                         <select value={nsfw ? "NSFW" : "SFW"} className="mb-2 shadow-lg rounded-md bg-secondary p-2 w-full text-white" onChange={e=>{
