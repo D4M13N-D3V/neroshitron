@@ -63,7 +63,7 @@ function PageComponent() {
 
     return (
         <div className="w-full p-8 h-max text-white lg:flex justify-center items-start animate-in mt-32">
-            <div className="w-full h-max lg:w-1/3 rounded-md bg-primary opacity-90 p-4 m-1 shadow-lg backdrop-blur">
+            <div className="w-full h-max lg:w-1/3 rounded-md bg-primary opacity-90 p-8 m-1 shadow-lg backdrop-blur">
                 <span className="text-2xl">Tags Management</span>
                 <div className="w-full flex pt-4">
                     <form onSubmit={createTag} className="flex w-full">
@@ -104,7 +104,7 @@ function PageComponent() {
                 </table>
                 </div>
             </div>
-            <div className="w-full h-max lg:w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-4 m-1 shadow-lg">
+            <div className="w-full h-max lg:w-1/2 rounded-md bg-primary opacity-90 backdrop-blur-lg p-8 m-1 shadow-lg">
                 <div className="w-full pb-2 flex justify-between">
                     <span className="text-2xl">Galleries Management</span>
                     <div>
@@ -125,7 +125,7 @@ function PageComponent() {
                     </div>
                 </div>
                 <div className="w-full pb-2 flex">
-                    <div className="absolute w-full z-20 pr-8">
+                    <div className="absolute w-full z-20 pr-16">
                         <SearchInput 
                         startingTags={[]}
                         placeholderTags={[
