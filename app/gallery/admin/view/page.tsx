@@ -148,7 +148,7 @@ function PageComponent() {
                             title={galleryName}
                             subscription={tier}
                             tags={tags}
-                            subscriptionColor={subscriptionColorç}
+                            subscriptionColor={subscriptionColor}
                             showNsfw={false}
                             nsfw={nsfw}
                         ></GalleryThumbnail>
