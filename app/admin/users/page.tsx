@@ -13,7 +13,7 @@ function PageComponent() {
         console.log(data)
         setUsers(data.users);
       } else {
-        console.error('Failed to fetch users');
+        console.error('failed to fetch tiers');
       }
     } catch (error) {
       console.error('Error fetching users:', error);

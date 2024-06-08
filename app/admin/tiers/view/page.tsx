@@ -25,7 +25,7 @@ function PageComponent() {
                 setDescription(data.description);
                 setColor(data.color);
             } else {
-                console.error('Failed to fetch users');
+                console.error('failed to fetch tiers');
             }
         } catch (error) {
             console.error('Error fetching users:', error);

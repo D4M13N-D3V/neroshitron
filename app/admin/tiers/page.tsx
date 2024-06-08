@@ -14,7 +14,7 @@ function PageComponent() {
                 const data = await response.json();
                 setTiers(data);
             } else {
-                console.error('Failed to fetch users');
+                console.error('failed to fetch tiers');
             }
         } catch (error) {
             console.error('Error fetching users:', error);
